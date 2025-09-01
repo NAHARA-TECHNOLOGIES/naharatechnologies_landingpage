@@ -20,9 +20,9 @@ const valueIcon: { [key: string]: (color: string) => React.JSX.Element } = {
 
 const CoreValueRow = ({
   values,
-  styling,
+  className,
 }: {
-  styling: string;
+  className: string;
   values: {
     id: number;
     title: string;
@@ -31,10 +31,10 @@ const CoreValueRow = ({
   }[];
 }) => {
   return (
-    <div className={`lg:flex items-stretch lg:my-6 ${styling}`}>
+    <div className={`lg:flex items-stretch lg:my-6 ${className}`}>
       {values.map(({ id, title, text, iconColor }) => (
         <ValueCard
-          styling="bg-[#feecea] p-6 rounded-3xl w-full lg:max-w-[250px] shadow-2xl my-5 lg:my-0"
+          className="bg-[#feecea] p-6 rounded-3xl w-full lg:max-w-[250px] shadow-2xl my-5 lg:my-0"
           key={id}
           icon={valueIcon[title](iconColor)}
           title={title}

@@ -1,13 +1,13 @@
 import React from "react";
 
 const Overlay = ({
-  styling,
+  className,
   children,
 }: {
-  styling: string;
+  className: string;
   children: React.ReactNode;
 }) => {
-  return <div className={`absolute ${styling}`}>{children}</div>;
+  return <div className={`absolute ${className}`}>{children}</div>;
 };
 
 export default Overlay;

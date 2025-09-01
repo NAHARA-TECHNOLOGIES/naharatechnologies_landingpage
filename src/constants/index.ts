@@ -1,4 +1,5 @@
 import SmileImg from "@/assets/smiley-man.jpg";
+import helpHeroBg from '@/assets/help-hero-bg.jpg';
 import boundary from "@/assets/boundary.png";
 import map from "@/assets/map.png";
 import mivision from "@/assets/mivision.jpg";
@@ -12,7 +13,6 @@ import apexLogo from "@/assets/logo-apex.png";
 import logo from "@/assets/NaharaTechnologiesWhite.png";
 import whyChooseUS from "@/assets/why-choose-us.png";
 import { Palette, Code, PenLine, Megaphone } from "lucide-react";
-
 
 // lottie animations
 import globe from "@/assets/animation-data/globe.json";
@@ -31,6 +31,7 @@ const images = {
   pulseLogo,
   apexLogo,
   logo,
+  helpHeroBg
 };
 
 const lottieAnims = {
@@ -79,50 +80,6 @@ const missionText =
 const visionText =
   "To drive global success for businesses through strategic branding, innovative software, and marketing expertise.";
 
-const coreValues = [
-  [
-    {
-      id: 1,
-      title: "integrity",
-      text: "We pursue excellence with passion.",
-      iconColor: "blue",
-    },
-    {
-      id: 2,
-      title: "dedication",
-      text: "We are committed to excellence",
-      iconColor: "yellow",
-    },
-  ],
-  [
-    {
-      id: 3,
-      title: "excellence",
-      text: "We position businesses for global success",
-      iconColor: "red",
-    },
-    {
-      id: 4,
-      title: "customer focus",
-      text: "We value your vision and amplify it.",
-      iconColor: "indigo",
-    },
-  ],
-  [
-    {
-      id: 5,
-      title: "accountability",
-      text: "We own our responsibilities.",
-      iconColor: "orange",
-    },
-    {
-      id: 6,
-      title: "innovation",
-      text: "We embrace creativity and innovation",
-      iconColor: "ivory",
-    },
-  ],
-];
 
 const howWeWorkContent = [
   {
@@ -194,12 +151,90 @@ const howWeWorkContent = [
 ];
 
 const logos = [
-  { id: 1, src: images.acmeLogo, title: "Acme" },
-  { id: 2, src: images.quantumLogo, title: "Quantum" },
-  { id: 3, src: images.echoLogo, title: "Echo" },
-  { id: 4, src: images.celestiaLogo, title: "Celestia" },
-  { id: 5, src: images.pulseLogo, title: "Pulse" },
-  { id: 6, src: images.apexLogo, title: "Apex" },
+  {
+    id: 1,
+    src: images.acmeLogo,
+    title: "Acme",
+  },
+  {
+    id: 2,
+    src: images.quantumLogo,
+    title: "Quantum",
+  },
+  {
+    id: 3,
+    src: images.echoLogo,
+    title: "Echo",
+  },
+  {
+    id: 4,
+    src: images.celestiaLogo,
+    title: "Celestia",
+  },
+  {
+    id: 5,
+    src: images.pulseLogo,
+    title: "Pulse",
+  },
+  {
+    id: 6,
+    src: images.apexLogo,
+    title: "Apex",
+  },
+];
+
+const faqCategories = [
+  {
+    id: 1,
+    title: "General Questions",
+    faqs: [
+      "How do I create an account?",
+      "How can I reset my password?",
+      "Where can I access support?",
+    ],
+  },
+  {
+    id: 2,
+    title: "Billing & Payments",
+    faqs: [
+      "How do I update payment information?",
+      "What happens if my payment fails?",
+      "Are refunds available?",
+    ],
+  },
+  {
+    id: 3,
+    title: "Technical Issues",
+    faqs: [
+      "Why is my app not working?",
+      "How do I report a bug?",
+      "Where do I find system requirements?",
+    ],
+  },
+];
+
+const mockTickets: TicketProps[] = [
+  {
+    id: 1,
+    issue: "App crashing on startup",
+    priority: "High",
+    status: "Open",
+    resolutionTime: "24 hours",
+  },
+  {
+    id: 2,
+    issue: "Billing error on my account",
+    priority: "Medium",
+    status: "Pending",
+    resolutionTime: "48 hours",
+  },
+  {
+    id: 3,
+    issue: "Slow network connectivity",
+    priority: "Low",
+    status: "Resolved",
+    resolutionTime: "N/A",
+  },
 ];
 
 export {
@@ -208,10 +243,11 @@ export {
   whatWeDo,
   whatWeWorkText,
   doWeWorkText,
-  coreValues,
   howWeWorkContent,
   missionText,
   visionText,
   logos,
   lottieAnims,
+  faqCategories,
+  mockTickets,
 };

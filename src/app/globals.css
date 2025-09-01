@@ -81,3 +81,11 @@
 .animate-hero-bg {
   animation: zoomIn 5s ease-in-out infinite alternate;
 }
+
+
+.help-hero-bg {
+  background: url(../assets/help-hero-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% 50%;
+}
