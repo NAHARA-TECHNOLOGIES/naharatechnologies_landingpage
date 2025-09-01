@@ -5,8 +5,9 @@ const Overlay = ({
   children,
 }: {
   className: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) => {
+
   return <div className={`absolute ${className}`}>{children}</div>;
 };
 
