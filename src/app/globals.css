@@ -89,3 +89,11 @@
   background-size: cover;
   background-position: 70% 50%;
 }
+
+.help-faq-bg {
+  background: url(../assets/images/help_faq_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% 50%;
+  transform: rotateY(180deg);
+}
