@@ -7,8 +7,7 @@ const Overlay = ({
   className: string;
   children?: React.ReactNode;
 }) => {
-
-  return <div className={`absolute ${className}`}>{children}</div>;
+  return <div className={`absolute ${className}`}>{children && children}</div>;
 };
 
 export default Overlay;

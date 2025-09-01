@@ -6,8 +6,9 @@ import { images } from "@/constants";
 
 const HelpHero = () => {
   return (
-    <div className="min-h-[450px] lg:min-h-[786px] justify-center relative help-hero-bg py-10 px-6 lg:pt-[216px] lg:pb-[280px] flex flex-col justify-center">
+    <div className="min-h-[450px] lg:min-h-[786px] relative help-hero-bg py-10 px-6 lg:pt-[216px] lg:pb-[280px] flex flex-col justify-center">
       <Overlay className="inset-0 bg-[#3309099C] z-10" />
+      
       <div className="relative z-20 text-center text-white w-full max-w-[945px] mx-auto">
         <h2 className="text-2xl sm:text-[2.2vw] lg:text-[2rem] font-semibold">
           Welcome to Help Center

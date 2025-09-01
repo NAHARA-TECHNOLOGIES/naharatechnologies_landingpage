@@ -1,5 +1,5 @@
 import SmileImg from "@/assets/smiley-man.jpg";
-import helpHeroBg from '@/assets/help-hero-bg.jpg';
+import helpHeroBg from "@/assets/help-hero-bg.jpg";
 import boundary from "@/assets/boundary.png";
 import map from "@/assets/map.png";
 import mivision from "@/assets/mivision.jpg";
@@ -14,9 +14,24 @@ import logo from "@/assets/NaharaTechnologiesWhite.png";
 import whyChooseUS from "@/assets/why-choose-us.png";
 import { Palette, Code, PenLine, Megaphone } from "lucide-react";
 
+// icons import
+import help_category_icon1 from "@/assets/icons/help_category_icon1.png";
+import help_category_icon2 from "@/assets/icons/help_category_icon2.png";
+import help_category_icon3 from "@/assets/icons/help_category_icon3.png";
+import help_category_icon4 from "@/assets/icons/help_category_icon4.png";
+
 // lottie animations
 import globe from "@/assets/animation-data/globe.json";
 
+// icons
+const icons = {
+  help_category_icon1,
+  help_category_icon2,
+  help_category_icon3,
+  help_category_icon4,
+};
+
+// images
 const images = {
   SmileImg,
   boundary,
@@ -31,7 +46,7 @@ const images = {
   pulseLogo,
   apexLogo,
   logo,
-  helpHeroBg
+  helpHeroBg,
 };
 
 const lottieAnims = {
@@ -79,7 +94,6 @@ const missionText =
 
 const visionText =
   "To drive global success for businesses through strategic branding, innovative software, and marketing expertise.";
-
 
 const howWeWorkContent = [
   {
@@ -237,6 +251,36 @@ const mockTickets: TicketProps[] = [
   },
 ];
 
+const helpTopics = [
+  {
+    title: "Account & Billing",
+    description: "Manage your account details, invoices and payment plans.",
+    link: "View topics",
+    icon: icons.help_category_icon1
+  },
+  {
+    title: "Services & Projects",
+    description:
+      "Everything about starting, tracking, and managing your projects.",
+    link: "View topics",
+    icon: icons.help_category_icon2,
+  },
+  {
+    title: "Technical Support",
+    description:
+      "Troubleshooting, bug fixes, and performance tips for your products.",
+    link: "View topics",
+    icon: icons.help_category_icon3,
+  },
+  {
+    title: "General Questions",
+    description:
+      "Learn more about Nahara Technologies, policies, and timelines.",
+    link: "View topics",
+    icon: icons.help_category_icon4,
+  },
+];
+
 export {
   images,
   aboutBriefing,
@@ -250,4 +294,5 @@ export {
   lottieAnims,
   faqCategories,
   mockTickets,
+  helpTopics,
 };
