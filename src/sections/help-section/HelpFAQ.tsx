@@ -6,7 +6,7 @@ const HelpFAQ = () => {
       </h2>
 
       <div className="mt-[34px] border border-black lg:flex">
-        <div className="w-full lg:w-[45%] border border-red-600 min-h-[300px] lg:h-[428px] help-faq-bg"></div>
+        <div className="w-full lg:w-[45%] border border-red-600 min-h-[300px] lg:h-[428px] help-faq-bg rounded-[10px]" />
       </div>
     </div>
   );

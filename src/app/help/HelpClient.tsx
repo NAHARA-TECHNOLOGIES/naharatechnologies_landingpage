@@ -15,12 +15,12 @@ export default function HelpClient() {
   const router = useRouter();
   // px-4 sm:px-6
   return (
-    <section className="mx-auto py-8">
+    <section className="mx-auto">
       <HelpHero />
       <HelpCategories />
       <HelpFAQ />
       <QuickHelp />
-      <h2 className="text-2xl sm:text-4xl font-extrabold text-center mb-8">
+      {/* <h2 className="text-2xl sm:text-4xl font-extrabold text-center mb-8">
         Need Help?
       </h2>
       <SearchBar
@@ -49,7 +49,7 @@ export default function HelpClient() {
         >
           <FiArrowLeft /> Go Back
         </button>
-      </div>
+      </div> */}
     </section>
   );
 }

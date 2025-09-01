@@ -22,6 +22,11 @@ import help_category_icon1 from "@/assets/icons/help_category_icon1.png";
 import help_category_icon2 from "@/assets/icons/help_category_icon2.png";
 import help_category_icon3 from "@/assets/icons/help_category_icon3.png";
 import help_category_icon4 from "@/assets/icons/help_category_icon4.png";
+import quick_help_icon1 from '@/assets/icons/quick_help_icon1.png'
+import quick_help_icon2 from '@/assets/icons/quick_help_icon2.png'
+import quick_help_icon3 from '@/assets/icons/quick_help_icon3.png'
+import quick_help_clock_icon from '@/assets/icons/quick_help_clock_icon.png'
+import quick_help_response_icon from '@/assets/icons/quick_help_response_icon.png'
 
 // lottie animations
 import globe from "@/assets/animation-data/globe.json";
@@ -32,6 +37,11 @@ const icons = {
   help_category_icon2,
   help_category_icon3,
   help_category_icon4,
+  quick_help_icon1,
+  quick_help_icon2,
+  quick_help_icon3,
+  quick_help_response_icon,
+  quick_help_clock_icon,
 };
 
 // images
@@ -285,7 +295,36 @@ const helpTopics = [
   },
 ];
 
+const supportOptions = [
+  {
+    icon: icons.quick_help_icon1,
+    title: "Email Support",
+    description: "Get detailed help via email",
+    responseTime: "24 hours",
+    availability: "24/7",
+    btnText: "Send Email",
+  },
+  {
+    icon: icons.quick_help_icon2,
+    title: "Live Chat",
+    description: "Chat with our support team",
+    responseTime: "Immediate",
+    availability: "9 a.m. - 6 p.m. EST",
+    btnText: "Start Chat",
+  },
+  {
+    icon: icons.quick_help_icon3,
+    title: "Phone Support",
+    description: "Speak directly with our experts",
+    responseTime: "Immediate",
+    availability: "9 a.m. - 6 p.m. EST",
+    btnText: "Call Now",
+  }
+];
+
+
 export {
+  icons,
   images,
   aboutBriefing,
   whatWeDo,
@@ -299,4 +338,5 @@ export {
   faqCategories,
   mockTickets,
   helpTopics,
+  supportOptions
 };
