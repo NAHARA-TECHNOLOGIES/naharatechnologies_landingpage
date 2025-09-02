@@ -22,11 +22,11 @@ import help_category_icon1 from "@/assets/icons/help_category_icon1.png";
 import help_category_icon2 from "@/assets/icons/help_category_icon2.png";
 import help_category_icon3 from "@/assets/icons/help_category_icon3.png";
 import help_category_icon4 from "@/assets/icons/help_category_icon4.png";
-import quick_help_icon1 from '@/assets/icons/quick_help_icon1.png'
-import quick_help_icon2 from '@/assets/icons/quick_help_icon2.png'
-import quick_help_icon3 from '@/assets/icons/quick_help_icon3.png'
-import quick_help_clock_icon from '@/assets/icons/quick_help_clock_icon.png'
-import quick_help_response_icon from '@/assets/icons/quick_help_response_icon.png'
+import quick_help_icon1 from "@/assets/icons/quick_help_icon1.png";
+import quick_help_icon2 from "@/assets/icons/quick_help_icon2.png";
+import quick_help_icon3 from "@/assets/icons/quick_help_icon3.png";
+import quick_help_clock_icon from "@/assets/icons/quick_help_clock_icon.png";
+import quick_help_response_icon from "@/assets/icons/quick_help_response_icon.png";
 
 // lottie animations
 import globe from "@/assets/animation-data/globe.json";
@@ -60,7 +60,7 @@ const images = {
   apexLogo,
   logo,
   helpHeroBg,
-  helpFaqBg
+  helpFaqBg,
 };
 
 const lottieAnims = {
@@ -270,7 +270,7 @@ const helpTopics = [
     title: "Account & Billing",
     description: "Manage your account details, invoices and payment plans.",
     link: "View topics",
-    icon: icons.help_category_icon1
+    icon: icons.help_category_icon1,
   },
   {
     title: "Services & Projects",
@@ -319,7 +319,7 @@ const supportOptions = [
     responseTime: "Immediate",
     availability: "9 a.m. - 6 p.m. EST",
     btnText: "Call Now",
-  }
+  },
 ];
 
 const faqs = [
@@ -327,30 +327,33 @@ const faqs = [
     question: "How Do I Create An Account?",
     answer:
       "Click on the Sign Up button at the top of the page, enter your details, and verify your email to activate your account.",
+    isShowing: false,
   },
   {
     question: "How Do I Update Payment Information?",
     answer:
       "Go to your Account Settings, select Billing, and update your payment method. All changes take effect immediately for future transactions.",
+    isShowing: false,
   },
   {
     question: "Where Do I Find System Requirements?",
     answer:
       "System requirements can be found on the product download page or documentation. We also provide recommendations for the best performance.",
+    isShowing: false,
   },
   {
     question: "Do You Provide After-Launch Support?",
     answer:
       "Yes, every project includes a dedicated support period. We also offer ongoing maintenance and support plans tailored to your needs.",
+    isShowing: false,
   },
   {
     question: "What Happens If My Payment Fails?",
     answer:
       "If a payment fails, you’ll receive a notification and can retry with a different method. Services may be temporarily paused until payment is completed.",
+    isShowing: true,
   },
 ];
-
-
 
 export {
   icons,
@@ -368,5 +371,5 @@ export {
   mockTickets,
   helpTopics,
   supportOptions,
-  faqs
+  faqs,
 };

@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const QuickHelp = () => {
   return (
-    <div className="p-6 lg:px-[177px] border border-black">
+    <div className="p-6 lg:px-[177px]">
       <h2 className="section-title">Need Quick Help?</h2>
 
       <div className="space-y-5 md:space-y-0 mt-10 md:flex items-start justify-between">

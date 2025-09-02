@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const HelpCategories = () => {
   return (
-    <div className="p-6 lg:py-10 lg:px-[183px] border border-black">
+    <div className="p-6 lg:py-10 lg:px-[183px]">
       <h2 className="section-title">Quick Help Categories</h2>
 
       <div className="md:flex items-center justify-between flex-wrap gap-y-10 mt-[30px] space-y-6 md:space-y-0">
