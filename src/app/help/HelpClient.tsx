@@ -9,6 +9,8 @@ import { FiArrowLeft } from "react-icons/fi";
 import { faqCategories, mockTickets } from "@/constants";
 import { HelpCategories, HelpFAQ, HelpHero, QuickHelp } from "@/sections/help-section";
 
+
+
 export default function HelpClient() {
   const [searchTerm, setSearchTerm] = useState("");
   const [ticketSearch, setTicketSearch] = useState("");

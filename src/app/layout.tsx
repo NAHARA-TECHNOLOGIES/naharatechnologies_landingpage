@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Poppins } from "next/font/google";
+import { DM_Sans, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
 import Header from "@/sections/Header";
@@ -14,6 +14,13 @@ const dmSans = DM_Sans({
   display: "swap",
   variable: "--font-dm-sans",
 });
+
+const sora = Sora({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-sora",
+});
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -38,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="relative">
       <GoogleTagManager gtmId="GTM-NKM6HG5J" />
-      <body className={clsx(dmSans.className, "antialiased bg-[#feecea]")}>
+      <body className={clsx(dmSans.variable, sora.variable, poppins.variable,"antialiased bg-[#feecea]")}>
         <Header />
         <TopButton />
         <QuickChatBox />

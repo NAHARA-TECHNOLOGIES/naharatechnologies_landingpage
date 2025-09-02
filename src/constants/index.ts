@@ -322,6 +322,35 @@ const supportOptions = [
   }
 ];
 
+const faqs = [
+  {
+    question: "How Do I Create An Account?",
+    answer:
+      "Click on the Sign Up button at the top of the page, enter your details, and verify your email to activate your account.",
+  },
+  {
+    question: "How Do I Update Payment Information?",
+    answer:
+      "Go to your Account Settings, select Billing, and update your payment method. All changes take effect immediately for future transactions.",
+  },
+  {
+    question: "Where Do I Find System Requirements?",
+    answer:
+      "System requirements can be found on the product download page or documentation. We also provide recommendations for the best performance.",
+  },
+  {
+    question: "Do You Provide After-Launch Support?",
+    answer:
+      "Yes, every project includes a dedicated support period. We also offer ongoing maintenance and support plans tailored to your needs.",
+  },
+  {
+    question: "What Happens If My Payment Fails?",
+    answer:
+      "If a payment fails, you’ll receive a notification and can retry with a different method. Services may be temporarily paused until payment is completed.",
+  },
+];
+
+
 
 export {
   icons,
@@ -338,5 +367,6 @@ export {
   faqCategories,
   mockTickets,
   helpTopics,
-  supportOptions
+  supportOptions,
+  faqs
 };

@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply font-sans
+}
+
 @layer components {
   .btn {
     @apply font-medium px-4 py-2 rounded-lg 
@@ -97,3 +102,4 @@
   background-position: 70% 50%;
   transform: rotateY(180deg);
 }
+
