@@ -12,7 +12,7 @@ export const Header = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
   return (
-    <header className="sticky top-0 backdrop-blur-sm z-20">
+    <header className="sticky top-0 backdrop-blur-sm z-[100]">
       <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
         <p className="text-white/60 hidden md:block">
           Try our installmental plan

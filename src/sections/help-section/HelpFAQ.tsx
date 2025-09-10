@@ -6,11 +6,11 @@ const HelpFAQ = () => {
   const [_faqs, setFaqs] = useState(faqs);
 
   const openAnswer = (question: string) => {
-    setFaqs((prev) => {
-      return prev.map((faq) =>
+    setFaqs((prev) =>
+      prev.map((faq) =>
         faq.question === question ? { ...faq, isShowing: !faq.isShowing } : faq
-      );
-    });
+      )
+    );
   };
   return (
     <div className="p-6 lg:py-10 lg:px-[183px]">
@@ -31,7 +31,11 @@ const HelpFAQ = () => {
                 className="md:text-lg flex items-center cursor-pointer"
                 onClick={() => openAnswer(question)}
               >
-                {question} <BiUpArrow className={`ml-4 ${isShowing && 'rotate-180'}`} size={16} />
+                {question}{" "}
+                <BiUpArrow
+                  className={`ml-4 ${isShowing && "rotate-180"}`}
+                  size={16}
+                />
               </p>
 
               {isShowing && (

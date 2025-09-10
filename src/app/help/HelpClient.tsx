@@ -15,7 +15,7 @@ export default function HelpClient() {
   const [searchTerm, setSearchTerm] = useState("");
   const [ticketSearch, setTicketSearch] = useState("");
   const router = useRouter();
-  // px-4 sm:px-6
+  
   return (
     <section className="mx-auto">
       <HelpHero />
@@ -42,9 +42,9 @@ export default function HelpClient() {
           .map((ticket) => (
             <TicketList key={ticket.id} {...ticket} />
           ))}
-      </div>
+      </div> */}
       <ContactCard />
-      <div className="text-center mt-8">
+      {/* <div className="text-center mt-8">
         <button
           className="bg-gray-800 text-white px-6 py-3 hover:bg-gray-900 flex items-center gap-2 mx-auto"
           onClick={() => router.push("/")}
