@@ -43,7 +43,7 @@ export default function HelpClient() {
             <TicketList key={ticket.id} {...ticket} />
           ))}
       </div> */}
-      <ContactCard />
+      {/* <ContactCard /> */}
       {/* <div className="text-center mt-8">
         <button
           className="bg-gray-800 text-white px-6 py-3 hover:bg-gray-900 flex items-center gap-2 mx-auto"

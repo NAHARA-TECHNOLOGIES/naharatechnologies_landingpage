@@ -1,9 +1,27 @@
+import ChatModal from "@/components/ChatModal";
 import ImageWrap from "@/components/ImageWrap";
 import TitleDescription from "@/components/TitleDescription";
 import { icons, supportOptions } from "@/constants";
+import useLiveChat from "@/hooks/useLiveChat";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const QuickHelp = () => {
+  const router = useRouter();
+  const { openChat, handleOpenChat, setOpenChat } = useLiveChat();
+
+  const goToContact = () => router.push("/contact");
+
+  const handleCall = () => {
+    window.location.href = "tel:+2349078781812";
+  };
+
+  const actions: { [key: string]: () => void } = {
+    "Live Chat": handleOpenChat,
+    "Email Support": goToContact,
+    "Phone Support": handleCall,
+  };
+
   return (
     <div className="p-6 lg:px-[177px]">
       <h2 className="section-title">Need Quick Help?</h2>
@@ -48,18 +66,35 @@ const QuickHelp = () => {
                 </div>
 
                 <div className="flex items-center justify-center mt-[5px]">
-                  <Image src={icons.quick_help_clock_icon} alt="response"  className="size-5 mr-[5px]" />
+                  <Image
+                    src={icons.quick_help_clock_icon}
+                    alt="response"
+                    className="size-5 mr-[5px]"
+                  />
                   <p>Available:{availability.replace(/\./g, "")}</p>
                 </div>
               </div>
 
-              <button className="py-2 text-center bg-[#991B1B] w-full text-white">
-                {btnText}
-              </button>
+              {title === "Phone Support" ? (
+                <a
+                  href="tel:+2349078781812"
+                  className="py-2 text-center bg-[#991B1B] w-full text-white"
+                >
+                  {btnText}
+                </a>
+              ) : (
+                <button
+                  onClick={actions[title]}
+                  className="py-2 text-center bg-[#991B1B] w-full text-white"
+                >
+                  {btnText}
+                </button>
+              )}
             </div>
           )
         )}
       </div>
+      <ChatModal isOpen={openChat} onClose={() => setOpenChat(false)} />
     </div>
   );
 };
