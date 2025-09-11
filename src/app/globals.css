@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply font-sans
+}
+
 @layer components {
   .btn {
     @apply font-medium px-4 py-2 rounded-lg 
@@ -81,3 +86,20 @@
 .animate-hero-bg {
   animation: zoomIn 5s ease-in-out infinite alternate;
 }
+
+
+.help-hero-bg {
+  background: url(../assets/help-hero-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% 50%;
+}
+
+.help-faq-bg {
+  background: url(../assets/images/help_faq_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 70% 50%;
+  transform: rotateY(180deg);
+}
+

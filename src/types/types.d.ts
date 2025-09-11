@@ -12,6 +12,14 @@ declare interface HowWeWorkCardProps {
   values?: { id: number; title: string; text: string }[];
   imageWrapAnimProps?: any;
   containerAnimProps?: any;
-  titleAnimProps?:any;
+  titleAnimProps?: any;
   descAnimProps?: any;
+}
+
+declare interface TicketProps {
+  id: number;
+  issue: string;
+  priority: "High" | "Medium" | "Low";
+  status: string;
+  resolutionTime: string;
 }
