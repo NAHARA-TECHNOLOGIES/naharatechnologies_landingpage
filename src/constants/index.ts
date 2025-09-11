@@ -13,10 +13,38 @@ import logo from "@/assets/NaharaTechnologiesWhite.png";
 import whyChooseUS from "@/assets/why-choose-us.png";
 import { Palette, Code, PenLine, Megaphone } from "lucide-react";
 
+// images import
+import helpHeroBg from "@/assets/help-hero-bg.jpg";
+import helpFaqBg from "@/assets/images/help_faq_bg.png";
+
+// icons import
+import help_category_icon1 from "@/assets/icons/help_category_icon1.png";
+import help_category_icon2 from "@/assets/icons/help_category_icon2.png";
+import help_category_icon3 from "@/assets/icons/help_category_icon3.png";
+import help_category_icon4 from "@/assets/icons/help_category_icon4.png";
+import quick_help_icon1 from "@/assets/icons/quick_help_icon1.png";
+import quick_help_icon2 from "@/assets/icons/quick_help_icon2.png";
+import quick_help_icon3 from "@/assets/icons/quick_help_icon3.png";
+import quick_help_clock_icon from "@/assets/icons/quick_help_clock_icon.png";
+import quick_help_response_icon from "@/assets/icons/quick_help_response_icon.png";
 
 // lottie animations
 import globe from "@/assets/animation-data/globe.json";
 
+// icons
+const icons = {
+  help_category_icon1,
+  help_category_icon2,
+  help_category_icon3,
+  help_category_icon4,
+  quick_help_icon1,
+  quick_help_icon2,
+  quick_help_icon3,
+  quick_help_response_icon,
+  quick_help_clock_icon,
+};
+
+// images
 const images = {
   SmileImg,
   boundary,
@@ -31,6 +59,8 @@ const images = {
   pulseLogo,
   apexLogo,
   logo,
+  helpHeroBg,
+  helpFaqBg,
 };
 
 const lottieAnims = {
@@ -78,51 +108,6 @@ const missionText =
 
 const visionText =
   "To drive global success for businesses through strategic branding, innovative software, and marketing expertise.";
-
-const coreValues = [
-  [
-    {
-      id: 1,
-      title: "integrity",
-      text: "We pursue excellence with passion.",
-      iconColor: "blue",
-    },
-    {
-      id: 2,
-      title: "dedication",
-      text: "We are committed to excellence",
-      iconColor: "yellow",
-    },
-  ],
-  [
-    {
-      id: 3,
-      title: "excellence",
-      text: "We position businesses for global success",
-      iconColor: "red",
-    },
-    {
-      id: 4,
-      title: "customer focus",
-      text: "We value your vision and amplify it.",
-      iconColor: "indigo",
-    },
-  ],
-  [
-    {
-      id: 5,
-      title: "accountability",
-      text: "We own our responsibilities.",
-      iconColor: "orange",
-    },
-    {
-      id: 6,
-      title: "innovation",
-      text: "We embrace creativity and innovation",
-      iconColor: "ivory",
-    },
-  ],
-];
 
 const howWeWorkContent = [
   {
@@ -194,24 +179,197 @@ const howWeWorkContent = [
 ];
 
 const logos = [
-  { id: 1, src: images.acmeLogo, title: "Acme" },
-  { id: 2, src: images.quantumLogo, title: "Quantum" },
-  { id: 3, src: images.echoLogo, title: "Echo" },
-  { id: 4, src: images.celestiaLogo, title: "Celestia" },
-  { id: 5, src: images.pulseLogo, title: "Pulse" },
-  { id: 6, src: images.apexLogo, title: "Apex" },
+  {
+    id: 1,
+    src: images.acmeLogo,
+    title: "Acme",
+  },
+  {
+    id: 2,
+    src: images.quantumLogo,
+    title: "Quantum",
+  },
+  {
+    id: 3,
+    src: images.echoLogo,
+    title: "Echo",
+  },
+  {
+    id: 4,
+    src: images.celestiaLogo,
+    title: "Celestia",
+  },
+  {
+    id: 5,
+    src: images.pulseLogo,
+    title: "Pulse",
+  },
+  {
+    id: 6,
+    src: images.apexLogo,
+    title: "Apex",
+  },
+];
+
+const faqCategories = [
+  {
+    id: 1,
+    title: "General Questions",
+    faqs: [
+      "How do I create an account?",
+      "How can I reset my password?",
+      "Where can I access support?",
+    ],
+  },
+  {
+    id: 2,
+    title: "Billing & Payments",
+    faqs: [
+      "How do I update payment information?",
+      "What happens if my payment fails?",
+      "Are refunds available?",
+    ],
+  },
+  {
+    id: 3,
+    title: "Technical Issues",
+    faqs: [
+      "Why is my app not working?",
+      "How do I report a bug?",
+      "Where do I find system requirements?",
+    ],
+  },
+];
+
+const mockTickets: TicketProps[] = [
+  {
+    id: 1,
+    issue: "App crashing on startup",
+    priority: "High",
+    status: "Open",
+    resolutionTime: "24 hours",
+  },
+  {
+    id: 2,
+    issue: "Billing error on my account",
+    priority: "Medium",
+    status: "Pending",
+    resolutionTime: "48 hours",
+  },
+  {
+    id: 3,
+    issue: "Slow network connectivity",
+    priority: "Low",
+    status: "Resolved",
+    resolutionTime: "N/A",
+  },
+];
+
+const helpTopics = [
+  {
+    title: "Account & Billing",
+    description: "Manage your account details, invoices and payment plans.",
+    link: "View topics",
+    icon: icons.help_category_icon1,
+  },
+  {
+    title: "Services & Projects",
+    description:
+      "Everything about starting, tracking, and managing your projects.",
+    link: "View topics",
+    icon: icons.help_category_icon2,
+  },
+  {
+    title: "Technical Support",
+    description:
+      "Troubleshooting, bug fixes, and performance tips for your products.",
+    link: "View topics",
+    icon: icons.help_category_icon3,
+  },
+  {
+    title: "General Questions",
+    description:
+      "Learn more about Nahara Technologies, policies, and timelines.",
+    link: "View topics",
+    icon: icons.help_category_icon4,
+  },
+];
+
+const supportOptions = [
+  {
+    icon: icons.quick_help_icon1,
+    title: "Email Support",
+    description: "Get detailed help via email",
+    responseTime: "24 hours",
+    availability: "24/7",
+    btnText: "Send Email",
+  },
+  {
+    icon: icons.quick_help_icon2,
+    title: "Live Chat",
+    description: "Chat with our support team",
+    responseTime: "Immediate",
+    availability: "9 a.m. - 6 p.m. EST",
+    btnText: "Start Chat",
+  },
+  {
+    icon: icons.quick_help_icon3,
+    title: "Phone Support",
+    description: "Speak directly with our experts",
+    responseTime: "Immediate",
+    availability: "9 a.m. - 6 p.m. EST",
+    btnText: "Call Now",
+  },
+];
+
+const faqs = [
+  {
+    question: "How Do I Create An Account?",
+    answer:
+      "Click on the Sign Up button at the top of the page, enter your details, and verify your email to activate your account.",
+    isShowing: false,
+  },
+  {
+    question: "How Do I Update Payment Information?",
+    answer:
+      "Go to your Account Settings, select Billing, and update your payment method. All changes take effect immediately for future transactions.",
+    isShowing: false,
+  },
+  {
+    question: "Where Do I Find System Requirements?",
+    answer:
+      "System requirements can be found on the product download page or documentation. We also provide recommendations for the best performance.",
+    isShowing: false,
+  },
+  {
+    question: "Do You Provide After-Launch Support?",
+    answer:
+      "Yes, every project includes a dedicated support period. We also offer ongoing maintenance and support plans tailored to your needs.",
+    isShowing: false,
+  },
+  {
+    question: "What Happens If My Payment Fails?",
+    answer:
+      "If a payment fails, you’ll receive a notification and can retry with a different method. Services may be temporarily paused until payment is completed.",
+    isShowing: true,
+  },
 ];
 
 export {
+  icons,
   images,
   aboutBriefing,
   whatWeDo,
   whatWeWorkText,
   doWeWorkText,
-  coreValues,
   howWeWorkContent,
   missionText,
   visionText,
   logos,
   lottieAnims,
+  faqCategories,
+  mockTickets,
+  helpTopics,
+  supportOptions,
+  faqs,
 };

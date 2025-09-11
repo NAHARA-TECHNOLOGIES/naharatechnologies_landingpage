@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const TitleDescription = ({
-  styling,
+  className,
   title,
   titleStyle,
   desc,
@@ -14,7 +14,7 @@ const TitleDescription = ({
   descAnimProps,
   containerAnimProps,
 }: {
-  styling?: string;
+  className?: string;
   title: string | React.ReactNode;
   titleStyle: string;
   desc?: string;
@@ -48,7 +48,7 @@ const TitleDescription = ({
   };
 
   return (
-    <motion.div {...containerAnimProps} className={styling}>
+    <motion.div {...containerAnimProps} className={className}>
       {displayTitle()}
       <motion.p {...descAnimProps} className={descStyle}>
         {desc}

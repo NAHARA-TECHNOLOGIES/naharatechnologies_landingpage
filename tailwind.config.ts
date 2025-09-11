@@ -22,8 +22,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)"], // default body font
+        sans: ["var(--font-dm-sans)", "sans-serif"], // default body font
         poppins: ["var(--font-poppins)"], // secondary font
+        sora: ["var(--font-sora)"],
       },
     },
   },

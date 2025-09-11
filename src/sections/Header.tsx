@@ -12,41 +12,41 @@ export const Header = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
   };
   return (
-		<header className='sticky top-0 backdrop-blur-sm z-20'>
-			<div className='flex justify-center items-center py-3 bg-black text-white text-sm gap-3'>
-				<p className='text-white/60 hidden md:block'>
-					Try our installmental plan
-				</p>
-				<div className='inline-flex gap-1 items-center'>
-					<p className='font-semibold'>
-						Get Your dream to live with the little you have
-					</p>
-					<ArrowRight className='h-4 w-4 inline-flex justify-center items-center' />
-				</div>
-			</div>
-			<div className='py-5'>
-				<div className='container'>
-					<div className='flex justify-between items-center'>
-						<Logo />
-						<button onClick={toggleMobileNav} className='md:hidden'>
-							<MenuIcon className='h-6 w-6 text-black' />
-						</button>
-						<NavBar
-							setIsMobileNavOpen={setIsMobileNavOpen}
-							styling='hidden md:flex items-center gap-6 text-black/60 list-none'
-						/>
-					</div>
+    <header className="sticky top-0 backdrop-blur-sm z-[100]">
+      <div className="flex justify-center items-center py-3 bg-black text-white text-sm gap-3">
+        <p className="text-white/60 hidden md:block">
+          Try our installmental plan
+        </p>
+        <div className="inline-flex gap-1 items-center">
+          <p className="font-semibold">
+            Get Your dream to live with the little you have
+          </p>
+          <ArrowRight className="h-4 w-4 inline-flex justify-center items-center" />
+        </div>
+      </div>
+      <div className="py-5">
+        <div className="container">
+          <div className="flex justify-between items-center">
+            <Logo />
+            <button onClick={toggleMobileNav} className="md:hidden">
+              <MenuIcon className="h-6 w-6 text-black" />
+            </button>
+            <NavBar
+              setIsMobileNavOpen={setIsMobileNavOpen}
+              className="hidden md:flex items-center gap-6 text-black/60 list-none"
+            />
+          </div>
 
-					{isMobileNavOpen && (
-						<NavBar
-							setIsMobileNavOpen={setIsMobileNavOpen}
-							styling='mt-4 flex flex-col gap-4 text-black/80 md:hidden list-none'
-						/>
-					)}
-				</div>
-			</div>
-		</header>
-	);
+          {isMobileNavOpen && (
+            <NavBar
+              setIsMobileNavOpen={setIsMobileNavOpen}
+              className="mt-4 flex flex-col gap-4 text-black/80 md:hidden list-none"
+            />
+          )}
+        </div>
+      </div>
+    </header>
+  );
 };
 
 export default Header;

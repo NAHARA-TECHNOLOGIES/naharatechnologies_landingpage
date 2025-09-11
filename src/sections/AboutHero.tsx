@@ -7,9 +7,9 @@ import React from "react";
 const AboutHero = () => {
   return (
     <div className="w-full h-[450px] border lg:h-[500px] relative">
-      <Overlay styling="bg-black/30 inset-0 flex items-center justify-center">
+      <Overlay className="bg-black/30 inset-0 flex items-center justify-center">
         <TitleDescription
-          styling="text-center"
+          className="text-center"
           title="About Us"
           titleStyle="text-[28px] lg:text-8xl font-bold text-white"
           desc="Our Vision and Our Mission"
@@ -35,7 +35,11 @@ const AboutHero = () => {
               imageStyle="size-full object-center object-cover"
               imageWrapAnimProps={{
                 initial: { x: 500, opacity: 0 },
-                animate: { x: 0, opacity: 1, transition: { delay: index * 0.25 } },
+                animate: {
+                  x: 0,
+                  opacity: 1,
+                  transition: { delay: index * 0.25 },
+                },
               }}
             />
           );
