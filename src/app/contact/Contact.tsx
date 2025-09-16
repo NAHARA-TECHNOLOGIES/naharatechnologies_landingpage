@@ -1,23 +1,53 @@
 "use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 import { MapPin, Mail, Phone, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {  ArrowLeft } from "lucide-react";
-
+import { ArrowLeft } from "lucide-react";
 
 const ContactUs = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Message sent! 🚀");
-    setForm({ name: "", email: "", message: "" });
+    try {
+      const response = await fetch(
+        "https://api.emailjs.com/api/v1.0/email/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            service_id: "service_dee",
+            template_id: "template_p0bacv9",
+            user_id: "_ENQtsFRN-2F8T5Ir",
+            template_params: {
+              name: form.name,
+              from_email: form.email,
+              message: form.message,
+              title: "",
+              time: "",
+              // to_email: "Joseybusiness@gmail.com",
+              to_email: "naharatechnology@gmail.com",
+            },
+          }),
+        }
+      );
+      console.log(response);
+      alert("Message sent! 🚀");
+    } catch (error) {
+      alert(error);
+    } finally {
+      setForm({ name: "", email: "", message: "" });
+    }
   };
 
   return (
