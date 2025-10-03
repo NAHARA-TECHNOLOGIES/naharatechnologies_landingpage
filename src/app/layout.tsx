@@ -28,6 +28,21 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Nahara technologies plc",
   description: "We empower brands across the globe through cutting-edge software solutions, impact-driven brand strategies, data-backed marketing expertise,and built-in IT team with no hiring stress for SME's",
+  keywords: [
+    "Nahara Technologies",
+    "software development company",
+    "IT consulting for SMEs",
+    "custom software solutions",
+    "branding and marketing strategies",
+    "data-driven marketing",
+    "digital transformation services",
+    "small and enterprise IT solutions",
+    "enterprise branding services",
+    "Africa software development",
+    "Nigeria IT services",
+    "Best software company in lagos state",
+    "Best branding company in lagos state",
+  ],
   icons: {
     icon: "/NaharaIcon2.ico",
   },
