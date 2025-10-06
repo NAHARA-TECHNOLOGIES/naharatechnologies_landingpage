@@ -26,7 +26,8 @@ const desc = {
 
 const WhatWeDo = () => {
   return (
-    <div className="bg-white px-6 py-10 lg:pt-[67px] lg:px-[105px]">
+    <div className="bg-white  dark:bg-gray-900
+             text-gray-900 dark:text-gray-100  px-6 py-10 lg:pt-[67px] lg:px-[105px]">
       <div className="container">
         <TitleDescription
           title="What We Do"
@@ -67,7 +68,7 @@ const WhatWeDo = () => {
                   return (
                     <motion.article
                       key={item.id}
-                      className="border border-white shadow-md p-6 my-5 flex flex-col justify-center items-center lg:my-0 flex-1 mx-2"
+                      className="border border-white  dark:border-black shadow-md p-6 my-5 flex flex-col justify-center items-center lg:my-0 flex-1 mx-2"
                       variants={{
                         hidden: { opacity: 0, y: index % 2 === 0 ? -100 : 100 },
                         visible: { opacity: 1, y: 0 },
