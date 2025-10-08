@@ -48,11 +48,13 @@ export const OurProducts = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
               variants={cardVariants}
-              className="bg-white border border-white p-6 shadow-md hover:shadow-lg transition-shadow"
+              className="bg-white  dark:bg-gray-900 border border-white 
+              dark:border-black
+              p-6 shadow-md hover:shadow-lg transition-shadow"
             >
-              <div className="mb-4 flex justify-center">{product.icon}</div>
-              <h3 className="text-xl font-semibold text-center mb-2">{product.title}</h3>
-              <p className="text-gray-600 text-center">{product.description}</p>
+              <div className="mb-4 flex justify-center ">{product.icon}</div>
+              <h3 className="text-xl font-semibold text-center mb-2  dark:text-white">{product.title}</h3>
+              <p className="text-gray-600 text-center dark:text-white">{product.description}</p>
             </motion.div>
           ))}
         </div>

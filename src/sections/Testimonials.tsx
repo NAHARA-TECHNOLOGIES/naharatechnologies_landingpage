@@ -120,32 +120,28 @@ const TestimonialsColum = (props: {
 
 export const Testimonials = () => {
   return(
-    <section className="bg-white ">
-      <div className="container">
-        <div className="section-heading">
-        <div className="flex justify-center">
-        <div className="tag mt-5">Testimonials</div>
-        </div>
-        <h2 className="section-title mt-5">What our clients say</h2>
-        <p className="section-description mt-5">
-          From just an idea to owning a product, our team has helped  lot of businessess and individuals
-          in africa and around the world archive their goals.
-        </p>
-        </div>
-        <div className="flex justify-center gap-6  mt-10 
-        [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[738px] overflow-hidden">
-        <TestimonialsColum 
-        testimonials={firstColumn} duration={30}/>
-        <TestimonialsColum 
-        testimonials={secondColumn} 
-        className="hidden md:block" duration={35}/>
-        <TestimonialsColum 
-        testimonials={thirdColumn} 
-        className="hidden lg:block" duration={40}/>
-
-
+   <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+  <div className="container">
+    <div className="section-heading">
+      <div className="flex justify-center">
+        <div className="tag mt-5 text-gray-600 dark:text-gray-300">Testimonials</div>
       </div>
-      </div>
-    </section>
+      <h2 className="section-title mt-5">What our clients say</h2>
+      <p className="section-description mt-5">
+        From just an idea to owning a product, our team has helped a lot of businesses
+        and individuals in Africa and around the world achieve their goals.
+      </p>
+    </div>
+
+    <div className="flex justify-center gap-6 mt-10 
+      [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] 
+      max-h-[738px] overflow-hidden">
+      <TestimonialsColum testimonials={firstColumn} duration={30}/>
+      <TestimonialsColum testimonials={secondColumn} className="hidden md:block" duration={35}/>
+      <TestimonialsColum testimonials={thirdColumn} className="hidden lg:block" duration={40}/>
+    </div>
+  </div>
+</section>
+
   )
 };

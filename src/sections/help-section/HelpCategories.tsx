@@ -12,7 +12,7 @@ const HelpCategories = () => {
         {helpTopics.map(({ title, description, link, icon }) => (
           <div
             key={title}
-            className="bg-white shadow-lg py-[35px] px-[17px] rounded-[10px] md:w-[48%] md:min-h-[258px]"
+            className="bg-white dark:bg-gray-900 shadow-lg py-[35px] px-[17px] rounded-[10px] md:w-[48%] md:min-h-[258px]"
           >
             <div className="max-w-[347px] space-y-[13px]">
               <ImageWrap

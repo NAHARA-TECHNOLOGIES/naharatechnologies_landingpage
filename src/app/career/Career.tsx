@@ -138,20 +138,20 @@ export default function Career() {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-6">
         <div className="relative w-full sm:flex-1">
-          <FiSearch className="absolute left-3 top-4 text-gray-400" />
+          <FiSearch className="absolute left-3 top-4 text-gray-400 dark:text-gray-900" />
           <input
             type="text"
             placeholder="Search job titles..."
-            className="border w-full pl-10 p-3 rounded-md"
+            className="border w-full pl-10 p-3 rounded-md dark:text-gray-900"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
         <select
-          className="border p-3 rounded-md w-full sm:w-auto flex-1"
+          className="border p-3 rounded-md w-full sm:w-auto flex-1   dark:text-gray-900"
           onChange={(e) => setCategoryFilter(e.target.value)}
         >
-          <option value="">All Categories</option>
+          <option  value="">All Categories</option>
           {[
             "Engineering",
             "Design",
@@ -170,7 +170,7 @@ export default function Career() {
         </select>
 
         <select
-          className="border p-3 rounded-md w-full sm:w-auto flex-1"
+          className="border p-3 rounded-md w-full sm:w-auto flex-1  dark:text-gray-900"
           onChange={(e) => setLocationFilter(e.target.value)}
         >
           <option value="">All Locations</option>
@@ -196,17 +196,17 @@ export default function Career() {
         {filteredJobs.map((job) => (
           <div
             key={job.id}
-            className="p-6 bg-white shadow-lg rounded-lg transition-transform hover:scale-105"
+            className="p-6 bg-white dark:bg-gray-900 shadow-lg rounded-lg transition-transform hover:scale-105"
           >
             <FiBriefcase className="text-4xl text-red-700 mb-3" />
             <h3 className="text-xl font-semibold">{job.title}</h3>
-            <p className="text-gray-600">
-              {job.category} | <FiMapPin className="inline text-gray-400" />{" "}
+            <p className="text-gray-600  dark:text-gray-300">
+              {job.category} | <FiMapPin className="inline text-gray-400 dark:text-gray-300" />{" "}
               {job.location}
             </p>
-            <p className="text-gray-700 mt-2">{job.description}</p>
+            <p className="text-gray-700  dark:text-gray-300 mt-2">{job.description}</p>
             <button
-              className="mt-4 bg-black text-white px-4 py-2 hover:bg-gray-900 w-full"
+              className="mt-4 bg-red-800 text-white px-4 py-2 hover:bg-red-700 w-full rounded-sm"
               onClick={() => handleApply(job)}
             >
               Apply Now
