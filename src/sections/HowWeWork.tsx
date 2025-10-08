@@ -36,7 +36,8 @@ const coreValues = [
 
 const HowWeWork = () => {
   return (
-		<div className='px-6 py-10 lg:px-[105px]'>
+		<div className='px-6 py-10 lg:px-[105px]  dark:from-gray-950 dark:to-gray-800 
+             text-gray-900 dark:text-gray-100 '>
 			<div className='container'>
 				<TitleDescription
 					title='How We Work At Nahara Technologies'

@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
 import React from "react";
 import Lottie from "lottie-react";
 
 const LottieAnim = ({
-  styling,
+  className,
   lottieFile,
   animClass,
 }: {
-  styling: string;
+  className: string;
   lottieFile: any;
   animClass?: string;
 }) => {
   return (
-    <div className={styling}>
+    <div className={className}>
       <Lottie animationData={lottieFile} className={animClass} />
     </div>
   );

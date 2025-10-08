@@ -46,7 +46,7 @@ const teamMembers = [
 
 export const OurTeam = () => {
   return (
-    <section className="py-24">
+    <section className="py-24   ">
       <div className="container">
         <div className="section-heading text-center">
           <h2 className="section-title mt-5">Meet Our Team</h2>
