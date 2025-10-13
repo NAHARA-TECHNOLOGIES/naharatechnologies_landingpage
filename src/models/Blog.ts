@@ -5,7 +5,7 @@ export interface IBlog extends Document {
     content: string;
     author?: string;
     tags?: string[];
-    category?: string;
+    category?: mongoose.Schema.Types.ObjectId;
     featuredImage?: string;
     createdAt: Date;
   }
@@ -23,7 +23,8 @@ const BlogSchema:Schema<IBlog>  = new mongoose.Schema({
     default: "Admin",
   },
   tags: [String],
-  category: String,
+  category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+  // category: String,
   featuredImage: String,
   createdAt: {
     type: Date,
@@ -31,5 +32,5 @@ const BlogSchema:Schema<IBlog>  = new mongoose.Schema({
   },
 });
 
-// ✅ Avoid recompiling model when hot-reloading in dev mode
+
 export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema);
