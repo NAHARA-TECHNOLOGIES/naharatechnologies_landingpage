@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, Poppins, Sora } from "next/font/google";
 import "./globals.css";
 import clsx from "clsx";
-import Header from "@/sections/Header";
-import { Footer } from "@/sections/Footer";
-import TopButton from "@/components/topButton";
-import { QuickChatBox } from "@/components/QuickChatBox";
 import { GoogleTagManager } from "@next/third-parties/google";
+import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -30,7 +27,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Nahara technologies plc",
   description:
-    "We empower brands across the globe through cutting-edge software solutions, impact-driven brand strategies, data-backed marketing expertise,and built-in IT team with no hiring stress for SME's",
+    "We empower brands across the globe through cutting-edge software solutions, impact-driven brand strategies, data-backed marketing expertise, and built-in IT team with no hiring stress for SME's",
   icons: {
     icon: "/NaharaIcon2.ico",
   },
@@ -54,11 +51,7 @@ export default function RootLayout({
           "dark:bg-gray-900 dark:text-gray-100"
         )}
       >
-        <Header />
-        <TopButton />
-        <QuickChatBox />
-        {children}
-        <Footer />
+        <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
   );

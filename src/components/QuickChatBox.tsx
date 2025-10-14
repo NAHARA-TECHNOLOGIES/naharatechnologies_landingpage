@@ -31,7 +31,7 @@ export const QuickChatBox = () => {
             onChange={(e) => setMessage(e.target.value)}
           />
           <button
-            className="mt-3 w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition"
+            className="mt-3 w-full bg-red-800 text-white py-2 px-4 rounded-md hover:bg-red-700 transition"
             onClick={handleSend}
           >
             Send via WhatsApp
