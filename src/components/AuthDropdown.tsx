@@ -48,7 +48,7 @@ const AuthDropdown = ({ isOpen, onClose, onAuthSuccess }: any) => {
       className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-900 shadow-2xl border border-gray-200 dark:border-gray-700 rounded-xl p-5 z-[9999] animate-slideDown"
     >
       <h2 className="text-lg font-semibold text-center mb-2 text-gray-900 dark:text-white">
-        {isLogin ? "Admin Login" : "Admin Registration"}
+        {isLogin ? "Login" : "Registration"}
       </h2>
       <p className="text-center text-sm text-gray-500 dark:text-gray-400 mb-4">
         {isLogin ? "Sign in to manage your dashboard" : "Create a new admin account"}

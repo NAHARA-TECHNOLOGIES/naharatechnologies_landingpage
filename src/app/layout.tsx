@@ -4,6 +4,9 @@ import "./globals.css";
 import clsx from "clsx";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+import { Toaster } from "react-hot-toast";
+
+
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -52,6 +55,8 @@ export default function RootLayout({
         )}
       >
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
+        <Toaster position="top-center" reverseOrder={false} />
+
       </body>
     </html>
   );

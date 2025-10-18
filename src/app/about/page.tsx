@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-export default function AboutPage(){
-  return <About/>
-} 
+export default function AboutPage() {
+  return <About />;
+}
