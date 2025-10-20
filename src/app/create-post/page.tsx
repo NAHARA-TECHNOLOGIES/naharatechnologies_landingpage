@@ -197,14 +197,14 @@ export default function CreatePostPage() {
     }
   };
 
-  if (loading)
-    return (
-      <div className="flex items-center justify-center min-h-screen text-gray-500">
-        <Loader2 className="w-6 h-6 mr-2 animate-spin" /> Verifying access...
-      </div>
-    );
+  // if (loading)
+  //   return (
+  //     <div className="flex items-center justify-center min-h-screen text-gray-500">
+  //       <Loader2 className="w-6 h-6 mr-2 animate-spin" /> Verifying access...
+  //     </div>
+  //   );
 
-  if (!isAdmin) return null;
+  // if (!isAdmin) return null;
 
   return (
     <motion.div
@@ -276,8 +276,7 @@ export default function CreatePostPage() {
                   <img
                     src={image}
                     alt="Uploaded"
-                    className="rounded-lg w-full max-h-72 object-cover shadow-sm"
-                  />
+                    className="rounded-lg w-full max-h-72 object-cover shadow-sm"/>
                   <button
                     type="button"
                     onClick={() => setImage(null)}
