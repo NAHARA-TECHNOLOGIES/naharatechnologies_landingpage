@@ -20,7 +20,7 @@ export const CallToAction = () => {
       className="bg-gradient-to-b from-white to-[#ffd4d2] py-24 overflow-x-clip">
       <div className="container">
       <div className="section-heading relative">
-      <h2 className="section-title dark:text-gray-900">Sign up for our newletter 4 free</h2>
+      <h2 className="section-title dark:text-gray-900">Sign up for our newsletter</h2>
       <p className="section-description mt-5">
         Be the first to know about any new update 
         or promo from Nahara-T, Never miss out.

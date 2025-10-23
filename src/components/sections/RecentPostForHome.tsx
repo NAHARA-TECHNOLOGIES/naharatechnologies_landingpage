@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { mockPosts } from "@/";
+import { mockPosts } from "@/mock/post";
 import { motion } from "framer-motion";
-import LoadingSkeleton from "@/common/LoadingSkeleton";
+import LoadingSkeleton from "../common/LoadingSkeleton";
 
 interface RecentPostsProps {
   limit?: number;
