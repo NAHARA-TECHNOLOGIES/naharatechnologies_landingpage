@@ -5,34 +5,44 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import CallToAction from "@/components/CallToAction";
 import { Button } from "@/components/ui/Button"; 
+import { mockPosts } from "@/mock/post"; 
+import { Post } from "@/types/post";
+import RecentPosts from "@/components/post/RecentPost";
+import AdSection from "@/components/AdSection"; 
 
-async function getPost(slug: string) {
-  try {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
-      method: "GET",
-      cache: "no-store",
-    });
 
-    if (!res.ok) throw new Error("Failed to fetch post");
-
-    const data = await res.json();
-
-    return {
-      slug,
-      title: data.title || "Untitled Post",
-      content: `<p>${data.body}</p>`,
-      image:
-        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&auto=format&fit=crop&q=60",
-      category: "Technology",
-      author: "Nahara Team",
-      publishedAt: new Date().toISOString(),
-      excerpt: data.body.slice(0, 120) + "...",
-    };
-  } catch (err) {
-    console.error("❌ Error fetching post:", err);
-    return null;
-  }
+async function getPost(slug: string): Promise<Post | null> {
+  const post = mockPosts.find((p) => p.slug === slug);
+  return post || null;
 }
+
+// async function getPost(slug: string) {
+//   try {
+//     const res = await fetch(`https://jsonplaceholder.typicode.com/posts/1`, {
+//       method: "GET",
+//       cache: "no-store",
+//     });
+
+//     if (!res.ok) throw new Error("Failed to fetch post");
+
+//     const data = await res.json();
+
+//     return {
+//       slug,
+//       title: data.title || "Untitled Post",
+//       content: `<p>${data.body}</p>`,
+//       image:
+//         "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=1200&auto=format&fit=crop&q=60",
+//       category: "Technology",
+//       author: "Nahara Team",
+//       publishedAt: new Date().toISOString(),
+//       excerpt: data.body.slice(0, 120) + "...",
+//     };
+//   } catch (err) {
+//     console.error("❌ Error fetching post:", err);
+//     return null;
+//   }
+// }
 
 // ⚙️ Generate dynamic SEO metadata per post
 export async function generateMetadata({
@@ -104,10 +114,12 @@ export default async function SinglePost({
       </div>
 
       {/* Meta Info */}
-      <div className="flex justify-between items-center mt-6 text-sm text-gray-500 border-b pb-3">
+       <div className="flex justify-between items-center mt-6 text-sm text-gray-500 border-b pb-3">
         <span>By {post.author}</span>
         <span className="italic">
-          {Math.ceil(post.content.length / 1200)} min read
+          {post?.content
+            ? `${Math.ceil(post.content.length / 1200)} min read`
+            : ""}
         </span>
         <span>
           {new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -117,17 +129,22 @@ export default async function SinglePost({
           })}
         </span>
       </div>
-
-      {/* Post Body */}
+        
       <article
         className="prose dark:prose-invert max-w-none mt-8 leading-relaxed text-lg"
-        dangerouslySetInnerHTML={{ __html: post.content }}
+      dangerouslySetInnerHTML={{ __html: post.content || "" }}
       />
 
-      {/* Call to Action */}
+       <section className="mt-16">
+      <AdSection />
+    </section>
+
       <section className="mt-16">
         <CallToAction />
       </section>
+      <section className="mt-16">
+      <RecentPosts limit={3} />
+    </section>
     </main>
   );
 }
