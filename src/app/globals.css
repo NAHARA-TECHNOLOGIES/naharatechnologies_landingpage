@@ -84,6 +84,31 @@ body {
   animation: slideDown 0.25s ease-out;
 }
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-move {
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+.light-gradient {
+  background: linear-gradient(135deg, #dedee6, #9e1c05, #0c080a);
+}
+
+.dark-gradient {
+  background: linear-gradient(135deg, #1e1b4b, #4c1d95, #831843);
+}
+
 
 @keyframes pulse {
   0%, 100% {
