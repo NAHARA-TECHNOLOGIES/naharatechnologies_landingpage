@@ -11,7 +11,6 @@ import { UploadCloud, Loader2 } from "lucide-react";
 import TagInput from "@/components/create-post/TagInput";
 import CategorySelect from "@/components/create-post/CategorySelect";
 
-// Dynamically import editor
 const EditorSection = dynamic(() => import("@/components/create-post/EditorSection"), {
   ssr: false,
 });
@@ -88,37 +87,36 @@ export default function CreatePostPage() {
 
   const router = useRouter();
 
-  // 🔒 Security verification
-  // useEffect(() => {
-  //   try {
-  //     const cookieString = document.cookie
-  //       .split("; ")
-  //       .find((row) => row.startsWith("token="));
+  useEffect(() => {
+    try {
+      const cookieString = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("token="));
 
-  //     if (!cookieString) {
-  //       toast.error("Not permitted for such action");
-  //       router.push("/blog");
-  //       return;
-  //     }
+      if (!cookieString) {
+        toast.error("Not permitted for such action");
+        router.push("/blog");
+        return;
+      }
 
-  //     const token = cookieString.split("=")[1];
-  //     const decoded = jwtDecode<{ role?: string }>(token);
+      const token = cookieString.split("=")[1];
+      const decoded = jwtDecode<{ role?: string }>(token);
 
-  //     if (decoded.role !== "ADMIN") {
-  //       toast.error("Not permitted for such action");
-  //       router.push("/blog");
-  //       return;
-  //     }
+      if (decoded.role !== "ADMIN") {
+        toast.error("Not permitted for such action");
+        router.push("/blog");
+        return;
+      }
 
-  //     setIsAdmin(true);
-  //   } catch (err) {
-  //     console.error("Invalid token:", err);
-  //     toast.error("Invalid or expired session");
-  //     router.push("/blog");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }, [router]);
+      setIsAdmin(true);
+    } catch (err) {
+      console.error("Invalid token:", err);
+      toast.error("Invalid or expired session");
+      router.push("/blog");
+    } finally {
+      setLoading(false);
+    }
+  }, [router]);
 
   const handleDrop = async (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -158,7 +156,6 @@ export default function CreatePostPage() {
     }
   };
 
-  // 📝 Submit post
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
@@ -197,14 +194,14 @@ export default function CreatePostPage() {
     }
   };
 
-  // if (loading)
-  //   return (
-  //     <div className="flex items-center justify-center min-h-screen text-gray-500">
-  //       <Loader2 className="w-6 h-6 mr-2 animate-spin" /> Verifying access...
-  //     </div>
-  //   );
+  if (loading)
+    return (
+      <div className="flex items-center justify-center min-h-screen text-gray-500">
+        <Loader2 className="w-6 h-6 mr-2 animate-spin" /> Verifying access...
+      </div>
+    );
 
-  // if (!isAdmin) return null;
+  if (!isAdmin) return null;
 
   return (
     <motion.div

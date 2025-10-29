@@ -1,8 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
+<<<<<<< Updated upstream
 import CallToAction from "@/components/CallToAction";
 import { Button } from "@/components/ui/Button"; 
 
@@ -35,6 +34,16 @@ async function getPost(slug: string) {
 }
 
 // ⚙️ Generate dynamic SEO metadata per post
+=======
+import { mockPosts } from "@/mock/post";
+import { Post } from "@/types/post";
+import ClientPostPage from "@/components/SinglePostClient";
+async function getPost(slug: string): Promise<Post | null> {
+  const post = mockPosts.find((p) => p.slug === slug);
+  return post || null;
+}
+
+>>>>>>> Stashed changes
 export async function generateMetadata({
   params,
 }: {
@@ -42,36 +51,40 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const post = await getPost(params.slug);
 
+  if (!post) {
+    return {
+      title: "Post Not Found | Nahara Technologies Blog",
+      description: "Explore insightful technology updates from Nahara Technologies.",
+    };
+  }
+
   return {
-    title: post
-      ? `${post.title} | Nahara Technologies Blog`
-      : "Post Not Found",
-    description: post
-      ? post.excerpt
-      : "Explore insightful technology updates from Nahara Technologies.",
+    title: `${post.title} | Nahara Technologies Blog`,
+    description: post.excerpt,
     openGraph: {
-      title: post?.title,
-      description: post?.excerpt,
+      title: post.title,
+      description: post.excerpt,
       images: [
         {
-          url: post?.image || "/default-thumbnail.jpg",
+          url: post.image || "/default-thumbnail.jpg",
           width: 1200,
           height: 630,
-          alt: post?.title,
+          alt: post.title,
         },
       ],
     },
   };
 }
 
-// 📰 Single Post Page
-export default async function SinglePost({
+export default async function SinglePostPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const post = await getPost(params.slug);
+  if (!post) notFound();
 
+<<<<<<< Updated upstream
   if (!post) {
     notFound();
   }
@@ -130,4 +143,7 @@ export default async function SinglePost({
       </section>
     </main>
   );
+=======
+  return <ClientPostPage post={post} />;
+>>>>>>> Stashed changes
 }
