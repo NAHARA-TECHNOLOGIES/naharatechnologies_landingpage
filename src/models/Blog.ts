@@ -24,7 +24,6 @@ const BlogSchema:Schema<IBlog>  = new mongoose.Schema({
   },
   tags: [String],
   category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
-  // category: String,
   featuredImage: String,
   createdAt: {
     type: Date,
