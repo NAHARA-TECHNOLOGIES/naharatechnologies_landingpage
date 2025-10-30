@@ -1,20 +1,40 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import SearchPanel from "@/components/SearchPanel";
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleSearch = (e) => {
+  useEffect(() => {
+    const initialQuery = searchParams?.get("query");
+    if (initialQuery) setQuery(initialQuery);
+  }, [searchParams]);
+
+  useEffect(() => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    if (query.trim() === "") return;
+
+    timeoutRef.current = setTimeout(() => {
+      const params = new URLSearchParams();
+      params.set("query", query);
+      router.replace(`/search?${params.toString()}`);
+    }, 600);
+  }, [query, router]);
+
+  const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    if (query.trim() === "") return;
     setIsOpen(true);
   };
 
   return (
     <div className="relative">
-      {/* 🔍 Input Field */}
       <form
         onSubmit={handleSearch}
         className="relative flex items-center w-full md:w-[350px] lg:w-[400px]
@@ -39,9 +59,11 @@ const SearchBar = () => {
         </button>
       </form>
 
-      {/* 🔽 Panel appears below search */}
       {isOpen && (
-        <SearchPanel query={query} onClose={() => setIsOpen(false)} />
+        <SearchPanel
+          query={query}
+          onClose={() => setIsOpen(false)}
+        />
       )}
     </div>
   );

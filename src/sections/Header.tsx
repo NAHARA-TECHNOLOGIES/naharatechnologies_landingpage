@@ -62,7 +62,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Main Header */}
       <div className="py-3 px-4 md:px-6">
         <div className={`flex justify-between items-center ${!isBlogPage ? "gap-2" : "gap-4"}`}>
           <div className="flex flex-col gap-2">
@@ -80,13 +79,11 @@ export const Header = () => {
             </div>
           )}
 
-          {/* Nav & Theme */}
           <div className="hidden md:flex items-center gap-5">
             <ThemeToggle />
             <NavBar className="flex items-center gap-5 text-black/70 dark:text-gray-200 list-none" />
           </div>
 
-          {/* Mobile Controls */}
           <div className="flex md:hidden items-center gap-2">
             <ThemeToggle />
             <button
@@ -99,12 +96,11 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Nav */}
        {isMobileNavOpen && (
         <div className="mt-4 flex flex-col gap-4 text-black/80 dark:text-gray-200 md:hidden list-none">
           <NavBar
             className="flex flex-col gap-4 text-black/80 dark:text-gray-200 list-none"
-            onCloseMenu={() => setIsMobileNavOpen(false)} // ✅ Close on click
+            onCloseMenu={() => setIsMobileNavOpen(false)} 
           />
         </div>
       )}

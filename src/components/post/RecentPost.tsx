@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { mockPosts } from "@/mock/post";
-import PostCard from "./PostCard";
+import PostCard from "@/components/post/PostCard";
 
 interface RecentPostsProps {
   limit?: number;
@@ -13,7 +13,6 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate network delay like Facebook loading
     setTimeout(() => {
       setPosts(mockPosts.slice(0, limit || mockPosts.length));
       setLoading(false);
@@ -26,7 +25,6 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit }) => {
         Recent Posts
       </h2>
 
-      {/* Grid */}
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {loading
           ? Array.from({ length: limit || 3 }).map((_, i) => (

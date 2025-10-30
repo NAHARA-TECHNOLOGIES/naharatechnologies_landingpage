@@ -156,7 +156,6 @@ export default function CreatePostPage() {
     }
   };
 
-  // 📝 Submit post
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
