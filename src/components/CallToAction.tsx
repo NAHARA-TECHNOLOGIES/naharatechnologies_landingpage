@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -21,12 +22,17 @@ const MotionP = dynamic(
 );
 
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import Image from "next/image";
 import SubImage from "@/assets/SubIm.png";
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 const CallToAction = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -37,6 +43,7 @@ const CallToAction = () => {
     setIsDarkMode(dark);
   }, []);
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   return (
     <section
@@ -103,6 +110,8 @@ const CallToAction = () => {
         </MotionDiv>
       </div>
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.email.includes("@")) {

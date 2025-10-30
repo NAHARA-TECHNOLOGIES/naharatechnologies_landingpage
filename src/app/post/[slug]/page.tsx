@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import CallToAction from "@/components/CallToAction";
 import { Button } from "@/components/ui/Button"; 
@@ -35,6 +36,8 @@ async function getPost(slug: string) {
 
 // ⚙️ Generate dynamic SEO metadata per post
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 import { mockPosts } from "@/mock/post";
 import { Post } from "@/types/post";
 import ClientPostPage from "@/components/SinglePostClient";
@@ -43,7 +46,10 @@ async function getPost(slug: string): Promise<Post | null> {
   return post || null;
 }
 
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 export async function generateMetadata({
   params,
 }: {
@@ -84,6 +90,7 @@ export default async function SinglePostPage({
   const post = await getPost(params.slug);
   if (!post) notFound();
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   if (!post) {
     notFound();
@@ -146,4 +153,7 @@ export default async function SinglePostPage({
 =======
   return <ClientPostPage post={post} />;
 >>>>>>> Stashed changes
+=======
+  return <ClientPostPage post={post} />;
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 }

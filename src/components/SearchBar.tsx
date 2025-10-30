@@ -1,4 +1,5 @@
 "use client";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 import { FiSearch } from "react-icons/fi";
 
@@ -10,6 +11,8 @@ type SearchBarProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";

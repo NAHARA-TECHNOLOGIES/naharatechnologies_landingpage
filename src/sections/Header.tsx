@@ -102,6 +102,7 @@ export const Header = () => {
           </div>
         </div>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         {/* Mobile Nav */}
         {isMobileNavOpen && (
@@ -110,6 +111,8 @@ export const Header = () => {
           </div>
         )}
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
        {isMobileNavOpen && (
         <div className="mt-4 flex flex-col gap-4 text-black/80 dark:text-gray-200 md:hidden list-none">
           <NavBar

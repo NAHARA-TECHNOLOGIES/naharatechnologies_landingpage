@@ -25,6 +25,7 @@ const NavBar = ({
   const router = useRouter();
 
   useEffect(() => {
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     const token = localStorage.getItem("token");
     if (token) setIsAuthenticated(true);
@@ -34,6 +35,8 @@ if (searchParams.get("authRequired") === "true") {
 
   }, [searchParams]);
 =======
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
   const token = localStorage.getItem("token");
   if (token) {
     setIsAuthenticated(true);
@@ -61,7 +64,10 @@ if (searchParams.get("authRequired") === "true") {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 
   const linkClasses =
     "relative font-semibold tracking-wide text-black dark:text-white " +
@@ -71,6 +77,7 @@ if (searchParams.get("authRequired") === "true") {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem("token");
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   };
 
@@ -99,6 +106,24 @@ if (searchParams.get("authRequired") === "true") {
 };
 
 
+=======
+    localStorage.removeItem("profileImage");
+    onCloseMenu?.();
+    setShowDropdown(false);
+  };
+
+  const handleAuthSuccess = () => {
+  setIsAuthenticated(true);
+  setShowDropdown(false);
+  const redirectTo = searchParams?.get("redirectTo");
+  if (redirectTo) {
+    router.push(redirectTo);
+  }
+  onCloseMenu?.();
+};
+
+
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
   const handleLinkClick = () => {
     if (onCloseMenu) onCloseMenu();
 >>>>>>> Stashed changes

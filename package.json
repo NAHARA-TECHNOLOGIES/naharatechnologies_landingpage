@@ -39,7 +39,10 @@
 =======
 		"react-loading-skeleton": "^3.5.0",
 		"recharts": "^3.3.0",
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 295a02e (feat: restore all missing files and sync project from backup)
 		"sharp": "^0.34.3"
 	},
 	"devDependencies": {

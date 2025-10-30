@@ -225,7 +225,6 @@ export default function CreatePostPage() {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">
-            {/* Title */}
             <div>
               <label className="block font-semibold text-gray-800 dark:text-gray-200 mb-2">
                 Post Title
@@ -241,13 +240,11 @@ export default function CreatePostPage() {
               />
             </div>
 
-            {/* Category & Tags in grid */}
             <div className="grid sm:grid-cols-2 gap-6">
               <CategorySelect category={category} setCategory={setCategory} />
               <TagInput tags={tags} setTags={setTags} />
             </div>
 
-            {/* Image Upload */}
             <div
               onDragOver={(e) => {
                 e.preventDefault();
@@ -295,10 +292,8 @@ export default function CreatePostPage() {
               )}
             </div>
 
-            {/* Editor */}
             <EditorSection setEditorRef={setEditorRef} />
 
-            {/* Submit Button */}
             <motion.button
               type="submit"
               whileTap={{ scale: 0.97 }}
