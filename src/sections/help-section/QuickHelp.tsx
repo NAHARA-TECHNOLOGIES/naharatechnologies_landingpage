@@ -38,7 +38,7 @@ const QuickHelp = () => {
           }) => (
             <div
               key={title}
-              className="py-[23px] px-[33px] bg-white w-full md:w-[calc((100%/3)-(51px/2))] h-[339px] shadow-lg flex flex-col justify-between"
+              className="py-[23px] px-[33px] bg-white dark:bg-gray-900 w-full md:w-[calc((100%/3)-(51px/2))] h-[339px] shadow-lg flex flex-col justify-between"
             >
               <ImageWrap
                 containerStyle="size-[60px] bg-[#991B1B29] rounded-full mx-auto flex items-center justify-center"
@@ -60,7 +60,7 @@ const QuickHelp = () => {
                   <Image
                     src={icons.quick_help_response_icon}
                     alt="response"
-                    className="size-5 mr-[5px]"
+                    className="size-5 mr-[5px]  dark:bg-white border-spacing-3"
                   />
                   <p>Response time: {responseTime}</p>
                 </div>

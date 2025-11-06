@@ -1,3 +1,5 @@
+"use client";
+
 import WhatWeDo from "@/sections/WhatWeDo";
 import HowWeWork from "@/sections/HowWeWork";
 import WhyChooseUs from "@/sections/WhyChooseUs";

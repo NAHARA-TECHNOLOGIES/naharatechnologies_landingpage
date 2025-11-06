@@ -6,11 +6,12 @@ import React from "react";
 
 const WhyChooseUs = () => {
   return (
-    <div className="px-6 py-10 lg:px-[105px] bg-white">
+    <div className="px-6 py-10 lg:px-[105px]   dark:from-gray-950 dark:to-gray-800  dark:text-gray-950
+             text-gray-900 ">
       <div className="container">
         <TitleDescription
           title={
-            <span className="relative inline-block section-title">
+            <span className="relative inline-block section-title dark:text-gray-300">
               Why Choose Us
               <span className="absolute left-0 -bottom-1 h-1 bg-red-500 animate-underline"></span>
             </span>
@@ -41,7 +42,7 @@ const WhyChooseUs = () => {
       lg:rounded-e-3xl lg:rounded-es-3xl 
       lg:absolute lg:top-[calc(50%+100px)] lg:right-0"
             title={
-              <span className="relative inline-block">We Patner With You</span>
+              <span className="relative inline-block dark:text-gray-950">We Patner With You</span>
             }
             titleStyle="text-2xl font-semibold text-center lg:text-left"
             headerNumber={2}
