@@ -22,7 +22,7 @@ const CallToAction = () => {
     setIsDarkMode(dark);
   }, []);
 
-  const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.email.includes("@")) {
       toast.error("Please enter a valid email address.");

@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import DashSider from '@/components/DashSider';
 import ProfileMenu from '@/components/ProfileMenu';
 import DashPosts from '@/components/DashPosts';
 import DashUsers from '@/components/DashUsers';
 import DashboardComp from '@/components/DashboardComp';
+export const dynamic = "force-dynamic";
 import CreatePost from '@/components/CreatePost';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Loader2, Menu, Plus } from 'lucide-react';
 import { jwtDecode } from 'jwt-decode';
-import { toast } from 'react-hot-toast'; 
-
+import { toast } from 'react-hot-toast';
 
 interface DecodedToken {
   userName: string;
@@ -19,7 +19,7 @@ interface DecodedToken {
   profileImage?: string;
 }
 
-const Dashboard: React.FC = () => {
+function DashboardInner() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [tab, setTab] = useState<string>('dash');
@@ -27,34 +27,32 @@ const Dashboard: React.FC = () => {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const [decodedUser, setDecodedUser] = useState<DecodedToken | null>(null);
 
- useEffect(() => {
-  const token = localStorage.getItem('token');
+  useEffect(() => {
+    const token = localStorage.getItem('token');
 
-  if (!token) {
-    const currentPath = encodeURIComponent(window.location.pathname + window.location.search);
-    router.push(`/?login=true&redirectTo=${currentPath}`);
-    return;
-  }
+    if (!token) {
+      const currentPath = encodeURIComponent(window.location.pathname + window.location.search);
+      router.push(`/?login=true&redirectTo=${currentPath}`);
+      return;
+    }
 
-  try {
-    const decoded = jwtDecode<DecodedToken>(token);
-    setDecodedUser(decoded);
-  } catch (error) {
-    console.error('Invalid JWT:', error);
-    localStorage.removeItem('token');
-    router.push(`/?login=true`);
-  }
-}, [router]);
+    try {
+      const decoded = jwtDecode<DecodedToken>(token);
+      setDecodedUser(decoded);
+    } catch (error) {
+      console.error('Invalid JWT:', error);
+      localStorage.removeItem('token');
+      router.push(`/?login=true`);
+    }
+  }, [router]);
 
-useEffect(() => {
-  const loginParam = searchParams?.get('login');
-  if (loginParam === 'true') {
-    toast.error('Please sign in  or register  to continue', { duration: 4000 });
-    router.replace('/', { scroll: false });
-  }
-}, [searchParams, router]);
-
-
+  useEffect(() => {
+    const loginParam = searchParams?.get('login');
+    if (loginParam === 'true') {
+      toast.error('Please sign in or register to continue', { duration: 4000 });
+      router.replace('/', { scroll: false });
+    }
+  }, [searchParams, router]);
 
   useEffect(() => {
     const tabFromUrl = searchParams?.get('tab');
@@ -77,6 +75,7 @@ useEffect(() => {
   };
 
   const isAdmin = decodedUser?.role === 'ADMIN';
+
   useEffect(() => {
     if (decodedUser && tab === 'createpost' && !isAdmin) {
       router.replace('/dashboard?tab=dash');
@@ -177,7 +176,6 @@ useEffect(() => {
             </p>
           </div>
 
-          {/* ✅ Only show create post button for Admins */}
           {isAdmin && (
             <button
               onClick={() => handleTabChange('createpost')}
@@ -195,6 +193,12 @@ useEffect(() => {
       </main>
     </div>
   );
-};
+}
 
-export default Dashboard;
+export default function Dashboard() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center h-screen"><Loader2 className="animate-spin text-red-600" size={32} /></div>}>
+      <DashboardInner />
+    </Suspense>
+  );
+}

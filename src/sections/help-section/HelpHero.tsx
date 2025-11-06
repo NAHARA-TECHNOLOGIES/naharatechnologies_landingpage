@@ -1,5 +1,5 @@
 import Overlay from "@/components/Overlay";
-import SearchBar from "@/components/SearchBar";
+import HelpSearchBar from "@/components/HelpSearchBar";
 import TitleDescription from "@/components/TitleDescription";
 
 const HelpHero = () => {
@@ -20,13 +20,14 @@ const HelpHero = () => {
       </div>
 
       <div className="relative z-20 mt-[46px] w-full max-w-[945px] flex flex-col md:flex-row justify-between mx-auto">
-        <SearchBar
-          showIcon={false}
-          containerClassName="w-full md:w-[81%]"
-          className=" px-5 py-4 w-full border-none outline-none h-10 lg:h-[52px]"
-          placeholder="Search for help... (e.g., payment plan,  tecnical issues)"
-          onChange={() => console.log("Jose")}
-        />
+        <HelpSearchBar
+        showIcon={false}
+        containerClassName="w-full md:w-[81%]"
+        className="px-5 py-4 w-full border-none outline-none h-10 lg:h-[52px]"
+        placeholder="Search for help... (e.g., payment plan, technical issues)"
+        onChange={() => console.log("Jose")}
+      />
+
 
         <button className="w-full md:w-[17%] bg-red-800 text-white h-10 lg:h-[52px] mt-4 md:mt-0 font-sora">
           Search
