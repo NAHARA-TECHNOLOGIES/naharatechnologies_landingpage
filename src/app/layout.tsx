@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 
 
