@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { usePathname } from "next/navigation";
 import ArrowRight from "@/assets/arrow-right.svg";
 import MenuIcon from "@/assets/menu.svg";
@@ -68,20 +68,26 @@ export const Header = () => {
             <Logo />
             {isBlogPage && (
               <div className="md:hidden sticky top-0 z-50 mt-2">
-                <SearchBar />
+                <Suspense fallback={<div className="h-10 animate-pulse bg-gray-200 dark:bg-gray-700 rounded" />}>
+                  <SearchBar />
+                </Suspense>
               </div>
             )}
           </div>
 
           {isBlogPage && (
             <div className="hidden md:block">
-              <SearchBar />
+              <Suspense fallback={<div className="h-10 w-64 animate-pulse bg-gray-200 dark:bg-gray-700 rounded" />}>
+                <SearchBar />
+              </Suspense>
             </div>
           )}
 
           <div className="hidden md:flex items-center gap-5">
             <ThemeToggle />
-            <NavBar className="flex items-center gap-5 text-black/70 dark:text-gray-200 list-none" />
+            <Suspense fallback={<div className="h-6 w-48 animate-pulse bg-gray-200 dark:bg-gray-700 rounded" />}>
+              <NavBar className="flex items-center gap-5 text-black/70 dark:text-gray-200 list-none" />
+            </Suspense>
           </div>
 
           <div className="flex md:hidden items-center gap-2">
@@ -98,10 +104,12 @@ export const Header = () => {
 
        {isMobileNavOpen && (
         <div className="mt-4 flex flex-col gap-4 text-black/80 dark:text-gray-200 md:hidden list-none">
-          <NavBar
-            className="flex flex-col gap-4 text-black/80 dark:text-gray-200 list-none"
-            onCloseMenu={() => setIsMobileNavOpen(false)} 
-          />
+          <Suspense fallback={<div className="h-64 animate-pulse bg-gray-200 dark:bg-gray-700 rounded" />}>
+            <NavBar
+              className="flex flex-col gap-4 text-black/80 dark:text-gray-200 list-none"
+              onCloseMenu={() => setIsMobileNavOpen(false)} 
+            />
+          </Suspense>
         </div>
       )}
 
