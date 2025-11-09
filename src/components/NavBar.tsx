@@ -15,26 +15,29 @@ const NavBar = ({
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMoreLinks, setShowMoreLinks] = useState(false);
   const [profileImage, setProfileImage] = useState<string | null>(null);
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    setIsAuthenticated(true);
-    const savedProfile = localStorage.getItem("profileImage");
-    if (savedProfile) setProfileImage(savedProfile);
-  }
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      const savedProfile = localStorage.getItem("profileImage");
+      if (savedProfile) setProfileImage(savedProfile);
+    }
 
-  const loginParam = searchParams?.get("login");
-  if (loginParam === "true") {
-    setShowDropdown(true);
-    router.replace("/", { scroll: false });
-  }
-}, [searchParams, router]);
+    const loginParam = searchParams?.get("login");
+    if (loginParam === "true") {
+      setShowDropdown(true);
+      router.replace("/", { scroll: false });
+    }
+  }, [searchParams, router]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -64,15 +67,14 @@ const NavBar = ({
   };
 
   const handleAuthSuccess = () => {
-  setIsAuthenticated(true);
-  setShowDropdown(false);
-  const redirectTo = searchParams?.get("redirectTo");
-  if (redirectTo) {
-    router.push(redirectTo);
-  }
-  onCloseMenu?.();
-};
-
+    setIsAuthenticated(true);
+    setShowDropdown(false);
+    const redirectTo = searchParams?.get("redirectTo");
+    if (redirectTo) {
+      router.push(redirectTo);
+    }
+    onCloseMenu?.();
+  };
 
   const handleLinkClick = () => {
     if (onCloseMenu) onCloseMenu();
@@ -91,13 +93,59 @@ const NavBar = ({
           Career
         </Link>
 
-        <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
-          Help
-        </Link>
+        <div className="relative md:hidden">
+          <button
+            onClick={() => setShowMoreLinks(!showMoreLinks)}
+            className="flex items-center gap-1 font-semibold text-black dark:text-white hover:opacity-80 transition"
+          >
+            <span>More</span>
+            <span
+              className={`transition-transform duration-300 ${
+                showMoreLinks ? "rotate-180" : ""
+              }`}
+            >
+              ▼
+            </span>
+          </button>
 
-        <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
-          Tech Updates
-        </Link>
+          <div
+            className={`absolute top-full left-0 mt-1 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-md z-50 overflow-hidden transform transition-all duration-300 ${
+              showMoreLinks
+                ? "opacity-100 scale-y-100"
+                : "opacity-0 scale-y-0 pointer-events-none"
+            } origin-top`}
+          >
+            <Link
+              href="/help"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                setShowMoreLinks(false);
+                handleLinkClick();
+              }}
+            >
+              Help
+            </Link>
+            <Link
+              href="/blog"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                setShowMoreLinks(false);
+                handleLinkClick();
+              }}
+            >
+              Tech Updates
+            </Link>
+          </div>
+        </div>
+
+        <div className="hidden md:flex md:items-center md:space-x-4">
+          <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
+            Help
+          </Link>
+          <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
+            Tech Updates
+          </Link>
+        </div>
 
         {!isAuthenticated ? (
           <div className="relative">
@@ -109,7 +157,11 @@ const NavBar = ({
               Get Started
             </button>
 
-            <div className="absolute right-0 mt-2">
+            <div
+              className={`absolute right-0 mt-2 transition-transform md:translate-y-0 ${
+                showDropdown ? "-translate-y-16 md:translate-y-0" : "translate-y-0"
+              }`}
+            >
               <AuthDropdown
                 isOpen={showDropdown}
                 onClose={() => setShowDropdown(false)}
