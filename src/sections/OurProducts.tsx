@@ -40,15 +40,19 @@ export const OurProducts = () => {
   return (
     <section className="py-28 from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
       <div className="container mx-auto px-6 text-center">
-        <motion.h2
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold bg-gradient-to-r from-red-800 via-gray-500
-           to-red-500 bg-clip-text text-transparent mb-8"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Our Services
-        </motion.h2>
+       <motion.h2
+      className="text-4xl sm:text-5xl lg:text-6xl font-extrabold 
+                bg-clip-text text-transparent mb-8
+                bg-gradient-to-r 
+                from-gray-900 via-gray-800 to-gray-700 
+                dark:from-white dark:via-gray-300 dark:to-gray-500"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+    >
+      Our Services
+    </motion.h2>
+
         <p className="text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
           Transform your ideas into reality with our full-stack solutions, digital marketing 
           strategies, and mobile apps. Plus, get a free consultation to kickstart your project.
