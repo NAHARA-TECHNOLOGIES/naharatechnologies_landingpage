@@ -81,23 +81,29 @@ export const ProductShowcase = () => {
             Get your idea to live with Nahara-T
           </span>
 
-        <h2
-          className="
-            mt-6 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
-            font-extrabold tracking-tight leading-tight
-            bg-gradient-to-r from-red-700 via-red-500 to-white/50
-            bg-clip-text text-transparent
-            animate-gradient-x
-          "
-        >
-          Branding made easy for you, by us.
-        </h2>
+       <h2
+        className="
+          mt-6 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
+          font-extrabold tracking-tight leading-tight
+          bg-clip-text text-transparent
+          bg-gradient-to-r 
+          from-gray-900 via-gray-800 to-gray-600 
+          dark:from-white dark:via-gray-300 dark:to-gray-500
+          animate-gradient-x
+        "
+      >
+        Branding made easy for you, by us.
+      </h2>
 
 
 
-        <p className="mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed 
-              bg-gradient-to-r from-red-800 to-slate-500
-                    text-transparent bg-clip-text">
+            <p className="
+        mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed
+        bg-clip-text text-transparent
+        bg-gradient-to-r
+        from-gray-800 to-gray-500
+        dark:from-white dark:to-gray-300
+      ">
         You’re one step away from effortlessly transforming your idea into a fully developed,
         beautifully branded product ready for the market.
       </p>

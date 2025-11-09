@@ -82,14 +82,14 @@ const CallToAction = () => {
           >
             <button
               onClick={() => setShowModal(true)}
-              className="mt-6 px-8 py-4 text-lg font-semibold rounded-full bg-white text-red-700 hover:bg-gray-100 transition-transform transform hover:scale-110 hover:-translate-y-1 shadow-lg"
+              className="mt-6 px-8 py-4 text-lg font-semibold rounded-full bg-white text-red-700
+               hover:bg-gray-100 transition-transform transform hover:scale-110 hover:-translate-y-1 shadow-lg"
             >
               Subscribe Now
             </button>
           </motion.div>
         </motion.div>
 
-        {/* Right Section (Image) */}
         <motion.div
           variants={imageVariant}
           initial="hidden"
@@ -149,9 +149,9 @@ const CallToAction = () => {
                   }
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
                   <select
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-700 dark:border-gray-700 bg-transparent"
                     value={formData.frequency}
                     onChange={(e) =>
                       setFormData({ ...formData, frequency: e.target.value })
@@ -162,7 +162,7 @@ const CallToAction = () => {
                   </select>
 
                   <select
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-700 dark:border-gray-700 bg-transparent"
                     value={formData.category}
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })
