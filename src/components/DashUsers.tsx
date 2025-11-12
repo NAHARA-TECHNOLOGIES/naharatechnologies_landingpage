@@ -28,6 +28,7 @@ export default function DashUsers() {
   const [loading, setLoading] = useState(true);
   const [decodedUser, setDecodedUser] = useState<DecodedToken | null>(null);
 
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -39,7 +40,7 @@ export default function DashUsers() {
       }
     }
   }, []);
-
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -69,7 +70,7 @@ export default function DashUsers() {
     if (decodedUser?.role === 'ADMIN') {
       fetchUsers();
     }
-  }, [decodedUser?.role]);
+  }, [decodedUser?.role, decodedUser?.userMongoId]);
 
   useEffect(() => {
     if (searchTerm.trim() === '') {

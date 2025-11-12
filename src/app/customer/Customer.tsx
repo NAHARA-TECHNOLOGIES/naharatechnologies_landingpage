@@ -5,8 +5,6 @@ import { useRouter } from 'next/navigation';
 import { FiSearch, FiArrowLeft } from 'react-icons/fi';
 import Image from 'next/image';
 
-
-// Define Customer Type
 type Customer = {
   id: string;
   name: string;
