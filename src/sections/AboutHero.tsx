@@ -11,9 +11,9 @@ const AboutHero = () => {
         <TitleDescription
           className="text-center"
           title="About Us"
-          titleStyle="text-[28px] lg:text-8xl font-bold text-white"
+          titleStyle="text-h1 text-white"
           desc="Our Vision and Our Mission"
-          descStyle="text-white font-medium text-xl lg:text-2xl"
+          descStyle="text-white text-bodyLarge"
         />
       </Overlay>
 

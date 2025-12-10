@@ -8,14 +8,14 @@ const HelpHero = () => {
       <Overlay className="inset-0 bg-[#3309099C] z-10" />
 
       <div className="relative z-20 text-center text-white w-full max-w-[945px] mx-auto">
-        <h2 className="text-2xl font-semibold">Welcome to Help Center</h2>
+        <h3 className="text-h3">Welcome to Help Center</h3>
 
         <TitleDescription
-          // className="text-whit"
+          // className="border"
           title="How Can We Help You?"
           desc="Get quick answers, explore our knowledge base, or connect with our support team—anytime, anywhere."
-          titleStyle="text-4xl md:text-8xl font-bold"
-          descStyle="w-full max-w-[541px] mx-auto text-white font-medium text-lg text-gray-500"
+          titleStyle=""
+          descStyle="w-full max-w-[541px] mx-auto text-white text-bodyLarge text-gray-500 leading-relaxed tracking-normal mt-1"
         />
       </div>
 
@@ -29,7 +29,7 @@ const HelpHero = () => {
       />
 
 
-        <button className="w-full md:w-[17%] bg-red-800 text-white h-10 lg:h-[52px] mt-4 md:mt-0 font-sora">
+        <button className="w-full md:w-[17%] btn-primary h-10 lg:h-[52px] mt-4 md:mt-0">
           Search
         </button>
       </div>

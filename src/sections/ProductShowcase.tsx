@@ -4,12 +4,7 @@ import Image from "next/image";
 import pyramidImage from "@/assets/roundIcon2.png";
 import tubeImage from "@/assets/roundIcon3.png";
 import { OurProducts } from "@/sections/OurProducts";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useInView
-} from "framer-motion";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 export const ProductShowcase = () => {
@@ -58,7 +53,10 @@ export const ProductShowcase = () => {
         px-4 sm:px-8 lg:px-16
       "
     >
-      <motion.div className="absolute inset-0 -z-10" style={{ opacity: fadeOpacity }}>
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={{ opacity: fadeOpacity }}
+      >
         <div className="absolute top-[-10%] right-[20%] w-64 h-64 rounded-full bg-red-200/40 dark:bg-red-900/20 blur-3xl" />
         <div className="absolute bottom-[-20%] left-[10%] w-80 h-80 rounded-full bg-pink-300/30 dark:bg-pink-800/20 blur-3xl" />
       </motion.div>
@@ -73,41 +71,39 @@ export const ProductShowcase = () => {
         >
           <span
             className="
-              inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-semibold 
+              inline-block px-4 py-1 rounded-full font-semibold 
               bg-red-100 dark:bg-red-900/40 
-              text-red-700 dark:text-red-400 tracking-wide uppercase
+              text-red-700 dark:text-red-400 tracking-wide text-caption uppercase
             "
           >
             Get your idea to live with Nahara-T
           </span>
 
-       <h2
-        className="
-          mt-6 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl
-          font-extrabold tracking-tight leading-tight
+          <h2
+            className="
+          mt-6 leading-tight
           bg-clip-text text-transparent
           bg-gradient-to-r 
           from-gray-900 via-gray-800 to-gray-600 
           dark:from-white dark:via-gray-300 dark:to-gray-500
-          animate-gradient-x
+          animate-gradient-x text-h2
         "
-      >
-        Branding made easy for you, by us.
-      </h2>
+          >
+            Branding made easy for you, by us.
+          </h2>
 
-
-
-            <p className="
-        mt-4 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed
+          <p
+            className="text-bodyDefault
+        mt-4 max-w-2xl mx-auto leading-relaxed
         bg-clip-text text-transparent
         bg-gradient-to-r
         from-gray-800 to-gray-500
         dark:from-white dark:to-gray-300
-      ">
-        You’re one step away from effortlessly transforming your idea into a fully developed,
-        beautifully branded product ready for the market.
-      </p>
-
+      "
+          >
+            You’re one step away from effortlessly transforming your idea into a
+            fully developed, beautifully branded product ready for the market.
+          </p>
         </motion.div>
 
         <div className="relative mt-16 flex justify-center">

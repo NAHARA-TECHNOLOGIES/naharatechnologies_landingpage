@@ -15,21 +15,17 @@ import LatestNews from "@/components/LatestNews";
 export default function Home() {
   return (
     <div className="relative">
-
-        <Hero />
-        <LogoTicker />
-        <ProductShowcase />
-        <LatestNews />
-        <OurTeam />
-        <Testimonials />
-
-        <section className="mt-20 w-full px-4 sm:px-6 lg:px-8">
-          <CallToAction />
-        </section>
-
-        <QuickChatBox />
-        <TopButton />
-
+      <Hero />
+      <LogoTicker />
+      <ProductShowcase />
+      <LatestNews />
+      <OurTeam />
+      <Testimonials />
+      <section className="mt-20 w-full px-4 sm:px-6 lg:px-8">
+        <CallToAction />
+      </section>
+      <QuickChatBox />
+      <TopButton />
     </div>
   );
 }

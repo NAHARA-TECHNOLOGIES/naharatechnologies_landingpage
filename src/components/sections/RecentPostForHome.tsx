@@ -15,7 +15,10 @@ interface RecentPostsProps {
 
 const PAGE_SIZE = 6;
 
-const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCategory = "all" }) => {
+const RecentPosts: React.FC<RecentPostsProps> = ({
+  limit = PAGE_SIZE,
+  initialCategory = "all",
+}) => {
   const [allPosts, setAllPosts] = useState<any[]>([]);
   const [visibleCount, setVisibleCount] = useState(limit);
   const [loading, setLoading] = useState(true);
@@ -48,7 +51,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCat
   if (loading) return <LoadingSkeleton count={limit} />;
 
   return (
-    <section className="mt-24">
+    <section className="py-10 md:py-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +59,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCat
         viewport={{ once: true }}
         className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8"
       >
-        <h2 className="text-3xl sm:text-4xl font-extrabold bg-gradient-to-r from-red-600 to-indigo-600 bg-clip-text text-transparent">
+        <h2 className="text-h2 bg-gradient-to-r from-red-600 to-indigo-600 bg-clip-text text-transparent">
           Recent & Featured Posts
         </h2>
 
@@ -102,8 +105,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCat
               key={post.slug}
               whileHover={{ scale: 1.03 }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="min-w-[90%] sm:min-w-[48%] lg:min-w-[32%] snap-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900
-               dark:to-gray-800 rounded-2xl shadow-md overflow-hidden relative"
+              className="min-w-[90%] sm:min-w-[48%] lg:min-w-[32%] snap-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 rounded-2xl shadow-md overflow-hidden relative"
             >
               <Link href={`/post/${post.slug}`}>
                 <div className="relative w-full h-64">
@@ -118,7 +120,7 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCat
                     <span className="text-xs uppercase bg-red-800 px-2 py-1 rounded-full">
                       {post.category}
                     </span>
-                    <h3 className="text-lg font-bold mt-2">{post.title}</h3>
+                    <h3 className="text-h3 font-bold mt-2">{post.title}</h3>
                   </div>
                 </div>
               </Link>
@@ -150,7 +152,9 @@ const RecentPosts: React.FC<RecentPostsProps> = ({ limit = PAGE_SIZE, initialCat
 
               <div className="p-5">
                 <div className="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-                  <span className="font-medium text-red-800">{post.category}</span>
+                  <span className="font-medium text-red-800">
+                    {post.category}
+                  </span>
                   <time>
                     {new Date(post.publishedAt).toLocaleDateString("en-US", {
                       month: "short",

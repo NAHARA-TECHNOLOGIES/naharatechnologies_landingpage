@@ -10,9 +10,9 @@ const TrendingPosts = () => {
   const trending = mockPosts.slice(7, 13);
 
   return (
-    <section className="mt-20 relative">
+    <section className="py-10 md:py-20 relative">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold flex items-center gap-2">
+        <h2 className="text-h2 flex items-center gap-2">
           <Flame className="text-red-600" /> Trending Now
         </h2>
         <Link
@@ -50,7 +50,7 @@ const TrendingPosts = () => {
               </div>
 
               <div className="p-4">
-                <h3 className="text-lg font-semibold line-clamp-2 hover:text-red-600 transition-colors">
+                <h3 className="text-h3 line-clamp-2 hover:text-red-600 transition-colors">
                   <Link href={`/post/${post.slug}`}>{post.title}</Link>
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">

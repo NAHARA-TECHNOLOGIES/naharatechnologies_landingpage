@@ -64,8 +64,8 @@ const CategoriesSection = () => {
   };
 
   return (
-    <section className="mt-24 text-center px-4 md:px-8">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8">
+    <section className="py-10 md:py-20 text-center px-4 md:px-8">
+      <h2 className="text-h2 mb-8">
         Browse by Category
       </h2>
 
@@ -77,10 +77,10 @@ const CategoriesSection = () => {
             whileHover={{ scale: 1.05 }}
             onClick={() => handleCategoryClick(cat)}
             className={cn(
-              "px-5 py-2 rounded-full border text-sm md:text-base font-medium transition-all duration-300",
+              "px-5 py-2 rounded-full border text-sm transition-all duration-300",
               "dark:border-gray-700 hover:bg-red-800 hover:text-white",
               selectedCategory === cat
-                ? "bg-red-800 text-white shadow-lg"
+                ? "bg-red-800 text-white shadow-lg font-medium"
                 : "bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200"
             )}
           >
@@ -119,7 +119,7 @@ const CategoriesSection = () => {
                 whileHover={{ scale: 1.02 }}
                 className="p-5 rounded-xl border dark:border-gray-700 bg-white dark:bg-gray-900 shadow-sm hover:shadow-lg transition"
               >
-                <h3 className="text-lg font-semibold mb-2 text-gray-900 dark:text-white">
+                <h3 className="text-h3 mb-2 text-gray-900 dark:text-white">
                   {post.title}
                 </h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">

@@ -1,22 +1,20 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ArrowUpCircle } from "lucide-react"; 
+import { ArrowUpCircle } from "lucide-react";
+
 const TopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
-    };
+    const handleScroll = () => setIsVisible(window.scrollY > 300);
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -24,7 +22,7 @@ const TopButton: React.FC = () => {
     });
   };
   return (
-    <div>
+    <>
       {isVisible && (
         <button
           onClick={scrollToTop}
@@ -33,7 +31,7 @@ const TopButton: React.FC = () => {
           <ArrowUpCircle className="w-8 h-8" />
         </button>
       )}
-    </div>
+    </>
   );
 };
 

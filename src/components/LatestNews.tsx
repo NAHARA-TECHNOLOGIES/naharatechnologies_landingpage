@@ -9,7 +9,10 @@ import { Button } from "@/components/ui/Button";
 
 export default function LatestNews() {
   const latestPosts = [...mockPosts]
-    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+    .sort(
+      (a, b) =>
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    )
     .slice(0, 3);
 
   return (
@@ -23,11 +26,12 @@ export default function LatestNews() {
           viewport={{ once: true }}
           className="text-center mb-10 sm:mb-14"
         >
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-h2 text-gray-900 dark:text-white">
             Latest News & Insights
           </h2>
-          <p className="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300 text-sm sm:text-lg max-w-2xl mx-auto">
-            Explore the latest updates and insights from Nahara Technologies. Stay informed, stay ahead.
+          <p className="mt-3 sm:mt-4 text-gray-600 dark:text-gray-300 text-bodyDefault leading-relaxed max-w-2xl mx-auto">
+            Explore the latest updates and insights from Nahara Technologies.
+            Stay informed, stay ahead.
           </p>
         </motion.div>
 
@@ -62,24 +66,27 @@ export default function LatestNews() {
                     {/* Content */}
                     <div className="p-4 sm:p-6 flex flex-col justify-between h-full space-y-3">
                       <div>
-                        <span className="inline-block text-[10px] sm:text-xs uppercase tracking-wider px-3 py-1 bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 font-semibold rounded-full">
+                        <span className="inline-block text-caption uppercase tracking-wider px-3 py-1 bg-red-100 dark:bg-red-900/40 text-red-700 dark:text-red-400 rounded-full">
                           {post.category}
                         </span>
-                        <h3 className="text-base sm:text-lg md:text-xl font-bold leading-snug text-gray-900 dark:text-white mt-3 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300 line-clamp-2">
+                        <h3 className="text-h3 leading-snug text-gray-900 dark:text-white mt-3 group-hover:text-red-700 dark:group-hover:text-red-400 transition-colors duration-300 line-clamp-2">
                           {post.title}
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed line-clamp-3">
+                        <p className="text-gray-600 mt-3 dark:text-gray-300 text-bodySmall leading-relaxed line-clamp-3">
                           {post.excerpt}
                         </p>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+                      <div className="mt-4 flex items-center justify-between text-bodyXS text-gray-500 dark:text-gray-400">
                         <span>
-                          {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
+                          {new Date(post.publishedAt).toLocaleDateString(
+                            "en-US",
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            }
+                          )}
                         </span>
                         <span className="flex items-center gap-1 text-red-700 dark:text-red-400 group-hover:underline">
                           Read more →
@@ -101,7 +108,7 @@ export default function LatestNews() {
         <div className="flex justify-center mt-10 sm:mt-12">
           <Link href="/blog">
             <Button
-              size="lg"
+              size="md"
               variant="outline"
               className="rounded-full border-red-700 text-red-700 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-800/30 active:bg-red-900 transition"
             >
