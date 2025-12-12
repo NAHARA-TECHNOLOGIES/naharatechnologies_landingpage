@@ -12,7 +12,7 @@ export default function ClientLayoutWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <>
       <Suspense fallback={<div className="min-h-[64px] bg-white/70 dark:bg-black/70" />}>
         <Header />
       </Suspense>
@@ -22,6 +22,6 @@ export default function ClientLayoutWrapper({
         {children}
       </Suspense>
       <Footer />
-    </div>
+    </>
   );
 }

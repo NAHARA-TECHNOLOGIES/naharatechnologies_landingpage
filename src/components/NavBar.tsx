@@ -54,7 +54,7 @@ const NavBar = ({
   }, []);
 
   const linkClasses =
-    "relative font-semibold tracking-wide text-black dark:text-white " +
+    "relative font-semibold tracking-tighter text-sm text-black dark:text-white " +
     "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] " +
     "after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full";
 
@@ -83,7 +83,7 @@ const NavBar = ({
   return (
     <div className="relative">
       <nav
-        className={`${className} flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 md:items-center`}
+        className={`${className} flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:items-center`}
       >
         <Link href="/about" className={linkClasses} onClick={handleLinkClick}>
           About
@@ -101,7 +101,7 @@ const NavBar = ({
             <span>More</span>
             <span
               className={`transition-transform duration-300 ${
-                showMoreLinks ? "rotate-180" : ""
+                showMoreLinks && "rotate-180"
               }`}
             >
               ▼
@@ -142,6 +142,7 @@ const NavBar = ({
           <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
             Help
           </Link>
+
           <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
             Tech Updates
           </Link>
@@ -152,14 +153,16 @@ const NavBar = ({
             <button
               ref={buttonRef}
               onClick={() => setShowDropdown(!showDropdown)}
-              className="bg-red-800 text-white font-medium px-4 py-2 rounded-lg hover:bg-red-700 transition inline-flex items-center justify-center md:ml-2"
+              className="bg-brandRed text-primaryButton font-medium text-bodySmall px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center md:ml-2"
             >
               Get Started
             </button>
 
             <div
               className={`absolute right-0 mt-2 transition-transform md:translate-y-0 ${
-                showDropdown ? "-translate-y-16 md:translate-y-0" : "translate-y-0"
+                showDropdown
+                  ? "-translate-y-16 md:translate-y-0"
+                  : "translate-y-0"
               }`}
             >
               <AuthDropdown
@@ -186,9 +189,7 @@ const NavBar = ({
             </button>
 
             {showDropdown && (
-              <div
-                className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in"
-              >
+              <div className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in">
                 <button
                   onClick={() => {
                     router.push("/admin/dashboard?tab=manageprofile");
@@ -210,7 +211,7 @@ const NavBar = ({
         )}
 
         <Link href="/contact" onClick={handleLinkClick}>
-          <button className="bg-black dark:bg-white text-white dark:text-black font-medium px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center tracking-tight md:ml-2">
+          <button className="bg-black dark:bg-white text-primaryButton dark:text-darkText font-medium text-bodySmall px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center tracking-tight">
             Contact Us
           </button>
         </Link>

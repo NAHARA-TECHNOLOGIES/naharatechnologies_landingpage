@@ -14,7 +14,7 @@ const Logo = () => {
         className="h-auto w-auto max-h-12 bg-red-800 text-red-800 rounded-lg"
         priority
       />
-      <span className="text-lg font-bold text-red-800 hidden sm:inline">
+      <span className="text-[clamp(14px,2.5vw,16px)] font-bold text-red-800 hidden sm:inline">
         NAHARA TECHNOLOGIES
         <sup className="text-xs align-super ml-1 text-red-800">™</sup>
       </span>

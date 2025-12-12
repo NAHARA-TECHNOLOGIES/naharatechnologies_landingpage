@@ -54,14 +54,14 @@ const ContactUs = () => {
     <section className=" py-12 px-6 sm:px-12 container mx-auto " id="contact">
       <div className="mb-6">
         <Link href="/">
-          <button className="flex items-center gap-2 text-red-800 hover:text-orange-800 font-semibold transition">
+          <button className="flex items-center gap-2 text-brandRed hover:opacity-80 font-semibold transition text-bodyDefault">
             <ArrowLeft size={18} /> Back to Home
           </button>
         </Link>
       </div>
       <div className="max-w-7xl mx-auto">
         <motion.h2
-          className="text-4xl font-bold text-center text-red-800 mb-10"
+          className="text-h2 font-semibold text-center text-brandRed mb-10"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -77,34 +77,34 @@ const ContactUs = () => {
         >
           {/* Contact Info + WhatsApp */}
           <div className="space-y-6">
-            <p className="text-gray-600 text-lg">
-              We’d love to hear from you. Whether you have a question, feedback,
+            <p className="text-bodyDefault leading-relaxed text-gray-600">
+              We&apos;d love to hear from you. Whether you have a question, feedback,
               or just want to say hi — feel free to reach out!
             </p>
 
             <div className="flex items-start gap-4">
-              <MapPin className="text-red-800 w-6 h-6" />
-              <p className="text-gray-700">
+              <MapPin className="text-brandRed w-6 h-6" />
+              <p className="text-bodySmall leading-relaxed text-gray-700">
                 Nahara Technologies HQ, <br /> No. 10 Innovation Street, Lagos,
                 Nigeria.
               </p>
             </div>
 
             <div className="flex items-start gap-4">
-              <Mail className="text-red-800 w-6 h-6" />
+              <Mail className="text-brandRed w-6 h-6" />
               <a
-                href="mailto:hello@smutechteam.com"
-                className="text-gray-700 hover:underline"
+                href="mailto:hello@naharatechnologies.com"
+                className="text-bodySmall leading-relaxed text-gray-700 hover:underline"
               >
                 hello@naharatechnologies.com
               </a>
             </div>
 
             <div className="flex items-start gap-4">
-              <Phone className="text-red-800 w-6 h-6" />
+              <Phone className="text-brandRed w-6 h-6" />
               <a
-                href="tel:+2348123456789"
-                className="text-gray-700 hover:underline"
+                href="tel:+2349078781812"
+                className="text-bodySmall text-gray-700 hover:underline"
               >
                 +234 9078781812
               </a>
@@ -122,7 +122,7 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <div className="bg-white shadow-lg rounded-xl p-8">
-            <h3 className="text-2xl font-semibold text-red-800 mb-6">
+            <h3 className="text-h3 text-brandRed mb-6">
               Send Us a Message
             </h3>
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -133,7 +133,7 @@ const ContactUs = () => {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full p-3 text-bodySmall border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brandRed"
               />
               <input
                 type="email"
@@ -142,7 +142,7 @@ const ContactUs = () => {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full p-3 text-bodySmall border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brandRed"
               />
               <textarea
                 name="message"
@@ -151,11 +151,11 @@ const ContactUs = () => {
                 value={form.message}
                 onChange={handleChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-400"
+                className="w-full p-3 text-bodySmall border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brandRed"
               ></textarea>
               <button
                 type="submit"
-                className="flex items-center gap-2 bg-red-800 hover:bg-red-700 text-white px-6 py-3 rounded-md font-semibold transition-all duration-300"
+                className="flex items-center gap-2 bg-brandRed hover:opacity-90 text-primaryButton px-6 py-3 rounded-md font-bold text-bodyDefault transition-all duration-300"
               >
                 <Send className="w-5 h-5" />
                 Send Message

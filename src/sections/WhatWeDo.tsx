@@ -26,15 +26,17 @@ const desc = {
 
 const WhatWeDo = () => {
   return (
-    <div className="bg-white  dark:bg-gray-900
-             text-gray-900 dark:text-gray-100  px-6 py-10 lg:pt-[67px] lg:px-[105px]">
+    <div
+      className="bg-white  dark:bg-gray-900
+             text-gray-900 dark:text-gray-100  px-6 py-10 md:py-20 lg:pt-[67px] lg:px-[105px]"
+    >
       <div className="container">
         <TitleDescription
           title="What We Do"
-          titleStyle="section-title"
+          titleStyle="text-h2 text-darkText text-center"
           headerNumber={2}
           desc="We provide the Perfect Solution to your business growth"
-          descStyle="font-medium mt-2 hidden lg:block text-2xl text-center text-gray-500"
+          descStyle="font-regular mt-2 hidden lg:block text-bodyDefault text-center text-gray-500"
           containerAnimProps={{
             initial: "hidden",
             variants: titleDescContainer,
@@ -81,15 +83,16 @@ const WhatWeDo = () => {
                         }}
                         className="size-10 lg:size-10 rounded-xl bg-[#FEECEA]/50 flex items-center  justify-center transition-shadow"
                       >
-                        <Icon size={30} color="red" strokeWidth={2.0} />
+                        <Icon size={30} color="#991B1B" strokeWidth={2.0} />
                       </motion.div>
 
                       <TitleDescription
                         className="mt-[15px] flex flex-col justify-center items-center text-center"
                         title={item.title}
                         desc={item.text}
-                        titleStyle="font-semibold text-xl"
-                        descStyle="mt-2 text-gray-500 text-md"
+                        headerNumber={3}
+                        titleStyle="text-h3 text-darkText"
+                        descStyle="mt-2 text-gray-500 text-bodySmall leading-relaxed"
                       />
                     </motion.article>
                   );

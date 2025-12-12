@@ -13,12 +13,12 @@ const HelpFAQ = () => {
     );
   };
   return (
-    <div className="p-6 lg:py-10 lg:px-[183px]">
-      <h2 className="section-title max-w-[683px] mx-auto">
-        Frequently Asked Questions About Nahara Tecknologies
+    <div className="p-6 py-10 md:py-20 lg:px-[183px]">
+      <h2 className="text-h2 text-center max-w-[683px] mx-auto">
+        Frequently Asked Questions About Nahara Technologies
       </h2>
 
-      <div className="mt-[34px] md:flex justify-between">
+      <div className="mt-16 md:flex justify-between">
         <div className="w-full md:w-[45%] min-h-[300px] lg:h-[428px] help-faq-bg rounded-[10px]" />
 
         <div className="w-full md:w-[46%] flex flex-col justify-between mt-10 md:mt-0">
@@ -28,7 +28,7 @@ const HelpFAQ = () => {
               className="border-b border-0.5 border-gray-500 py-5"
             >
               <p
-                className="md:text-lg flex items-center cursor-pointer"
+                className="text-bodyLarge flex items-center cursor-pointer"
                 onClick={() => openAnswer(question)}
               >
                 {question}{" "}
@@ -39,7 +39,7 @@ const HelpFAQ = () => {
               </p>
 
               {isShowing && (
-                <div>
+                <div className="p-4">
                   <p>{answer}</p>
                 </div>
               )}

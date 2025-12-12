@@ -23,10 +23,10 @@ const QuickHelp = () => {
   };
 
   return (
-    <div className="p-6 lg:px-[177px]">
-      <h2 className="section-title">Need Quick Help?</h2>
+    <div className="p-6 py-10 md:py-20 lg:px-[177px]">
+      <h2 className="text-h2 text-center">Need Quick Help?</h2>
 
-      <div className="space-y-5 md:space-y-0 mt-10 md:flex items-start justify-between">
+      <div className="space-y-5 md:space-y-0 mt-16 md:flex items-start justify-between">
         {supportOptions.map(
           ({
             title,
@@ -50,9 +50,10 @@ const QuickHelp = () => {
               <TitleDescription
                 className="text-center"
                 title={title}
-                titleStyle="font-semibold text-xl"
+                headerNumber={3}
+                titleStyle="text-h3"
                 desc={description}
-                descStyle="mt-2 text-gray-500"
+                descStyle="mt-2 text-gray-500 text-bodySmall"
               />
 
               <div className="text-sm text-gray-400">
@@ -85,7 +86,7 @@ const QuickHelp = () => {
               ) : (
                 <button
                   onClick={actions[title]}
-                  className="py-2 text-center bg-[#991B1B] w-full text-white"
+                  className="py-2 text-center btn-primary w-full"
                 >
                   {btnText}
                 </button>

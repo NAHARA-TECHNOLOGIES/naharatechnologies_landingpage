@@ -40,7 +40,7 @@ const AdCard: FC<{ ad: Ad; onView: (id: string) => void }> = ({ ad, onView }) =>
         <Image src={ad.imageUrl} alt={ad.title} fill className="object-cover" />
       </div>
       <div className="mt-3">
-        <h3 className="font-semibold text-sm">{ad.title}</h3>
+        <h3 className="text-h3">{ad.title}</h3>
         <p className="text-xs text-gray-400 mt-1">{ad.views.toLocaleString()} views</p>
       </div>
     </div>
@@ -72,7 +72,7 @@ const AdSection = () => {
   }
 
   return (
-    <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section className="py-10 md:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {ads.map((ad) => (
         <AdCard key={ad.id} ad={ad} onView={handleView} />
       ))}
