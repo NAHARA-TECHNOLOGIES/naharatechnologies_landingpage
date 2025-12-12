@@ -38,8 +38,8 @@ const SearchBar = () => {
       <form
         onSubmit={handleSearch}
         className="relative flex items-center w-full md:w-[350px] lg:w-[400px]
-          bg-gray-100 dark:bg-gray-800 rounded-full shadow-sm
-          transition-all duration-300 focus-within:ring-2 focus-within:ring-red-800"
+          bg-gray-100 dark:bg-gray-800 rounded-full shadow-sm text-bodySmall
+          transition-all duration-300 focus-within:ring-2 focus-within:ring-brandRed"
       >
         <Search className="ml-3 w-5 h-5 text-gray-500 dark:text-gray-400" />
         <input
@@ -53,18 +53,13 @@ const SearchBar = () => {
         />
         <button
           type="submit"
-          className="absolute right-2 px-3 py-1.5 bg-red-600 text-white text-sm rounded-full hover:bg-red-700 transition"
+          className="absolute right-2 px-3 py-1.5 bg-brandRed text-primaryButton text-bodySmall font-bold rounded-full hover:opacity-90 transition"
         >
           Go
         </button>
       </form>
 
-      {isOpen && (
-        <SearchPanel
-          query={query}
-          onClose={() => setIsOpen(false)}
-        />
-      )}
+      {isOpen && <SearchPanel query={query} onClose={() => setIsOpen(false)} />}
     </div>
   );
 };

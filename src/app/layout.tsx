@@ -5,8 +5,7 @@ import clsx from "clsx";
 import { GoogleTagManager } from "@next/third-parties/google";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 import { Toaster } from "react-hot-toast";
-
-
+import { Suspense } from "react";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -46,9 +45,9 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-NKM6HG5J" />
       <body
         className={clsx(
-          dmSans.variable,
-          sora.variable,
-          poppins.variable,
+          // dmSans.variable,
+          sora.className,
+          // poppins.variable,
           "antialiased min-h-screen transition-colors duration-300",
           "bg-[#feecea] text-black",
           "dark:bg-gray-900 dark:text-gray-100"
@@ -56,7 +55,6 @@ export default function RootLayout({
       >
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         <Toaster position="top-center" reverseOrder={false} />
-
       </body>
     </html>
   );

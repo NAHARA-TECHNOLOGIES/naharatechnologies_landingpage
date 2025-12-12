@@ -18,11 +18,12 @@ const CallToAction = () => {
   useEffect(() => {
     const root = document.documentElement;
     const dark =
-      root.classList.contains("dark") || localStorage.getItem("theme") === "dark";
+      root.classList.contains("dark") ||
+      localStorage.getItem("theme") === "dark";
     setIsDarkMode(dark);
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formData.email.includes("@")) {
       toast.error("Please enter a valid email address.");
@@ -36,12 +37,20 @@ const CallToAction = () => {
   // Motion variants
   const textVariant = {
     hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
   };
 
   const imageVariant = {
     hidden: { opacity: 0, scale: 0.9 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 1, ease: "easeOut" } },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
   };
 
   return (
@@ -63,14 +72,14 @@ const CallToAction = () => {
           viewport={{ once: true, amount: 0.3 }}
           className="space-y-6 px-2"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
+          <h2 className="text-h2 font-semibold leading-tight text-white drop-shadow-lg">
             Stay Ahead with{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-800 via-red-300 to-orange-200">
               Nahara Technologies
             </span>
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl max-w-lg mx-auto lg:mx-0 text-white/90">
+          <p className="text-bodyDefault sm:text-bodyLarge md:text-h3 max-w-lg mx-auto lg:mx-0 text-white/90">
             Get innovation updates, insights, and product releases from Nahara’s
             tech ecosystem — crafted for dream builders like you.
           </p>
@@ -82,14 +91,14 @@ const CallToAction = () => {
           >
             <button
               onClick={() => setShowModal(true)}
-              className="mt-6 px-8 py-4 text-lg font-semibold rounded-full bg-white text-red-700 hover:bg-gray-100 transition-transform transform hover:scale-110 hover:-translate-y-1 shadow-lg"
+              className="mt-6 px-8 py-4 text-bodyDefault font-bold rounded-full bg-white text-brandRed
+               hover:bg-gray-100 transition-transform transform hover:scale-110 hover:-translate-y-1 shadow-lg"
             >
               Subscribe Now
             </button>
           </motion.div>
         </motion.div>
 
-        {/* Right Section (Image) */}
         <motion.div
           variants={imageVariant}
           initial="hidden"
@@ -149,9 +158,9 @@ const CallToAction = () => {
                   }
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 ">
                   <select
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-700 dark:border-gray-700 bg-transparent"
                     value={formData.frequency}
                     onChange={(e) =>
                       setFormData({ ...formData, frequency: e.target.value })
@@ -162,7 +171,7 @@ const CallToAction = () => {
                   </select>
 
                   <select
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-700 dark:border-gray-700 bg-transparent"
                     value={formData.category}
                     onChange={(e) =>
                       setFormData({ ...formData, category: e.target.value })

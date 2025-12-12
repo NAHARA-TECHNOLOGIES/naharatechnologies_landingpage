@@ -35,45 +35,47 @@ const coreValues = [
 
 const CoreValues = () => {
   return (
-		<div className='px-6 py-10 lg:px-[105px]'>
-			<div className='container relative'>
-				<div className='flex flex-col-reverse lg:flex-row items-center gap-10'>
-					<div className='lg:w-1/2 w-full'>
-						<h3 className='text-2xl lg:text-3xl font-bold text-gray-800 mb-2 dark:text-gray-300'>
-							Everything we do is anchored on our core values (IDECIA)
-						</h3>
-						<p className='text-lg text-gray-500 mb-6 dark:text-gray-400'>
-							The six pillars of our culture and commitment
-						</p>
+    <div className="px-6 py-10 md:py-20 lg:px-[105px]">
+      <div className="container relative">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-10">
+          <div className="lg:w-1/2 w-full">
+            <h2 className="text-h2 text-darkText mb-3 dark:text-gray-300">
+              Everything we do is anchored on our core values (IDECIA)
+            </h2>
+            <p className="text-bodyLarge text-gray-500 mb-6 dark:text-gray-400 leading-relaxed">
+              The six pillars of our culture and commitment
+            </p>
 
-						<ul className='space-y-6'>
-							{coreValues.map((item, index) => (
-								<li key={index} className='flex items-start gap-3 '>
-									<CheckCircle className='text-red-500 mt-1' size={20} />
-									<div>
-										<h4 className='text-lg font-semibold text-gray-800 dark:text-gray-500'>
-											{item.title}
-										</h4>
-										<p className='text-gray-600 dark:text-gray-300'>{item.desc}</p>
-									</div>
-								</li>
-							))}
-						</ul>
-					</div>
+            <ul className="space-y-6">
+              {coreValues.map((item, index) => (
+                <li key={index} className="flex items-start gap-4">
+                  <CheckCircle className="text-brandRed" size={20} />
+                  <div>
+                    <h3 className="text-h3 font-semibold text-darkText dark:text-gray-500">
+                      {item.title}
+                    </h3>
+                    <p className="text-bodySmall text-gray-600 dark:text-gray-300 leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-					<div className='lg:w-1/2 w-full  '>
-						<Image
-							src={CoreValue}
-							alt='Core values'
-							width={600}
-							height={200}
-							className='w-full object-cover'
-						/>
-					</div>
-				</div>
-			</div>
-		</div>
-	);
+          <div className="lg:w-1/2 w-full  ">
+            <Image
+              src={CoreValue}
+              alt="Core values"
+              width={600}
+              height={200}
+              className="w-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CoreValues;

@@ -1,6 +1,6 @@
 "use client";
 
-import  CallToAction  from "@/components/CallToAction";
+import CallToAction from "@/components/CallToAction";
 import { Footer } from "@/sections/Footer";
 import Header from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
@@ -14,17 +14,18 @@ import LatestNews from "@/components/LatestNews";
 
 export default function Home() {
   return (
-    <>
+    <div className="relative">
       <Hero />
       <LogoTicker />
       <ProductShowcase />
       <LatestNews />
       <OurTeam />
       <Testimonials />
-      <CallToAction />
+      <section className="mt-20 w-full px-4 sm:px-6 lg:px-8">
+        <CallToAction />
+      </section>
       <QuickChatBox />
       <TopButton />
-    </>
-
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import Header from "@/sections/Header";
 import { Footer } from "@/sections/Footer";
 import TopButton from "@/components/topButton";
@@ -12,12 +12,16 @@ export default function ClientLayoutWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <Header />
+    <>
+      <Suspense fallback={<div className="min-h-[64px] bg-white/70 dark:bg-black/70" />}>
+        <Header />
+      </Suspense>
       <TopButton />
       <QuickChatBox />
-      {children}
+      <Suspense fallback={<div className="min-h-screen animate-pulse bg-gray-100 dark:bg-gray-800" />}>
+        {children}
+      </Suspense>
       <Footer />
-    </div> // ✅ Properly closed div
+    </>
   );
 }

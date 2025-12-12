@@ -22,31 +22,14 @@ export default function BlogHome() {
   }, [error]);
 
   return (
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-20">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <HeroSection />
-
-      <section className="mt-16">
-        <FeaturedPosts />
-      </section>
-
-      <section className="mt-16">
-        <TrendingPosts />
-      </section>
-
-      <section className="mt-16">
-        <CategoriesSection />
-      </section>
-      <section className="mt-16">
-        <AdSection />
-      </section>
-
-      <section className="mt-16">
-        <RecentPosts limit={6} />
-      </section>
-
-      <section className="mt-20">
-        <CallToAction />
-      </section>
+      <FeaturedPosts />
+      <TrendingPosts />
+      <CategoriesSection />
+      <AdSection />
+      <RecentPosts limit={6} />
+      <CallToAction />
     </div>
   );
 }

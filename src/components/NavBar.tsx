@@ -15,26 +15,29 @@ const NavBar = ({
 }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMoreLinks, setShowMoreLinks] = useState(false);
   const [profileImage, setProfileImage] = useState<string | null>(null);
+
   const buttonRef = useRef<HTMLButtonElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
   useEffect(() => {
-  const token = localStorage.getItem("token");
-  if (token) {
-    setIsAuthenticated(true);
-    const savedProfile = localStorage.getItem("profileImage");
-    if (savedProfile) setProfileImage(savedProfile);
-  }
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsAuthenticated(true);
+      const savedProfile = localStorage.getItem("profileImage");
+      if (savedProfile) setProfileImage(savedProfile);
+    }
 
-  const loginParam = searchParams?.get("login");
-  if (loginParam === "true") {
-    setShowDropdown(true);
-    router.replace("/", { scroll: false });
-  }
-}, [searchParams, router]);
+    const loginParam = searchParams?.get("login");
+    if (loginParam === "true") {
+      setShowDropdown(true);
+      router.replace("/", { scroll: false });
+    }
+  }, [searchParams, router]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -51,7 +54,7 @@ const NavBar = ({
   }, []);
 
   const linkClasses =
-    "relative font-semibold tracking-wide text-black dark:text-white " +
+    "relative font-semibold tracking-tighter text-sm text-black dark:text-white " +
     "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] " +
     "after:w-0 after:bg-black dark:after:bg-white after:transition-all after:duration-300 hover:after:w-full";
 
@@ -64,15 +67,14 @@ const NavBar = ({
   };
 
   const handleAuthSuccess = () => {
-  setIsAuthenticated(true);
-  setShowDropdown(false);
-  const redirectTo = searchParams?.get("redirectTo");
-  if (redirectTo) {
-    router.push(redirectTo);
-  }
-  onCloseMenu?.();
-};
-
+    setIsAuthenticated(true);
+    setShowDropdown(false);
+    const redirectTo = searchParams?.get("redirectTo");
+    if (redirectTo) {
+      router.push(redirectTo);
+    }
+    onCloseMenu?.();
+  };
 
   const handleLinkClick = () => {
     if (onCloseMenu) onCloseMenu();
@@ -81,7 +83,7 @@ const NavBar = ({
   return (
     <div className="relative">
       <nav
-        className={`${className} flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 md:items-center`}
+        className={`${className} flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-4 md:items-center`}
       >
         <Link href="/about" className={linkClasses} onClick={handleLinkClick}>
           About
@@ -91,25 +93,78 @@ const NavBar = ({
           Career
         </Link>
 
-        <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
-          Help
-        </Link>
+        <div className="relative md:hidden">
+          <button
+            onClick={() => setShowMoreLinks(!showMoreLinks)}
+            className="flex items-center gap-1 font-semibold text-black dark:text-white hover:opacity-80 transition"
+          >
+            <span>More</span>
+            <span
+              className={`transition-transform duration-300 ${
+                showMoreLinks && "rotate-180"
+              }`}
+            >
+              ▼
+            </span>
+          </button>
 
-        <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
-          Tech Updates
-        </Link>
+          <div
+            className={`absolute top-full left-0 mt-1 w-40 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-lg rounded-md z-50 overflow-hidden transform transition-all duration-300 ${
+              showMoreLinks
+                ? "opacity-100 scale-y-100"
+                : "opacity-0 scale-y-0 pointer-events-none"
+            } origin-top`}
+          >
+            <Link
+              href="/help"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                setShowMoreLinks(false);
+                handleLinkClick();
+              }}
+            >
+              Help
+            </Link>
+            <Link
+              href="/blog"
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+              onClick={() => {
+                setShowMoreLinks(false);
+                handleLinkClick();
+              }}
+            >
+              Tech Updates
+            </Link>
+          </div>
+        </div>
+
+        <div className="hidden md:flex md:items-center md:space-x-4">
+          <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
+            Help
+          </Link>
+
+          <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
+            Tech Updates
+          </Link>
+        </div>
 
         {!isAuthenticated ? (
           <div className="relative">
             <button
               ref={buttonRef}
               onClick={() => setShowDropdown(!showDropdown)}
-              className="bg-red-800 text-white font-medium px-4 py-2 rounded-lg hover:bg-red-700 transition inline-flex items-center justify-center md:ml-2"
+              className="bg-brandRed text-primaryButton font-medium text-bodySmall px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center md:ml-2"
             >
               Get Started
             </button>
 
-            <div className="absolute right-0 mt-2">
+            <div
+              className={`absolute right-0 mt-2 transition-transform md:translate-y-0 ${
+                showDropdown
+                  ? "-translate-y-16 md:translate-y-0"
+                  : "translate-y-0"
+              }`}
+            >
               <AuthDropdown
                 isOpen={showDropdown}
                 onClose={() => setShowDropdown(false)}
@@ -134,9 +189,7 @@ const NavBar = ({
             </button>
 
             {showDropdown && (
-              <div
-                className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in"
-              >
+              <div className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in">
                 <button
                   onClick={() => {
                     router.push("/admin/dashboard?tab=manageprofile");
@@ -158,7 +211,7 @@ const NavBar = ({
         )}
 
         <Link href="/contact" onClick={handleLinkClick}>
-          <button className="bg-black dark:bg-white text-white dark:text-black font-medium px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center tracking-tight md:ml-2">
+          <button className="bg-black dark:bg-white text-primaryButton dark:text-darkText font-medium text-bodySmall px-4 py-2 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center tracking-tight">
             Contact Us
           </button>
         </Link>

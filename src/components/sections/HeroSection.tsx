@@ -7,7 +7,7 @@ const HeroSection = () => {
   const [mainPost, ...sidePosts] = mockPosts.slice(0, 4);
 
   return (
-    <section className="mt-10 grid lg:grid-cols-3 gap-8">
+    <section className="mt-10 grid lg:grid-cols-3 gap-8 py-8 md:py-16">
       <Link
         href={`/post/${mainPost.slug}`}
         className="relative rounded-2xl overflow-hidden group lg:col-span-2"
@@ -20,10 +20,10 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent p-6 flex flex-col justify-end">
           <span className="text-sm text-red-400">{mainPost.category}</span>
-          <h1 className="text-2xl md:text-4xl font-bold text-white mt-2">
+          <h2 className="text-h2 text-white mt-2">
             {mainPost.title}
-          </h1>
-          <p className="text-gray-200 text-sm mt-2 line-clamp-2">
+          </h2>
+          <p className="text-gray-200 text-bodySmall mt-2 line-clamp-2">
             {mainPost.excerpt}
           </p>
         </div>
@@ -45,7 +45,7 @@ const HeroSection = () => {
             />
             <div className="p-3 flex flex-col justify-center">
               <span className="text-xs text-red-500">{post.category}</span>
-              <h3 className="text-sm font-semibold dark:text-white">
+              <h3 className="mt-2 dark:text-white">
                 {post.title}
               </h3>
             </div>

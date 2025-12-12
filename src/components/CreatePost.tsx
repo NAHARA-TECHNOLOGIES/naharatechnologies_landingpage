@@ -7,72 +7,15 @@ import toast from "react-hot-toast";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { UploadCloud, Loader2 } from "lucide-react";
+import Image from "next/image";
 
 import TagInput from "@/components/create-post/TagInput";
 import CategorySelect from "@/components/create-post/CategorySelect";
 
-const EditorSection = dynamic(() => import("@/components/create-post/EditorSection"), {
-  ssr: false,
-});
-
-async function resizeImageFileToDataUrl(
-  file: File,
-  maxWidth = 1200,
-  maxHeight = 1200,
-  quality = 0.8
-): Promise<string> {
-  return new Promise((resolve, reject) => {
-    if (!file.type.startsWith("image/")) {
-      reject(new Error("Not an image file"));
-      return;
-    }
-
-    const img = new Image();
-    const reader = new FileReader();
-
-    reader.onload = (ev) => {
-      if (!ev.target) return reject(new Error("FileReader error"));
-      img.src = ev.target.result as string;
-    };
-
-    img.onload = () => {
-      let { width, height } = img;
-      const aspect = width / height;
-      if (width > maxWidth || height > maxHeight) {
-        if (aspect > 1) {
-          width = maxWidth;
-          height = Math.round(maxWidth / aspect);
-        } else {
-          height = maxHeight;
-          width = Math.round(maxHeight * aspect);
-        }
-      }
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) return reject(new Error("Canvas not supported"));
-      ctx.imageSmoothingEnabled = true;
-      ctx.imageSmoothingQuality = "high";
-      ctx.drawImage(img, 0, 0, width, height);
-
-      canvas.toBlob(
-        (blob) => {
-          if (!blob) return reject(new Error("Image conversion failed"));
-          const br = new FileReader();
-          br.onload = () => resolve(br.result as string);
-          br.onerror = () => reject(new Error("Reading blob failed"));
-          br.readAsDataURL(blob);
-        },
-        "image/jpeg",
-        quality
-      );
-    };
-
-    reader.onerror = () => reject(new Error("FileReader error"));
-    reader.readAsDataURL(file);
-  });
-}
+const EditorSection = dynamic(
+  () => import("@/components/create-post/EditorSection"),
+  { ssr: false }
+);
 
 export default function CreatePostPage() {
   const [loading, setLoading] = useState(true);
@@ -130,13 +73,9 @@ export default function CreatePostPage() {
       return;
     }
 
-    try {
-      const optimizedDataUrl = await resizeImageFileToDataUrl(file, 1200, 1200, 0.8);
-      setImage(optimizedDataUrl);
-      toast.success("Image optimized and ready!");
-    } catch {
-      toast.error("Failed to process image");
-    }
+    const url = URL.createObjectURL(file);
+    setImage(url);
+    toast.success("Image ready!");
   };
 
   const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,13 +86,9 @@ export default function CreatePostPage() {
       return;
     }
 
-    try {
-      const optimizedDataUrl = await resizeImageFileToDataUrl(file, 1200, 1200, 0.8);
-      setImage(optimizedDataUrl);
-      toast.success("Image optimized and ready!");
-    } catch {
-      toast.error("Failed to process image");
-    }
+    const url = URL.createObjectURL(file);
+    setImage(url);
+    toast.success("Image ready!");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -174,14 +109,17 @@ export default function CreatePostPage() {
       }
 
       const postData = { title, category, tags, image, content: editorData };
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(postData),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/posts/create`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(postData),
+        }
+      );
 
       if (!res.ok) throw new Error(await res.text());
       toast.success("Post created successfully!");
@@ -267,13 +205,22 @@ export default function CreatePostPage() {
               />
               {image ? (
                 <div className="relative">
-                  <img
-                    src={image}
-                    alt="Uploaded"
-                    className="rounded-lg w-full max-h-72 object-cover shadow-sm"/>
+                  <div className="relative w-full max-h-72 h-72">
+                    <Image
+                      src={image}
+                      alt="Uploaded preview"
+                      fill
+                      className="rounded-lg object-cover shadow-sm"
+                      sizes="(max-width: 768px) 100vw, 700px"
+                      priority
+                    />
+                  </div>
                   <button
                     type="button"
-                    onClick={() => setImage(null)}
+                    onClick={() => {
+                      URL.revokeObjectURL(image);
+                      setImage(null);
+                    }}
                     className="absolute top-3 right-3 bg-black/60 text-white rounded-full px-3 py-1 text-xs"
                   >
                     Remove

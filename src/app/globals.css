@@ -2,17 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply font-sans
+@layer base {
+  body {
+    @apply font-sora tracking-tight;
+  }
+
+  /* h1 {
+    @apply text-[clamp(48px,6vw,80px)] font-semibold;
+  } */
+
+ 
+}
+
+@layer utilities {
+  /* .text-h2 {
+    @apply text-[clamp(28px,4vw,32px)] font-semibold;
+  }
+
+  .text-h3 {
+    @apply text-[clamp(18px,2.5vw,20px)] font-semibold;
+  } */
 }
 
 @layer components {
+
+  
+
+  
   .btn {
     @apply font-medium px-4 py-2 rounded-lg 
         inline-flex items-center justify-center tracking-tight;
   }
   .btn-primary {
-    @apply bg-black text-white;
+    @apply bg-brandRed text-white;
   }
   .btn-text {
     @apply text-black bg-transparent;
@@ -24,24 +46,17 @@ body {
     @apply text-sm inline-flex
         border-[#222]/10 px-3 py-1 rounded-lg tracking-tight;
   }
-  .section-title {
-    /* @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter
-        bg-gradient-to-b text-black bg-clip-text; */
-        @apply md:text-[44px] font-bold tracking-tighter text-center md:leading-[60px] text-xl mb-2 lg:text-center;
-  }
+  /* .section-title {
+   
+    @apply md:text-[44px] font-bold tracking-tighter text-center md:leading-[60px] text-xl mb-2 lg:text-center;
+  } */
 
-  .section-description {
-    @apply font-medium mt-2 hidden lg:block text-2xl text-center text-gray-500;
-  }
-  .section-heading {
-    @apply max-w-[540px] mx-auto;
-  }
   .card {
     @apply p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full;
   }
 
   .circular-clip {
-     clip-path: circle(80% at 50% -50%);
+    clip-path: circle(80% at 50% -50%);
   }
 
   .polygon-clip-1 {
@@ -56,6 +71,16 @@ body {
   .polygon-clip-4 {
     clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 60% 100%);
   }
+
+  .bd-text-lg {
+    @apply text-lg text-black
+  }
+
+  .bd-text-default {
+    @apply text-base text-black
+  }
+
+  /* .bd-text- */
 }
 
 @keyframes underlineGrow {
@@ -123,10 +148,69 @@ body {
   pointer-events: none;
 }
 
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 0% 50%;
+  }
+}
 
+.animate-gradient-x {
+  background-size: 200% 100%;
+  animation: gradient-x 5s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes floatSlower {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 10s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: floatSlower 15s ease-in-out infinite;
+}
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
@@ -139,11 +223,9 @@ body {
   animation: pulse 2s infinite;
 }
 
-
 .animate-underline {
   animation: underlineGrow 5s ease-in-out infinite;
 }
-
 
 @keyframes zoomIn {
   0% {
@@ -156,7 +238,6 @@ body {
 .animate-hero-bg {
   animation: zoomIn 5s ease-in-out infinite alternate;
 }
-
 
 .help-hero-bg {
   background: url(../assets/help-hero-bg.jpg);
@@ -172,4 +253,3 @@ body {
   background-position: 70% 50%;
   transform: rotateY(180deg);
 }
-

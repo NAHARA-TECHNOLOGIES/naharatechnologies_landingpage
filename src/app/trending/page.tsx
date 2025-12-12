@@ -35,7 +35,7 @@ export default function TrendingPage() {
           transition={{ duration: 0.6 }}
           className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white"
         >
-          🔥 Trending Now
+          Trending Now
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}

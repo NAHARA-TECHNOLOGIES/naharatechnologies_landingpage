@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-    darkMode: "class",
+  darkMode: "class",
   content: [
     "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -22,15 +22,65 @@ const config: Config = {
           lg: "80px",
         },
       },
+      // fontFamily: {
+      //   sans: ["var(--font-dm-sans)", "sans-serif"], // default body font
+      //   poppins: ["var(--font-poppins)"], // secondary font
+      //   sora: ["var(--font-sora)"],
+      // },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "sans-serif"], // default body font
-        poppins: ["var(--font-poppins)"], // secondary font
-        sora: ["var(--font-sora)"],
+        sora: ["Sora", "sans-serif"],
+      },
+      fontSize: {
+        h1: [
+          "clamp(48px, 6vw, 80px)",
+          { lineHeight: "120%", fontWeight: "600" },
+        ],
+        h2: [
+          "clamp(28px, 4vw, 32px)",
+          { lineHeight: "120%", fontWeight: "600" },
+        ],
+        h3: [
+          "clamp(18px, 2.5vw, 20px)",
+          { lineHeight: "100%", fontWeight: "600" },
+        ],
+        bodyLarge: [
+          "clamp(16px, 1.8vw, 18px)",
+          { lineHeight: "100%", fontWeight: "400" },
+        ],
+        bodyDefault: [
+          "clamp(14px, 1.5vw, 16px)",
+          { lineHeight: "100%", fontWeight: "400" },
+        ],
+        bodySmall: [
+          "clamp(12px, 1.2vw, 14px)",
+          { lineHeight: "100%", fontWeight: "400" },
+        ],
+        bodyXS: [
+          "clamp(10px, 1vw, 12px)",
+          { lineHeight: "100%", fontWeight: "400" },
+        ],
+        caption: [
+          "clamp(12px, 1.2vw, 14px)",
+          { lineHeight: "100%", fontWeight: "700" },
+        ],
+      },
+      fontWeight: {
+        light: "300",
+        regular: "400",
+        semibold: "600",
+        bold: "700",
+      },
+      colors: {
+        brandRed: "#991B1B",
+        darkText: "#1A1A1A",
+        black: "#000000",
+        white: "#FFFFFF",
+        primaryButton: "#FFFFFF",
+        captionText: "#D0D0D0",
       },
     },
   },
   plugins: [],
-  
 };
 
 export default config;

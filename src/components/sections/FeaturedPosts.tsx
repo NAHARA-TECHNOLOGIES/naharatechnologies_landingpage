@@ -10,12 +10,12 @@ const FeaturedPosts = () => {
   const featured = mockPosts.slice(4, 7);
 
   return (
-    <section className="mt-20">
+    <section className="py-10 md:py-20">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 dark:text-gray-100">
+        <h2 className="text-h2 text-gray-900 dark:text-gray-100">
           🌟 Featured Stories
         </h2>
-        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-bodyLarge leading-relaxed">
           Explore trending insights, expert opinions, and must-read stories
           handpicked for you.
         </p>
@@ -88,11 +88,11 @@ const FeaturedPosts = () => {
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 px-6 py-3 text-sm sm:text-base 
-                     font-medium text-white bg-red-800 rounded-full 
+                     font-medium btn-primary rounded-full 
                      hover:bg-red-700 transition-all shadow-md hover:shadow-lg"
         >
           Explore More Stories
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="size-4" />
         </Link>
       </div>
     </section>
