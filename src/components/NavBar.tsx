@@ -142,6 +142,9 @@ const NavBar = ({
           <Link href="/help" className={linkClasses} onClick={handleLinkClick}>
             Help
           </Link>
+          <Link href="/pricing" className={linkClasses} onClick={handleLinkClick}>
+            Pricing
+          </Link>
 
           <Link href="/blog" className={linkClasses} onClick={handleLinkClick}>
             Tech Updates
