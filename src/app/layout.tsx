@@ -56,8 +56,15 @@ export default function RootLayout({
         )}
       >
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
-        <Toaster position="top-center" reverseOrder={false} />
-
+        <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 10000, // 6 seconds for all toasts
+          style: {
+            fontSize: "18px",
+          },
+        }}
+      />
       </body>
     </html>
   );

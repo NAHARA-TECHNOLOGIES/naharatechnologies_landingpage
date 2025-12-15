@@ -25,13 +25,13 @@ const NAHARA_GREEN = '#1B9C85';
 interface User {
   _id: string;
   username: string;
-  profilePicture: string;
+  profilePicture?: string | null;
 }
 
 interface Post {
   _id: string;
   title: string;
-  image: string;
+  image?: string | null;
   category: string;
 }
 
@@ -76,6 +76,13 @@ const NaharaTable: React.FC<{
   </div>
 );
 
+const getUserInitials = (username?: string) => {
+  if (!username) return 'U';
+  return username.length >= 2
+    ? `${username[0]}${username[username.length - 1]}`.toUpperCase()
+    : username[0].toUpperCase();
+};
+
 export default function DashboardComp() {
   const [users, setUsers] = useState<User[]>([]);
   const [posts, setPosts] = useState<Post[]>([]);
@@ -83,7 +90,7 @@ export default function DashboardComp() {
   const [totalPosts, setTotalPosts] = useState(0);
   const [lastMonthUsers, setLastMonthUsers] = useState(0);
   const [lastMonthPosts, setLastMonthPosts] = useState(0);
-  const isAdmin = true; 
+  const isAdmin = true;
 
   const [analyticsData, setAnalyticsData] = useState<ChartData[]>([
     { month: 'Jan', users: 50, posts: 40 },
@@ -135,6 +142,8 @@ export default function DashboardComp() {
       fetchPosts();
     }
   }, [isAdmin]);
+
+  const DEFAULT_POST_IMAGE = '/placeholder-post.png';
 
   return (
     <div className="p-4 md:p-8 mx-auto space-y-8 bg-[#F9FAFB] dark:bg-[#0F172A] min-h-screen">
@@ -211,6 +220,7 @@ export default function DashboardComp() {
       </motion.div>
 
       <div className="flex flex-col lg:flex-row gap-6 justify-center">
+        {/* Recent Users */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -224,24 +234,36 @@ export default function DashboardComp() {
           <NaharaTable
             headers={['Image', 'Username']}
             rows={users}
-            renderRow={(user: User) => (
-              <tr
-                key={user._id}
-                className="border-b border-gray-100 dark:border-gray-700 hover:bg-[#0A2640]/5"
-              >
-                <td className="px-4 py-2">
-                  <Image
-                    src={user.profilePicture}
-                    alt={user.username}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-[#1B9C85]"
-                  />
-                </td>
-                <td className="px-4 py-2 font-medium">{user.username}</td>
-              </tr>
-            )}
+            renderRow={(user: User) => {
+              const initials = getUserInitials(user.username);
+              return (
+                <tr
+                  key={user._id}
+                  className="border-b border-gray-100 dark:border-gray-700 hover:bg-[#0A2640]/5"
+                >
+                  <td className="px-4 py-2">
+                    {user.profilePicture ? (
+                      <Image
+                        src={user.profilePicture}
+                        alt={user.username}
+                        className="w-10 h-10 rounded-full object-cover border-2 border-[#1B9C85]"
+                        width={40}
+                        height={40}
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-gray-600 text-white flex items-center justify-center text-sm font-bold">
+                        {initials}
+                      </div>
+                    )}
+                  </td>
+                  <td className="px-4 py-2 font-medium">{user.username}</td>
+                </tr>
+              );
+            }}
           />
         </motion.div>
 
+        {/* Recent Posts */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -262,9 +284,11 @@ export default function DashboardComp() {
               >
                 <td className="px-4 py-2">
                   <Image
-                    src={post.image}
+                    src={post.image || DEFAULT_POST_IMAGE}
                     alt={post.title}
                     className="w-14 h-10 rounded-lg object-cover"
+                    width={56}
+                    height={40}
                   />
                 </td>
                 <td className="px-4 py-2 font-medium">{post.title}</td>

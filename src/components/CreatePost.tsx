@@ -32,18 +32,16 @@ export default function CreatePostPage() {
 
   useEffect(() => {
     try {
-      const cookieString = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token="));
+     const token = localStorage.getItem("token");
 
-      if (!cookieString) {
-        toast.error("Not permitted for such action");
-        router.push("/blog");
-        return;
-      }
+if (!token) {
+  toast.error("Not permitted for such action");
+  router.push("/blog");
+  return;
+}
 
-      const token = cookieString.split("=")[1];
-      const decoded = jwtDecode<{ role?: string }>(token);
+const decoded = jwtDecode<{ role?: string }>(token);
+
 
       if (decoded.role !== "ADMIN") {
         toast.error("Not permitted for such action");
@@ -92,45 +90,59 @@ export default function CreatePostPage() {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitting(true);
+  e.preventDefault();
+  setSubmitting(true);
 
-    try {
-      const editorData = await editorRef?.save();
-      const token = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("token="))
-        ?.split("=")[1];
+  try {
+    const editorData = await editorRef?.save();
 
-      if (!token) {
-        toast.error("Session expired. Please login again.");
-        router.push("/login");
-        return;
-      }
-
-      const postData = { title, category, tags, image, content: editorData };
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/posts/create`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(postData),
-        }
-      );
-
-      if (!res.ok) throw new Error(await res.text());
-      toast.success("Post created successfully!");
-      router.push("/blog");
-    } catch (err: any) {
-      console.error(err);
-      toast.error(err.message || "Error creating post");
-    } finally {
-      setSubmitting(false);
+    const token = localStorage.getItem("token");
+    if (!token) {
+      toast.error("Session expired. Please login again.");
+      router.push("/?login=true");
+      return;
     }
-  };
+
+    const postData = {
+      title,
+      category,
+      tags,
+      featuredImage: image,   
+      content: editorData,    
+    };
+
+    const res = await fetch(
+  `api/blog/create`,
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(postData),
+  }
+);
+
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      throw new Error(data.message || "Failed to create post");
+    }
+
+    toast.success("Post created successfully!");
+    router.push("/blog");
+
+  } catch (err: any) {
+    console.error("Create post error:", err);
+    toast.error(err.message || "Error creating post");
+  } finally {
+    setSubmitting(false);
+  }
+};
+
+
+      
 
   if (loading)
     return (
