@@ -97,17 +97,12 @@ const whatWeDo = [
   },
 ];
 
-const whatWeWorkText =
-  "Because we want your buisness online — pay only 50% upfront, the rest spread flexibly with hosting and maintenance cost included";
-
-const doWeWorkText =
-  "Because you're more than just a service provider — you're a partner. At Nahara Technologies, we have the team, the strategy, and the technical expertise to bridge the gap between sound and result.";
 
 const missionText =
-  "We empower businesses to thrive through innovative branding, advanced software solutions, and actionable insights.";
+  "We help businesses thrive by delivering impactful branding, advanced software solutions, and actionable insights that turn ideas into measurable growth.";
 
 const visionText =
-  "To drive global success for businesses through strategic branding, innovative software, and marketing expertise.";
+  "To empower businesses worldwide to achieve lasting success through strategic branding, innovative software, and results-driven marketing.";
 
 const howWeWorkContent = [
   {
@@ -360,8 +355,6 @@ export {
   images,
   aboutBriefing,
   whatWeDo,
-  whatWeWorkText,
-  doWeWorkText,
   howWeWorkContent,
   missionText,
   visionText,

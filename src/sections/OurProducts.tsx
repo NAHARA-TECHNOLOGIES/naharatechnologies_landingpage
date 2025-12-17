@@ -17,7 +17,7 @@ const products = [
   {
     title: "Branding & Creative",
     description:
-      "We help you shape a brand that feels true to who you are—clear, modern, and memorable. From identity design to UI/UX and corporate visuals, we bring your story to life with creativity that stands out.",
+      "We help you shape a brand that feels true to who you are clear, modern, and memorable. From identity design to UI/UX and corporate visuals, we bring your story to life with creativity that stands out.",
     icon: <FaPalette className="text-5xl text-white" />,
     gradient: "from-red-800 via-gray-700 to-red-500",
   },
@@ -38,8 +38,10 @@ const products = [
   {
     title: "Software Development",
     description:
-      "We build the software your business needs—fast, reliable, and easy to use. From websites to enterprise systems and custom apps, our team handles everything from idea to deployment.",
-    icon: <FaLaptopCode className="text-5xl text-gray-900 dark:text-gray-100" />,
+      "We build the software your business needs fast, reliable, and easy to use. From websites to enterprise systems and custom apps, our team handles everything from idea to deployment.",
+    icon: (
+      <FaLaptopCode className="text-5xl text-gray-900 dark:text-gray-100" />
+    ),
     gradient: "",
   },
   {
@@ -59,15 +61,17 @@ const products = [
   {
     title: "Business Support & Digital Setup",
     description:
-      "We help you set up everything you need to operate confidently—from your digital presence to business documents, company profiles, and online launch support.",
+      "We help you set up everything you need to operate confidently from your digital presence to business documents, company profiles, and online launch support.",
     icon: <FaBriefcase className="text-5xl text-white" />,
     gradient: "from-red-800 via-gray-700 to-red-500",
   },
   {
     title: "Product Development as a Service (PDaaS)",
     description:
-      "We become your full product team—designing, building, and managing your digital product from start to finish. Perfect for founders and businesses who want expert execution without the stress of hiring or managing a tech team.",
-    icon: <FaLayerGroup className="text-5xl text-gray-900 dark:text-gray-100" />,
+      "We become your full product team designing, building, and managing your digital product from start to finish. Perfect for founders and businesses who want expert execution without the stress of hiring or managing a tech team.",
+    icon: (
+      <FaLayerGroup className="text-5xl text-gray-900 dark:text-gray-100" />
+    ),
     gradient: "",
   },
 ];
@@ -110,10 +114,12 @@ export const OurProducts = () => {
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-h2 mb-6">Our Services</h2>
 
-        <p className="text-bodyDefault text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto">
-        We help you bring your ideas to life with full-stack development, strategic digital marketing, and beautifully built mobile apps. Everything we create is designed to help your business grow with confidence. And if you’re ready to begin, a free consultation is the perfect first step.
-
-
+        <p className="text-bodyDefault text-gray-600 dark:text-gray-300 mb-16 max-w-2xl mx-auto leading-relaxed">
+          We help you bring your ideas to life with full-stack development,
+          strategic digital marketing, and beautifully built mobile apps.
+          Everything we create is designed to help your business grow with
+          confidence. And if you are ready to begin, a free consultation is the
+          perfect first step.
         </p>
 
         {/* Carousel */}
@@ -138,9 +144,7 @@ export const OurProducts = () => {
                     : "bg-white dark:bg-gray-900"
                 }`}
               >
-                <div className="mb-6 flex justify-center">
-                  {product.icon}
-                </div>
+                <div className="mb-6 flex justify-center">{product.icon}</div>
 
                 <h3
                   className={`text-h3 mb-3 ${
@@ -155,8 +159,8 @@ export const OurProducts = () => {
                 <p
                   className={`text-bodySmall ${
                     product.gradient
-                      ? "text-white/90"
-                      : "text-gray-700 dark:text-gray-300"
+                      ? "text-white/90 leading-relaxed"
+                      : "text-gray-700 dark:text-gray-300 leading-relaxed"
                   }`}
                 >
                   {product.description}
