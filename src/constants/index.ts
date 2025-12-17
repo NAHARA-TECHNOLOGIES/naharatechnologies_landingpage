@@ -304,7 +304,7 @@ const supportOptions = [
     title: "Live Chat",
     description: "Chat with our support team",
     responseTime: "Immediate",
-    availability: "9 a.m. - 6 p.m. EST",
+    availability: "9 a.m. - 6 p.m. WAT",
     btnText: "Start Chat",
   },
   {
@@ -312,42 +312,62 @@ const supportOptions = [
     title: "Phone Support",
     description: "Speak directly with our experts",
     responseTime: "Immediate",
-    availability: "9 a.m. - 6 p.m. EST",
+    availability: "9 a.m. - 6 p.m. WAT",
     btnText: "Call Now",
   },
 ];
 
 const faqs = [
   {
-    question: "How Do I Create An Account?",
+    question: "What Does Nahara Technologies Do?",
     answer:
-      "Click on the Sign Up button at the top of the page, enter your details, and verify your email to activate your account.",
-    isShowing: false,
+      "Nahara Technologies helps businesses turn ideas into real, functional, beautifully built products. From branding to software development, digital marketing, and strategic consulting, we guide founders and companies through every stage of bringing their vision to life.",
+    isShowing: true,
   },
   {
-    question: "How Do I Update Payment Information?",
+    question: "What Services Does Nahara Technologies Provide?",
     answer:
-      "Go to your Account Settings, select Billing, and update your payment method. All changes take effect immediately for future transactions.",
-    isShowing: false,
-  },
-  {
-    question: "Where Do I Find System Requirements?",
-    answer:
-      "System requirements can be found on the product download page or documentation. We also provide recommendations for the best performance.",
-    isShowing: false,
+      "We offer a full suite of services including branding & creative design, digital marketing, consulting & strategy, software development, cloud & infrastructure, hosting & domain services, business support, and product development as a service (PDaaS).",
+    isShowing: true,
   },
   {
     question: "Do You Provide After-Launch Support?",
     answer:
-      "Yes, every project includes a dedicated support period. We also offer ongoing maintenance and support plans tailored to your needs.",
+      "Yes! We don’t just build products,we ensure they keep performing. Our support team handles updates, optimizations, and troubleshooting to keep your digital solutions effective long after launch.",
     isShowing: false,
   },
   {
-    question: "What Happens If My Payment Fails?",
+    question: "How Do I Track My Projects?",
     answer:
-      "If a payment fails, you’ll receive a notification and can retry with a different method. Services may be temporarily paused until payment is completed.",
-    isShowing: true,
+      "We keep you informed every step of the way. For each milestone, we share clear visual reports and hold regular update meetings so you always know where your project stands. Our team is there to answer questions, gather feedback, and make sure your vision stays on track.",
+    isShowing: false,
   },
+
+  {
+    question: " Can Nahara Handle My Project End-to-End While I Focus on Other Priorities?",
+    answer:
+      "Absolutely. We manage everything, from ideation to development to maintenance. We listen, guide, and handle the technical and creative work so you can focus on running your business with confidence.",
+    isShowing: false,
+  },
+  {
+    question: "How Does the Build Now, Pay Later Plan Work?",
+    answer:
+      "With our Build Now, Pay Later plan, you only pay 50% upfront. The remaining balance is spread flexibly along with hosting and maintenance costs, helping you launch without financial pressure.",
+    isShowing: false,
+  },
+
+  {
+    question: "Where Can I Find System Requirements?",
+    answer:
+      "System requirements are included in your project documentation or on the product download page. We also give recommendations to ensure the best performance on your devices.",
+    isShowing: false,
+  },
+  {
+    question: "How Do I Get Help With My Account or Project?",
+    answer:
+      "You can reach our support team at support@naharatechnologies.com. We respond quickly to keep your experience smooth and worry-free.",
+    isShowing: false,
+  }
 ];
 
 export {

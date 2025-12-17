@@ -19,7 +19,7 @@ export default function HelpClient() {
   return (
     <section className="mx-auto">
       <HelpHero />
-      <HelpCategories />
+      {/* <HelpCategories /> */}
       <HelpFAQ />
       <QuickHelp />
       {/* <h2 className="text-2xl sm:text-4xl font-extrabold text-center mb-8">
