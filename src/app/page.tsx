@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="relative">
       <Hero />
-      <LogoTicker />
+      {/* <LogoTicker /> */}
       <ProductShowcase />
       <LatestNews />
       <OurTeam />

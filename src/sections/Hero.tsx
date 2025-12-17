@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { MdBuild } from "react-icons/md"; // 👈 Maintenance icon
 
@@ -15,23 +16,17 @@ export const Hero = () => {
         <div className="absolute inset-0 bg-black/70 z-0" />
 
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center text-white px-4">
-          <h1 className="text-h1">Sparking Your Vision</h1>
+          <h1 className="text-h1">
+            Building African Brilliance, One Innovation at a Time
+          </h1>
           <p className="mt-4 text-bodyLarge max-w-xl leading-relaxed">
-            Empower your business to thrive with innovative software solutions,
-            smart branding strategies, and flexible pay-as-you-go plans that
-            make growth effortless and affordable.
+            Empower your business with modern software, intelligent branding,
+            and flexible pay-as-you-go solutions designed for growth.
           </p>
           <div className="mt-6 flex gap-4">
-            <button
-              onClick={() => setShowModal(true)}
-              className="bg-brandRed px-6 py-2 rounded hover:opacity-90 transition text-primaryButton font-bold text-bodyDefault"
-            >
-              See Pricing
-            </button>
-
-            <button className="px-6 py-2 border border-white text-white bg-transparent hover:bg-white hover:text-black transition duration-300 rounded text-bodyDefault font-bold">
-              Learn More
-            </button>
+    
+            <Link href="/pricing" className="bg-brandRed hover:bg-[#B91C1C] px-8 py-4 rounded-full font-bold text-white transition-all duration-300 hover:scale-105 shadow-lg">Unlock Your Best Option</Link>
+          
           </div>
         </div>
 
