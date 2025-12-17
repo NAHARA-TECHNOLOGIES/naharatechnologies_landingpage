@@ -1,11 +1,7 @@
 "use client";
 
 import CallToAction from "@/components/CallToAction";
-import { Footer } from "@/sections/Footer";
-import Header from "@/sections/Header";
 import { Hero } from "@/sections/Hero";
-import { LogoTicker } from "@/sections/LogoTicker";
-import { OurTeam } from "@/sections/OurTeam";
 import { ProductShowcase } from "@/sections/ProductShowcase";
 import { Testimonials } from "@/sections/Testimonials";
 import { QuickChatBox } from "@/components/QuickChatBox";
@@ -19,7 +15,7 @@ export default function Home() {
       {/* <LogoTicker /> */}
       <ProductShowcase />
       <LatestNews />
-      <OurTeam />
+      {/* <OurTeam /> */}
       <Testimonials />
       <section className="mt-20 w-full px-4 sm:px-6 lg:px-8">
         <CallToAction />

@@ -78,14 +78,13 @@ const ContactUs = () => {
           {/* Contact Info + WhatsApp */}
           <div className="space-y-6">
             <p className="text-bodyDefault leading-relaxed text-gray-600">
-              We&apos;d love to hear from you. Whether you have a question, feedback,
-              or just want to say hi — feel free to reach out!
+              We&apos;d love to hear from you. Whether you have a question or a feedback, feel free to reach out.
             </p>
 
             <div className="flex items-start gap-4">
               <MapPin className="text-brandRed w-6 h-6" />
               <p className="text-bodySmall leading-relaxed text-gray-700">
-                Nahara Technologies HQ, <br /> No. 10 Innovation Street, Lagos,
+                Nahara Technologies, <br /> Yaba,Lagos,
                 Nigeria.
               </p>
             </div>
@@ -96,7 +95,7 @@ const ContactUs = () => {
                 href="mailto:hello@naharatechnologies.com"
                 className="text-bodySmall leading-relaxed text-gray-700 hover:underline"
               >
-                hello@naharatechnologies.com
+                info@naharatechnologies.com
               </a>
             </div>
 
