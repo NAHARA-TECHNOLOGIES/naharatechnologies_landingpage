@@ -1,30 +1,41 @@
-import mongoose, { Document, Schema, Model } from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
 export interface IBlog extends Document {
-    title: string;
-    content: string;
-    author?: string;
-    tags?: string[];
-    category?: mongoose.Schema.Types.ObjectId;
-    featuredImage?: string;
-    createdAt: Date;
-  }
-const BlogSchema:Schema<IBlog>  = new mongoose.Schema({
+  title: string;
+  content: any;
+  author: mongoose.Schema.Types.ObjectId;
+  tags?: string[];
+  category?: mongoose.Schema.Types.ObjectId;
+  featuredImage?: string;
+  createdAt: Date;
+}
+
+const BlogSchema = new Schema<IBlog>({
   title: {
     type: String,
     required: true,
   },
+
   content: {
-    type: String,
+    type: Schema.Types.Mixed, 
     required: true,
   },
+
   author: {
-    type: String,
-    default: "Admin",
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
   },
+
   tags: [String],
-  category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: "Category",
+  },
+
   featuredImage: String,
+
   createdAt: {
     type: Date,
     default: Date.now,
@@ -32,4 +43,6 @@ const BlogSchema:Schema<IBlog>  = new mongoose.Schema({
 });
 
 
-export default mongoose.models.Blog || mongoose.model("Blog", BlogSchema);
+export default mongoose.models.Blog
+  ? mongoose.deleteModel("Blog") && mongoose.model<IBlog>("Blog", BlogSchema)
+  : mongoose.model<IBlog>("Blog", BlogSchema);

@@ -14,17 +14,9 @@ import {
   X,
   MessageSquare,
 } from 'lucide-react';
-import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
 
 const defaultImage = 'https://cdn-icons-png.flaticon.com/512/149/149071.png';
-
-interface UserProfile {
-  username: string;
-  email: string;
-  bio?: string;
-  image?: string;
-  role?: 'ADMIN' | 'USER';
-}
 
 interface DecodedToken {
   userName: string;
@@ -32,48 +24,26 @@ interface DecodedToken {
   profileImage?: string;
 }
 
-const ProfileMenu: React.FC = () => {
-  const [user, setUser] = useState<UserProfile>({
-    username: '',
-    email: '',
-    bio: '',
-    image: '',
-    role: 'USER',
-  });
+interface ProfileMenuProps {
+  user: DecodedToken;
+  profileImage: string | null;
+  onUpdateProfileImage: (newImage: string) => void;
+  onUpdateBio: (updates: { username?: string; bio?: string }) => void;
+}
 
+const ProfileMenu: React.FC<ProfileMenuProps> = ({
+  user,
+  profileImage,
+  onUpdateProfileImage,
+  onUpdateBio,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [editData, setEditData] = useState({ username: '', bio: '' });
+  const [previewImage, setPreviewImage] = useState<string | null>(profileImage);
+  const [editData, setEditData] = useState({ username: user.userName, bio: '' });
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
 
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [showFeedbackModal, setShowFeedbackModal] = useState(false);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decoded = jwtDecode<DecodedToken>(token);
-        setUser({
-          username: decoded.userName,
-          email: decoded.userName + '@nahara.com',
-          role: decoded.role,
-          bio: 'Building the future with Nahara Tech 🌍',
-          image: decoded.profileImage || defaultImage,
-        });
-      } catch (err) {
-        console.error('Invalid token', err);
-      }
-    } else {
-      setUser({
-        username: 'Guest User',
-        email: 'guest@nahara.com',
-        bio: 'Logged in as a guest.',
-        role: 'USER',
-      });
-    }
-  }, []);
+  const isAdmin = user.role === 'ADMIN';
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -84,27 +54,50 @@ const ProfileMenu: React.FC = () => {
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setLoading(true);
-    setTimeout(() => {
-      setUser({
-        ...user,
-        username: editData.username || user.username,
-        bio: editData.bio || user.bio,
-        image: previewImage || user.image,
+    try {
+      const payload: any = {};
+      if (editData.username && editData.username !== user.userName) payload.username = editData.username;
+      if (editData.bio) payload.bio = editData.bio;
+      if (previewImage && previewImage !== profileImage) payload.profileImage = previewImage;
+
+      if (Object.keys(payload).length === 0) {
+        setMessage('⚠️ No changes made.');
+        setLoading(false);
+        return;
+      }
+
+      const token = localStorage.getItem('token');
+      if (!token) throw new Error('Unauthorized');
+
+      const res = await axios.put('/api/update-profile', payload, {
+        headers: { Authorization: `Bearer ${token}` },
       });
-      setIsEditing(false);
-      setMessage('✅ Profile updated successfully!');
+
+      const data = res.data as { success: boolean };
+
+      if (data.success) {
+        onUpdateProfileImage(payload.profileImage || profileImage);
+        onUpdateBio({ username: payload.username, bio: payload.bio });
+        setMessage(' Profile updated successfully!');
+        setPreviewImage(null);
+        setIsEditing(false);
+      } else {
+        setMessage(' Update failed.');
+      }
+    } catch (err) {
+      console.error(err);
+      setMessage(' Update failed.');
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     window.location.href = '/login';
   };
-
-  const isAdmin = user.role === 'ADMIN';
 
   return (
     <div className="flex justify-center items-center w-full p-4 md:p-8">
@@ -114,10 +107,11 @@ const ProfileMenu: React.FC = () => {
         transition={{ duration: 0.4 }}
         className="w-full max-w-3xl bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 md:p-10 relative"
       >
+        {/* Profile Image & Info */}
         <div className="flex flex-col md:flex-row items-center gap-6">
           <div className="relative">
             <Image
-              src={previewImage || user.image || defaultImage}
+              src={previewImage || profileImage || defaultImage}
               alt="Profile"
               width={120}
               height={120}
@@ -142,34 +136,25 @@ const ProfileMenu: React.FC = () => {
                 <input
                   type="text"
                   value={editData.username}
-                  onChange={(e) =>
-                    setEditData({ ...editData, username: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ ...editData, username: e.target.value })}
                   className="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white"
                 />
                 <textarea
                   rows={3}
                   value={editData.bio}
-                  onChange={(e) =>
-                    setEditData({ ...editData, bio: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ ...editData, bio: e.target.value })}
                   className="w-full px-3 py-2 rounded-md border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-red-500 dark:bg-gray-800 dark:text-white"
                 />
               </>
             ) : (
               <>
-                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
-                  {user.username}
-                </h2>
-                <p className="text-gray-500 dark:text-gray-400">{user.email}</p>
-                <p className="text-gray-600 dark:text-gray-300 italic">
-                  {user.bio}
-                </p>
+                <h2 className="text-2xl font-bold text-gray-800 dark:text-white">{user.userName}</h2>
               </>
             )}
           </div>
         </div>
 
+        {/* Buttons */}
         <div className="flex flex-wrap justify-center md:justify-end gap-3 mt-6">
           {!isEditing ? (
             <>
@@ -208,103 +193,9 @@ const ProfileMenu: React.FC = () => {
         {message && (
           <p className="text-center text-sm mt-3 text-gray-600 dark:text-gray-300">{message}</p>
         )}
-
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-10">
-          <FeatureCard icon={<Trash2 size={18} />} label="Delete Account" onClick={() => setShowDeleteModal(true)} />
-          <FeatureCard icon={<MessageSquare size={18} />} label="Drop Feedback" onClick={() => setShowFeedbackModal(true)} />
-          <FeatureCard icon={<LogOut size={18} />} label="Logout" onClick={handleLogout} />
-
-          {isAdmin && (
-            <>
-              <FeatureCard icon={<Lock size={18} />} label="Change Password" onClick={() => alert('Change password')} />
-              <FeatureCard icon={<Bell size={18} />} label="Notifications" onClick={() => alert('Open notifications')} />
-            </>
-          )}
-        </div>
-
-        {/* Modals */}
-        <AnimatePresence>
-          {showDeleteModal && (
-            <DraggableModal title="Delete Account" onClose={() => setShowDeleteModal(false)}>
-              <DeleteConfirm onDelete={() => alert('Account deleted!')} />
-            </DraggableModal>
-          )}
-          {showFeedbackModal && (
-            <DraggableModal title="Drop Feedback" onClose={() => setShowFeedbackModal(false)}>
-              <FeedbackForm />
-            </DraggableModal>
-          )}
-        </AnimatePresence>
       </motion.div>
     </div>
   );
 };
-
-const FeatureCard = ({ icon, label, onClick }: { icon: React.ReactNode; label: string; onClick: () => void; }) => (
-  <motion.div
-    whileHover={{ scale: 1.05 }}
-    onClick={onClick}
-    className="bg-gray-100 dark:bg-gray-800 p-4 rounded-xl flex items-center gap-3 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-  >
-    <div className="text-red-600">{icon}</div>
-    <span className="text-gray-800 dark:text-gray-200">{label}</span>
-  </motion.div>
-);
-
-const DraggableModal = ({ title, children, onClose }: { title: string; children: React.ReactNode; onClose: () => void; }) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const scale = useTransform(y, [-100, 100], [0.98, 1.02]);
-
-  return (
-    <motion.div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <motion.div
-        drag
-        dragMomentum={false}
-        style={{ x, y, scale }}
-        dragElastic={0.15}
-        className="bg-white dark:bg-gray-900 rounded-xl p-6 w-96 shadow-2xl relative cursor-grab active:cursor-grabbing"
-      >
-        <button onClick={onClose} className="absolute top-3 right-3 text-gray-400 hover:text-gray-600">
-          <X size={20} />
-        </button>
-        <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">{title}</h3>
-        <div>{children}</div>
-      </motion.div>
-    </motion.div>
-  );
-};
-
-const DeleteConfirm = ({ onDelete }: { onDelete: () => void }) => (
-  <div className="text-center">
-    <p className="mb-4 text-gray-600 dark:text-gray-300">
-      Are you sure you want to delete your account? This action cannot be undone.
-    </p>
-    <button
-      onClick={onDelete}
-      className="bg-red-700 hover:bg-red-800 text-white px-4 py-2 rounded-md transition"
-    >
-      Confirm Delete
-    </button>
-  </div>
-);
-
-const FeedbackForm = () => (
-  <div className="flex flex-col gap-3">
-    <textarea
-      rows={4}
-      placeholder="Write your feedback..."
-      className="p-2 rounded-md border dark:bg-gray-800"
-    />
-    <button className="bg-red-700 hover:bg-red-800 text-white py-2 rounded-md transition">
-      Submit Feedback
-    </button>
-  </div>
-);
 
 export default ProfileMenu;

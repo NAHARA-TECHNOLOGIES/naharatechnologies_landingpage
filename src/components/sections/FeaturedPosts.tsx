@@ -2,12 +2,55 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { mockPosts } from "@/mock/post";
-import { motion } from "framer-motion";
 import { CalendarDays, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  image?: string;
+  category?: string;
+  publishedAt: string;
+}
 
 const FeaturedPosts = () => {
-  const featured = mockPosts.slice(4, 7);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState(true);
+
+ useEffect(() => {
+  const fetchPosts = async () => {
+    try {
+      const res = await fetch(`/api/post/posts?limit=3`);
+
+      if (!res.ok) throw new Error("Failed to fetch posts");
+      const data: Post[] = await res.json();
+      setPosts(data);
+    } catch (err) {
+      console.error("Fetch posts error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  fetchPosts();
+}, []);
+
+
+
+
+
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  }
+
+  if (!posts.length) {
+    return (
+      <p className="text-center mt-10 text-gray-500">
+        No posts found.
+      </p>
+    );
+  }
 
   return (
     <section className="py-10 md:py-20">
@@ -15,14 +58,13 @@ const FeaturedPosts = () => {
         <h2 className="text-h2 text-gray-900 dark:text-gray-100">
           🌟 Featured Stories
         </h2>
-        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto text-bodyLarge leading-relaxed">
-          Explore trending insights, expert opinions, and must-read stories
-          handpicked for you.
+        <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-xl mx-auto">
+          Explore trending insights, expert opinions, and must-read stories.
         </p>
       </div>
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {featured.map((post, i) => (
+        {posts.map((post, i) => (
           <motion.div
             key={post.slug}
             initial={{ opacity: 0, y: 40 }}
@@ -31,32 +73,24 @@ const FeaturedPosts = () => {
             transition={{ duration: 0.5, delay: i * 0.1 }}
           >
             <Link
-              href={`/post/${post.slug}`}
-              className="group relative flex flex-col h-full rounded-2xl overflow-hidden 
-                         shadow-lg dark:shadow-gray-800/40 hover:shadow-xl 
-                         bg-white dark:bg-gray-900 transition-all duration-300"
+              href={`/post/posts/${post.slug}`}
+              className="group flex flex-col h-full rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-900 hover:shadow-xl transition"
             >
-              <div className="relative h-56 sm:h-64 w-full overflow-hidden">
+              <div className="relative h-56 w-full">
                 <Image
-                  src={post.image}
+                  src={post.image || "/placeholder.jpg"}
                   alt={post.title}
                   fill
-                  priority={i === 0}
-                  className="object-cover transform transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover group-hover:scale-110 transition-transform"
                 />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-
-                <div className="absolute top-3 left-3 bg-red-600 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <span className="absolute top-3 left-3 bg-red-600 text-white text-xs px-3 py-1 rounded-full">
                   {post.category}
-                </div>
+                </span>
               </div>
 
-              <div className="flex flex-col flex-1 p-5">
-                <h3
-                  className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-gray-100 
-                             group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors line-clamp-2"
-                >
+              <div className="p-5 flex flex-col flex-1">
+                <h3 className="text-lg font-semibold group-hover:text-red-600 line-clamp-2">
                   {post.title}
                 </h3>
 
@@ -64,17 +98,13 @@ const FeaturedPosts = () => {
                   {post.excerpt}
                 </p>
 
-                <div className="flex items-center justify-between mt-4 text-gray-400 text-xs sm:text-sm">
+                <div className="flex items-center justify-between mt-4 text-xs text-gray-400">
                   <span className="flex items-center gap-1">
                     <CalendarDays className="w-4 h-4" />
-                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
+                    {new Date(post.publishedAt).toLocaleDateString()}
                   </span>
 
-                  <span className="flex items-center gap-1 font-medium text-red-800 group-hover:gap-2 transition-all">
+                  <span className="flex items-center gap-1 font-medium text-red-700">
                     Read More <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
@@ -82,18 +112,6 @@ const FeaturedPosts = () => {
             </Link>
           </motion.div>
         ))}
-      </div>
-
-      <div className="mt-12 flex justify-center">
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-2 px-6 py-3 text-sm sm:text-base 
-                     font-medium btn-primary rounded-full 
-                     hover:bg-red-700 transition-all shadow-md hover:shadow-lg"
-        >
-          Explore More Stories
-          <ArrowRight className="size-4" />
-        </Link>
       </div>
     </section>
   );
