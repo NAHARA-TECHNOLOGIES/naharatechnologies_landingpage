@@ -2,11 +2,11 @@
 
 import TierCard from "@/components/TierCard";
 import pricingData, { getTitles } from "@/constants/pricing";
-import { CheckCircle, Palette } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const PricingMain = () => {
-  const [service, setService] = useState("digitalMarketing");
+  const [service, setService] =
+    useState<keyof typeof pricingData>("digitalMarketing");
   const displayData = pricingData[service];
 
   return (
@@ -63,57 +63,6 @@ const PricingMain = () => {
               <div className="mt-6 space-y-12">
                 {"categories" in displayData && (
                   <>
-                    {/* {displayData.categories.map((category) => (
-                      <div key={category.name} className="">
-                        <h3 className="text-h3">{category.name}</h3>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-                          {category.tiers && (
-                            <>
-                              {category.tiers.map((tier) => (
-                                <div
-                                  key={tier.name}
-                                  className="flex flex-col p-8 rounded-3xl bg-brandRed border border-[#254632] hover:border-brandRed/50 transition-all overflow-hidden group relative"
-                                >
-                                  <div className="absolute top-0 right-0 bg-white text-background-dark text-xs font-bold px-3 py-1 rounded-bl-xl">
-                                    POPULAR
-                                  </div>
-
-                                  <div className="mb-4">
-                                    <h3 className="text-xl font-bold text-white">
-                                      {tier.name}
-                                    </h3>
-                                    <p className="text-text-secondary text-sm mt-2 min-h-[40px]">
-                                      {tier.ideal}
-                                    </p>
-                                  </div>
-                                  <div className="mb-6 flex items-baseline gap-1">
-                                    <span className="text-sm font-bold text-white">
-                                      {tier.price}
-                                    </span>
-                                  </div>
-
-                                  <ul className="flex-1 space-y-2 mb-8 max-h-64 overflow-y-auto no-scrollbar">
-                                    {tier.features.map((feat) => (
-                                      <li
-                                        key={feat}
-                                        className="flex gap-3 text-sm text-white items-start"
-                                      >
-                                        <CheckCircle className="size-[14px] shrink-0" />
-                                        {feat}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                  <button className="w-full h-12 rounded-full bg-border-dark text-white font-bold hover:bg-primary hover:text-background-dark transition-colors">
-                                    Start Project
-                                  </button>
-                                </div>
-                              ))}
-                            </>
-                          )}
-                        </div>
-                      </div>
-                    ))} */}
                     {displayData.categories?.map((category) => (
                       <div key={category.name}>
                         <h3 className="text-h3">{category.name}</h3>
@@ -133,7 +82,7 @@ const PricingMain = () => {
                           ))
                         ) : (
                           <div className="grid md:grid-cols-3 gap-6 mt-6">
-                            {category.tiers.map((tier) => (
+                            {category.tiers && category.tiers.map((tier) => (
                               <TierCard key={tier.name} tier={tier} />
                             ))}
                           </div>

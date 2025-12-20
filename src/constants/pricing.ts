@@ -5,11 +5,58 @@ import {
   Globe,
   Layers,
   Lightbulb,
+  LucideIcon,
   Palette,
   TrendingUp,
 } from "lucide-react";
 
-const pricingData = {
+export interface BaseService {
+  title: string;
+  icon: LucideIcon;
+  description?: string;
+  note?: string;
+  priceRange?: string;
+}
+
+export interface Tier {
+  name: string;
+  price: string;
+  features: string[];
+  ideal?: string;
+  popular?: boolean;
+  note?: string;
+}
+
+export interface SubCategory {
+  name: string;
+  tiers: Tier[];
+}
+
+export interface Category {
+  name: string;
+  tiers?: Tier[];
+  subcategories?: SubCategory[];
+  description?: string;
+  priceRange: string;
+  allInclude?: string;
+}
+
+export interface CategorizedService extends BaseService {
+  categories: Category[];
+}
+
+export interface TierOnlyService extends BaseService {
+  tiers: Tier[];
+}
+
+export interface PDaaSService extends BaseService {
+  features: string[];
+}
+
+const pricingData: Record<
+  string,
+  CategorizedService | TierOnlyService | PDaaSService
+> = {
   brandingCreative: {
     title: "Branding & Creative",
     icon: Palette,
@@ -499,10 +546,10 @@ const pricingData = {
   },
 };
 
-const getTitles = () => {
+const getTitles = (): { key: keyof typeof pricingData; title: string }[] => {
   return Object.entries(pricingData).map(([key, { title }]) => {
     return {
-      key,
+      key: key as keyof typeof pricingData,
       title,
     };
   });
