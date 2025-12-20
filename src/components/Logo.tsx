@@ -11,7 +11,7 @@ const Logo = () => {
         alt="Nahara Technologies"
         width={140}
         height={50}
-        className="h-auto w-auto max-h-12 bg-red-800 text-red-800 rounded-lg"
+        className="size-8 max-h-12 bg-red-800 text-red-800 rounded-lg"
         priority
       />
       <span className="text-[clamp(14px,2.5vw,16px)] font-bold text-red-800 hidden sm:inline">
