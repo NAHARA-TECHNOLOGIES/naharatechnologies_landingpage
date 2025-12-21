@@ -57,7 +57,7 @@ const pricingData: Record<
   string,
   CategorizedService | TierOnlyService | PDaaSService
 > = {
-  brandingCreative: {
+  branding: {
     title: "Branding & Creative",
     icon: Palette,
     description:
@@ -260,7 +260,7 @@ const pricingData: Record<
       },
     ],
   },
-  digitalMarketing: {
+  digital: {
     title: "Digital Marketing",
     icon: TrendingUp,
     priceRange: "₦120,000 – ₦900,000/month",
@@ -317,7 +317,7 @@ const pricingData: Record<
       },
     ],
   },
-  consultingStrategy: {
+  consult: {
     title: "Consulting & Strategy",
     icon: Lightbulb,
     priceRange: "₦0 – ₦500,000",
@@ -362,7 +362,7 @@ const pricingData: Record<
       },
     ],
   },
-  softwareDevelopment: {
+  software: {
     title: "Software Development",
     icon: Code,
     priceRange: "₦250,000 – ₦5,000,000+",
@@ -415,7 +415,7 @@ const pricingData: Record<
     ],
     note: "Includes: design, development, deployment, revisions, optional add-ons (analytics, integrations, push notifications, in-app payments).",
   },
-  cloudInfrastructure: {
+  cloud: {
     title: "Cloud & Infrastructure",
     icon: Cloud,
     priceRange: "₦30,000 – ₦300,000/month",
@@ -453,7 +453,7 @@ const pricingData: Record<
       },
     ],
   },
-  hostingDomain: {
+  hosting: {
     title: "Hosting & Domain Services",
     icon: Globe,
     priceRange: "₦20,000 – ₦150,000/year",
@@ -492,7 +492,7 @@ const pricingData: Record<
       },
     ],
   },
-  businessSupport: {
+  business: {
     title: "Business Support & Digital Setup",
     icon: Briefcase,
     priceRange: "₦40,000 – ₦300,000",
@@ -546,13 +546,13 @@ const pricingData: Record<
   },
 };
 
-const getTitles = (): { key: keyof typeof pricingData; title: string }[] => {
-  return Object.entries(pricingData).map(([key, { title }]) => {
-    return {
-      key: key as keyof typeof pricingData,
-      title,
-    };
-  });
-};
+// const getTitles = (): { key: keyof typeof pricingData; title: string }[] => {
+//   return Object.entries(pricingData).map(([key, { title }]) => {
+//     return {
+//       key: key as keyof typeof pricingData,
+//       title,
+//     };
+//   });
+// };
 
-export { pricingData as default, getTitles };
+export { pricingData as default };
