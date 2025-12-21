@@ -55,6 +55,7 @@ export default function RootLayout({
       >
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         <Toaster position="top-center" reverseOrder={false} />
+
       </body>
     </html>
   );

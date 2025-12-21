@@ -89,7 +89,7 @@ export const ProductShowcase = () => {
           animate-gradient-x text-h2
         "
           >
-            Branding made easy for you, by us.
+            We make branding simple. You bring the vision; we elevate it.
           </h2>
 
           <p
@@ -101,8 +101,8 @@ export const ProductShowcase = () => {
         dark:from-white dark:to-gray-300
       "
           >
-            You’re one step away from effortlessly transforming your idea into a
-            fully developed, beautifully branded product ready for the market.
+            Your idea becomes a polished, market-ready product crafted with
+            care, shaped with expertise, and built to stand out.
           </p>
         </motion.div>
 

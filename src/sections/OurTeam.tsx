@@ -53,8 +53,9 @@ export const OurTeam = () => {
             Meet Our Team
           </h2>
           <p className="text-bodyDefault leading-relaxed mt-4">
-            We have professionals ready 24/7 to elevate your branding with our
-            award-winning IT Team, Branding Strategists, and Marketing Experts.
+            We are a multidisciplinary team of creatives and technologists,
+            working together to solve real business problems with clarity and
+            precision.
           </p>
         </div>
 

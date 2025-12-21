@@ -9,27 +9,27 @@ import { CheckCircle } from "lucide-react";
 const coreValues = [
   {
     title: "Integrity",
-    desc: "We do what is right always",
+    desc: "We choose what is right always. Even when it’s harder, even when no one is watching.",
   },
   {
     title: "Dedication",
-    desc: "We pursue excellence with passion and persistence",
+    desc: "We show up with passion, persistence, and an unwavering commitment to your success.",
   },
   {
     title: "Excellence",
-    desc: "We raise the bar, then go beyond it.",
+    desc: "We don’t just meet expectations, we push beyond them, raising the standard every time.",
   },
   {
     title: "Customer Focus",
-    desc: "We value your vision and amplify your voice",
+    desc: "Your vision matters. We listen, we understand, and we amplify your voice through everything we build.",
   },
   {
     title: "Innovation",
-    desc: "We embrace change, leveraging technology to lead it.",
+    desc: "We embrace change with curiosity and courage, using technology to create what’s next.",
   },
   {
     title: "Accountability",
-    desc: "We own outcomes and deliver results you can trust",
+    desc: "We take ownership from start to finish, delivering results you can trust and solutions you can rely on.",
   },
 ];
 
@@ -43,7 +43,8 @@ const CoreValues = () => {
               Everything we do is anchored on our core values (IDECIA)
             </h2>
             <p className="text-bodyLarge text-gray-500 mb-6 dark:text-gray-400 leading-relaxed">
-              The six pillars of our culture and commitment
+            The six pillars that shape our culture and guide every experience we create.
+
             </p>
 
             <ul className="space-y-6">

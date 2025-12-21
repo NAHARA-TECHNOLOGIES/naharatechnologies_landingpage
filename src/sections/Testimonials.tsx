@@ -1,165 +1,99 @@
 "use client";
 
+import Image from "next/image";
+import { motion } from "framer-motion";
+
 import avatar1 from "@/assets/avatar-1.png";
 import avatar2 from "@/assets/avatar-2.png";
-import avatar3 from "@/assets/avatar-3.png";
-import avatar4 from "@/assets/avatar-4.png";
-import avatar5 from "@/assets/avatar-5.png";
-import avatar6 from "@/assets/avatar-6.png";
-import avatar7 from "@/assets/avatar-7.png";
-import avatar8 from "@/assets/avatar-8.png";
-import avatar9 from "@/assets/avatar-9.png";
-import Image from "next/image";
-import { twMerge } from "tailwind-merge";
-import React from "react";
-import { motion } from "framer-motion";
+import avatar3 from "@/assets/kosi.jpg"
+
 const testimonials = [
   {
-    text: "As a seasoned designer always on the lookout for innovative tools, Framer.com instantly grabbed my attention.",
-    imageSrc: avatar1.src,
-    name: "Jamie Rivera",
-    username: "@jamietechguru00",
+    quote:
+      "Nahara has been amazing to work with.They handle everything for my startup business, while I focus on other things. They listen,guide and make progress feel effortless.",
+    name: "Sam",
+    role: "Founder, Psallm Digitals",
+    image: avatar1,
   },
   {
-    text: "Our team's productivity has skyrocketed since we started using this tool. ",
-    imageSrc: avatar2.src,
-    name: "Josh Smith",
-    username: "@jjsmith",
-  },
-  {
-    text: "This app has completely transformed how I manage my projects and deadlines.",
-    imageSrc: avatar3.src,
-    name: "Morgan Lee",
-    username: "@morganleewhiz",
-  },
-  {
-    text: "I was amazed at how quickly we were able to integrate this app into our workflow.",
-    imageSrc: avatar4.src,
-    name: "Casey Jordan",
-    username: "@caseyj",
-  },
-  {
-    text: "Planning and executing events has never been easier. This app helps me keep track of all the moving parts, ensuring nothing slips through the cracks.",
-    imageSrc: avatar5.src,
-    name: "Taylor Kim",
-    username: "@taylorkimm",
-  },
-  {
-    text: "The customizability and integration capabilities of this app are top-notch.",
-    imageSrc: avatar6.src,
-    name: "Riley Smith",
-    username: "@rileysmith1",
-  },
-  {
-    text: "Adopting this app for our team has streamlined our project management and improved communication across the board.",
-    imageSrc: avatar7.src,
-    name: "Jordan Patels",
-    username: "@jpatelsdesign",
-  },
-  {
-    text: "With this app, we can easily assign tasks, track progress, and manage documents all in one place.",
-    imageSrc: avatar8.src,
-    name: "Sam Dawson",
-    username: "@dawsontechtips",
-  },
-  {
-    text: "Its user-friendly interface and robust features support our diverse needs.",
-    imageSrc: avatar9.src,
-    name: "Casey Harper",
-    username: "@casey09",
+    quote:
+      "Working with Nahara was a turning point for our business. Their attention to detail, communication, and technical expertise helped us launch with confidence and clarity.",
+    name: "Ifeanyi",
+    role: "Founder, Ekemart",
+    image: avatar3,
   },
 ];
 
-const firstColumn = testimonials.slice(0, 3);
-const secondColumn = testimonials.slice(3, 6);
-const thirdColumn = testimonials.slice(6, 9);
-
-const TestimonialsColum = (props: {
-  className?: string;
-  testimonials: typeof testimonials;
-  duration?: number;
-}) => (
-  <div className={props.className}>
-    <motion.div
-      animate={{
-        translateY: "-50%",
-      }}
-      transition={{
-        repeat: Infinity,
-        repeatType: "loop",
-        ease: "linear",
-        duration: props.duration || 10,
-      }}
-      className="flex flex-col gap-6 pb-6 "
-    >
-      {[...new Array(2).fill(0)].map((_, index) => (
-        <React.Fragment key={index}>
-          {props.testimonials.map(
-            ({ text, imageSrc, name, username }, index) => (
-              <div key={index} className="card">
-                <p className="text-bodySmall leading-relaxed">{text}</p>
-                <div className="flex items-center gap-2 mt-5">
-                  <Image
-                    src={imageSrc}
-                    alt={name}
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 rounded-full"
-                  />
-                  <div className="flex flex-col">
-                    <h3 className="text-bodySmall font-semibold tracking-tight leading-5">
-                      {name}
-                    </h3>
-                    <p className="leading-5 tracking-tight text-bodyXS">
-                      {username}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          )}
-        </React.Fragment>
-      ))}
-    </motion.div>
-  </div>
-);
-
 export const Testimonials = () => {
   return (
-    <section className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-      <div className="container">
-        <div className="text-center max-w-[540px] mx-auto">
-          <div className="flex justify-center">
-            <p className="tag mt-5 text-gray-600 dark:text-gray-300">
-              Testimonials
-            </p>
-          </div>
-          <h2 className="text-h2 mt-5 text-darkText dark:text-white">
-            What our clients say
-          </h2>
-          <p className="mt-4 text-bodyDefault leading-relaxed">
-            From just an idea to owning a product, our team has helped a lot of
-            businesses and individuals in Africa and around the world achieve
-            their goals.
-          </p>
-        </div>
-
-        <div
-          className="flex justify-center gap-6 mt-10 
-      [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] 
-      max-h-[738px] overflow-hidden"
+    <section className="py-28 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <motion.div
+          className="text-center max-w-2xl mx-auto"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <TestimonialsColum testimonials={firstColumn} duration={30} />
-          <TestimonialsColum
-            testimonials={secondColumn}
-            className="hidden md:block"
-            duration={35}
-          />
-          <TestimonialsColum
-            testimonials={thirdColumn}
-            className="hidden lg:block"
-            duration={40}
-          />
+          <p className="text-bodySmall uppercase tracking-wider text-gray-500 dark:text-gray-400">
+            Testimonials
+          </p>
+
+          <h2 className="text-h2 mt-4 text-darkText dark:text-white">
+            Trusted by founders and growing teams
+          </h2>
+
+          <p className="mt-4 text-bodyDefault text-gray-600 dark:text-gray-300 leading-relaxed">
+          From a spark of an idea to a fully launched product, we have partnered with businesses and founders across Africa and beyond helping them bring their vision to life and achieve real impact.
+
+
+          </p>
+        </motion.div>
+
+        {/* Testimonials Grid */}
+        <div className="mt-16 grid gap-10 lg:grid-cols-2">
+          {testimonials.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: index * 0.2 }}
+              whileHover={{ y: -6 }}
+              className="relative rounded-3xl bg-gray-50 dark:bg-gray-800 p-10 shadow-lg border border-gray-100 dark:border-gray-700"
+            >
+              {/* Quote */}
+              <p className="text-bodyLarge leading-relaxed text-gray-700 dark:text-gray-200">
+                “{item.quote}”
+              </p>
+
+              {/* Author */}
+              <div className="mt-8 flex items-center gap-4">
+                {/* <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={56}
+                  height={56}
+                  className="rounded-full object-cover"
+                /> */}
+
+                <div>
+                  <p className="text-bodyDefault font-semibold text-darkText dark:text-white">
+                    {item.name}
+                  </p>
+                  <p className="text-bodySmall text-gray-500 dark:text-gray-400">
+                    {item.role}
+                  </p>
+                </div>
+              </div>
+
+              {/* Subtle Accent */}
+              <span className="absolute top-6 right-6 text-6xl text-gray-200 dark:text-gray-700 font-serif leading-none">
+                “
+              </span>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import ImageWrap from "@/components/ImageWrap";
 import Overlay from "@/components/Overlay";
 import TitleDescription from "@/components/TitleDescription";
-import { doWeWorkText, images, whatWeWorkText } from "@/constants";
+import {images} from "@/constants";
 import React from "react";
 
 const WhyChooseUs = () => {
@@ -35,12 +35,12 @@ const WhyChooseUs = () => {
             className="w-full bg-white lg:w-[50%] min-h-[200px] border p-6 flex flex-col justify-center shadow-lg rounded-3xl lg:rounded-e-3xl lg:rounded-es-3xl lg:absolute lg:top-[calc(50%+100px)] lg:right-0"
             title={
               <span className="relative inline-block dark:text-gray-950">
-                We Partner With You
+                We Build With You, Not Just For You
               </span>
             }
             titleStyle="text-h3 text-center lg:text-left"
             headerNumber={3}
-            desc="Because you deserve more than just a service provider — you need a partner. One that listens. One that understands. One that delivers. At Nahara Technologies, we have the team, the strategy, and the heart to bring your ideas to life. Let's build a future where your brand doesn't just exist — it thrives."
+            desc="Because great products are not created in isolation,they are crafted through understanding, collaboration, and real partnership. At Nahara Technologies, we walk with you from idea to execution, ensuring your vision is heard, shaped, and brought to life with clarity and excellence."
             descStyle="text-gray-500 mt-3 text-bodySmall leading-normal"
           />
 
@@ -58,16 +58,19 @@ const WhyChooseUs = () => {
             className="flex-1 p-6 border my-5 lg:my-0 bg-white shadow-lg rounded-3xl lg:rounded-e-3xl lg:rounded-es-3xl  flex flex-col justify-center "
             titleStyle="text-h3 text-center lg:text-left"
             headerNumber={3}
-            title="Build Now, Pay Later"
-            desc={whatWeWorkText}
+            title="Growth Should not Be Held Back by Budget
+"
+            desc="Because every brand deserves the chance to show up strong online. With our “Build Now, Pay Later” model, you start with just 50% upfront while we develop, host, maintain, and support your product so you can scale without financial pressure slowing you down.
+"
             descStyle="text-gray-500 mt-3 text-bodySmall leading-normal"
           />
           <TitleDescription
             className="flex-1 p-6 border my-5 lg:my-0  bg-white shadow-lg rounded-3xl lg:rounded-e-3xl lg:rounded-es-3xl flex flex-col justify-center "
-            title="We Bridge the Gap"
+            title="We Close the Space Between Vision and Reality"
             titleStyle="text-h3 text-center lg:text-left"
             headerNumber={3}
-            desc={doWeWorkText}
+            desc="Because businesses often know what they want ,they just need the right team to make it real. We merge strategy, design, and technology to transform ideas into functional solutions that work, perform, and stand out. At Nahara Technologies, we don’t just execute; we elevate.
+"
             descStyle="text-gray-500 mt-3 text-bodySmall leading-normal"
           />
         </div>
