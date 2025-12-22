@@ -206,7 +206,7 @@ const logos = [
   },
 ];
 
-const faqCategories = [
+export const faqCategories = [
   {
     id: 1,
     title: "General Questions",
@@ -236,7 +236,7 @@ const faqCategories = [
   },
 ];
 
-const mockTickets: TicketProps[] = [
+export const mockTickets: TicketProps[] = [
   {
     id: 1,
     issue: "App crashing on startup",
