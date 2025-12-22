@@ -206,7 +206,7 @@ const logos = [
   },
 ];
 
-export const faqCategories = [
+ const faqCategories = [
   {
     id: 1,
     title: "General Questions",
@@ -236,7 +236,7 @@ export const faqCategories = [
   },
 ];
 
-export const mockTickets: TicketProps[] = [
+const mockTickets: TicketProps[] = [
   {
     id: 1,
     issue: "App crashing on startup",
@@ -376,13 +376,13 @@ export {
   lottieAnims,
   missionText,
   visionText,
-  // aboutBriefing,
-  // whatWeDo,
-  // howWeWorkContent,
-  // logos,
-  // faqCategories,
-  // mockTickets,
-  // helpTopics,
-  // supportOptions,
-  // faqs,
+  aboutBriefing,
+  whatWeDo,
+  howWeWorkContent,
+  logos,
+  faqCategories,
+  mockTickets,
+  helpTopics,
+  supportOptions,
+  faqs,
 };
