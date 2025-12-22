@@ -206,7 +206,7 @@ const logos = [
   },
 ];
 
-const faqCategories = [
+ const faqCategories = [
   {
     id: 1,
     title: "General Questions",
@@ -373,13 +373,13 @@ const faqs = [
 export {
   icons,
   images,
+  lottieAnims,
+  missionText,
+  visionText,
   aboutBriefing,
   whatWeDo,
   howWeWorkContent,
-  missionText,
-  visionText,
   logos,
-  lottieAnims,
   faqCategories,
   mockTickets,
   helpTopics,
