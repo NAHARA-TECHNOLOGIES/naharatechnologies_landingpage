@@ -10,32 +10,29 @@
   /* h1 {
     @apply text-[clamp(48px,6vw,80px)] font-semibold;
   } */
-
- 
 }
 
 @layer utilities {
-   .text-h2 {
+  .text-h2 {
     @apply text-[clamp(28px,4vw,32px)] font-semibold;
   }
 
   .text-h3 {
     @apply text-[clamp(18px,2.5vw,20px)] font-semibold;
-  } 
+  }
   .text-h1 {
     @apply text-[clamp(30px,6vw,80px)] font-semibold;
     /* font-size: clamp(48px, 6vw, 80px);
     line-height: 110%;
     font-weight: 600; */
   }
-  
 }
 
 @layer components {
+  .price-nav_btn {
+    @apply shrink-0 h-9 px-5 rounded-full  text-bodySmall transition-colors border;
+  }
 
-  
-
-  
   .btn {
     @apply font-medium px-4 py-2 rounded-lg 
         inline-flex items-center justify-center tracking-tight;
@@ -53,10 +50,6 @@
     @apply text-sm inline-flex
         border-[#222]/10 px-3 py-1 rounded-lg tracking-tight;
   }
-  /* .section-title {
-   
-    @apply md:text-[44px] font-bold tracking-tighter text-center md:leading-[60px] text-xl mb-2 lg:text-center;
-  } */
 
   .card {
     @apply p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full;
@@ -78,14 +71,14 @@
   .polygon-clip-4 {
     clip-path: polygon(75% 0%, 100% 0%, 100% 100%, 60% 100%);
   }
-
+/* 
   .bd-text-lg {
-    @apply text-lg text-black
+    @apply text-lg text-black;
   }
 
   .bd-text-default {
-    @apply text-base text-black
-  }
+    @apply text-base text-black;
+  } */
 
   /* .bd-text- */
 }
@@ -259,4 +252,13 @@
   background-size: cover;
   background-position: 70% 50%;
   transform: rotateY(180deg);
+}
+
+/* Custom scrollbar for horizontal chips */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

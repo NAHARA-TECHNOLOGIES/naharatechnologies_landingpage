@@ -32,7 +32,7 @@ const config: Config = {
       },
       fontSize: {
         h1: [
-          "clamp(48px, 6vw, 80px)",
+          "clamp(30px, 6vw, 80px)",
           { lineHeight: "120%", fontWeight: "600" },
         ],
         h2: [
@@ -77,6 +77,11 @@ const config: Config = {
         white: "#FFFFFF",
         primaryButton: "#FFFFFF",
         captionText: "#D0D0D0",
+        "background-light": "#f6f8f7",
+        "background-dark": "#122118",
+        "surface-dark": "#1a3324",
+        "border-dark": "#254632",
+        "text-secondary": "#95c6a9",
       },
     },
   },
