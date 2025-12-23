@@ -53,10 +53,18 @@ export interface PDaaSService extends BaseService {
   features: string[];
 }
 
-const pricingData: Record<
-  string,
-  CategorizedService | TierOnlyService | PDaaSService
-> = {
+type PricingMap = {
+  branding: CategorizedService;
+  digital: TierOnlyService;
+  consult: TierOnlyService;
+  software: TierOnlyService;
+  cloud: TierOnlyService;
+  hosting: TierOnlyService;
+  business: TierOnlyService;
+  pdaas: PDaaSService;
+};
+
+const pricingData: PricingMap = {
   branding: {
     title: "Branding & Creative",
     icon: Palette,

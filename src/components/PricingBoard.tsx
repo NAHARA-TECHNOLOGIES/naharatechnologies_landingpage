@@ -1,26 +1,39 @@
 "use client";
 
-import pricingData from "@/constants/pricing";
-import React, { useState } from "react";
+import pricingData, {
+  Category,
+  SubCategory,
+  Tier,
+  CategorizedService,
+} from "@/constants/pricing";
+import React, { Key, useState } from "react";
 import TierCard from "./TierCard";
 import Selection from "./Selection";
 
-const PricingBoard = ({ title }: { title: string }) => {
+function PricingBoard<K extends keyof typeof pricingData>({
+  title,
+}: {
+  title: K;
+}) {
   const [selected, setSelected] = useState(0);
-  const data = pricingData[title];
+  const data = pricingData[title] as (typeof pricingData)[K];
   const Icon = data.icon;
 
   const displayItems = () => {
     switch (title) {
-      case "branding":
+      case "branding": {
+        const categorized = data as CategorizedService;
+
         return (
           <div className="mt-6">
             <Selection
-              selections={data.categories.map((item) => item.name)}
+              selections={categorized.categories.map(
+                (item: Category) => item.name
+              )}
               displaySelections={(selections) => {
                 return selections?.map((selection, idx) => (
                   <button
-                    key={selection}
+                    key={selection as Key}
                     className={`price-nav_btn ${
                       idx === selected
                         ? "btn-primary"
@@ -28,28 +41,30 @@ const PricingBoard = ({ title }: { title: string }) => {
                     }`}
                     onClick={() => setSelected(idx)}
                   >
-                    {selection}
+                    {selection as string}
                   </button>
                 ));
               }}
             />
 
             <>
-              {data.categories[selected].subcategories ? (
-                data.categories[selected].subcategories.map((sub) => (
-                  <div key={sub.name} className="mt-6">
-                    <h4 className="text-lg font-semibold">{sub.name}</h4>
-                    <div className="grid md:grid-cols-3 gap-6 mt-4">
-                      {sub.tiers.map((tier) => (
-                        <TierCard key={tier.name} tier={tier} />
-                      ))}
+              {categorized.categories[selected].subcategories ? (
+                categorized.categories[selected].subcategories.map(
+                  (sub: SubCategory) => (
+                    <div key={sub.name} className="mt-6">
+                      <h4 className="text-lg font-semibold">{sub.name}</h4>
+                      <div className="grid md:grid-cols-3 gap-6 mt-4">
+                        {sub.tiers.map((tier: Tier) => (
+                          <TierCard key={tier.name} tier={tier} />
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))
+                  )
+                )
               ) : (
                 <div className="grid md:grid-cols-3 gap-6 mt-6">
-                  {data.categories[selected].tiers &&
-                    data.categories[selected].tiers.map((tier) => (
+                  {categorized.categories[selected].tiers &&
+                    categorized.categories[selected].tiers.map((tier) => (
                       <TierCard key={tier.name} tier={tier} />
                     ))}
                 </div>
@@ -57,6 +72,36 @@ const PricingBoard = ({ title }: { title: string }) => {
             </>
           </div>
         );
+      }
+      case "pdaas":
+        return (
+          <div className="mt-6 grid gap-3">
+            {"features" in data &&
+              data.features.map((feature) => (
+                <div
+                  key={feature}
+                  className="
+                    relative
+                    rounded-[14px]
+                    bg-white/30
+                    backdrop-blur-xl
+                    border border-white/40
+                    px-4 py-3 pl-5
+                    shadow-[0_12px_24px_rgba(0,0,0,0.1)]
+                  "
+                >
+                  {/* accent line */}
+                  <span className="absolute left-0 top-3 bottom-3 w-[2px] rounded-full bg-[#B93838]/60" />
+        
+                  <p className="text-sm text-[#5A1A1A]">
+                    {feature}
+                  </p>
+                </div>
+              ))}
+          </div>
+        );
+        
+
       default:
         return (
           <div className="mt-6">
@@ -71,6 +116,7 @@ const PricingBoard = ({ title }: { title: string }) => {
         );
     }
   };
+
   return (
     <div className="my-10">
       <section>
@@ -91,6 +137,6 @@ const PricingBoard = ({ title }: { title: string }) => {
       </section>
     </div>
   );
-};
+}
 
 export default PricingBoard;
