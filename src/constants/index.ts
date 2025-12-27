@@ -206,7 +206,7 @@ const logos = [
   },
 ];
 
-const faqCategories = [
+ const faqCategories = [
   {
     id: 1,
     title: "General Questions",
