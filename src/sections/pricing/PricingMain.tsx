@@ -39,23 +39,29 @@ const PricingMain = () => {
             { key: "pdaas", title: "pDaaS" },
           ]}
           displaySelections={(selections) => {
-            return selections?.map((selection) => (
-              <button
-                key={selection.key}
-                className={`price-nav_btn ${
-                  selection.key === selected
-                    ? "btn-primary"
-                    : "hover:border-brandRed hover:text-brandRed bg-white"
-                }`}
-                onClick={() => setSelected(selection.key)}
-              >
-                {selection.title}
-              </button>
-            ));
+            return selections?.map((selection) => {
+              if (typeof selection === "string") {
+                return null;
+              }
+
+              return (
+                <button
+                  key={selection.key}
+                  className={`price-nav_btn ${
+                    selection.key === selected
+                      ? "btn-primary"
+                      : "hover:border-brandRed hover:text-brandRed bg-white"
+                  }`}
+                  onClick={() => setSelected(selection.key)}
+                >
+                  {selection.title}
+                </button>
+              );
+            });
           }}
         />
 
-       <PricingBoard title={selected} />
+        <PricingBoard title={selected as keyof typeof pricingData} />
       </div>
     </section>
   );
