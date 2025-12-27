@@ -19,9 +19,6 @@ import {
 import PricingHero from "@/sections/pricing/PricingHero";
 import PricingMain from "@/sections/pricing/PricingMain";
 
-
-
-
 export default function PricingPage() {
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     brandingCreative: true,
@@ -72,10 +69,10 @@ export default function PricingPage() {
 
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-[#fff0ef] to-[#feecea]">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block px-4 py-1 rounded-full text-xs sm:text-sm font-semibold bg-red-100 text-[#C41E3A] tracking-wide uppercase mb-4">
+          <span className="inline-block px-4 py-1 rounded-full text-bodyXS bg-red-100 text-[#C41E3A] tracking-wide uppercase mb-4">
             Flexible Payment
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
+          <h2 className="text-h2 text-gray-900 mb-6">
             Pay-As-You-Go Plans Available
           </h2>
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
@@ -84,13 +81,13 @@ export default function PricingPage() {
             project with an initial deposit, followed by manageable installments
             as we reach key milestones.
           </p>
-          <div className="grid sm:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
             <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
               <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-[#C41E3A]">1</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Initial Deposit</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="text-h3 text-gray-900 mb-2">Initial Deposit</h3>
+              <p className="text-bodySmall text-gray-600">
                 Start your project with a manageable upfront payment
               </p>
             </div>
@@ -98,10 +95,10 @@ export default function PricingPage() {
               <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-[#C41E3A]">2</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">
+              <h3 className="text-h3 text-gray-900 mb-2">
                 Milestone Payments
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-bodySmall text-gray-600">
                 Pay as we complete key phases of your project
               </p>
             </div>
@@ -109,8 +106,9 @@ export default function PricingPage() {
               <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-[#C41E3A]">3</span>
               </div>
-              <h3 className="font-bold text-gray-900 mb-2">Final Delivery</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="text-h3 text-gray-900 mb-2">Final Delivery</h3>
+
+              <p className="text-bodySmall text-gray-600">
                 Complete payment upon successful project delivery
               </p>
             </div>
