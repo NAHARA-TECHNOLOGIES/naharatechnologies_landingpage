@@ -2,7 +2,6 @@
 
 import PricingBoard from "@/components/PricingBoard";
 import Selection from "@/components/Selection";
-import TierCard from "@/components/TierCard";
 import pricingData from "@/constants/pricing";
 import React, { useState } from "react";
 
