@@ -6,6 +6,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import AuthDropdown from "./AuthDropdown";
 import Image from "next/image";
 
+
 const NavBar = ({
   className,
   onCloseMenu,
@@ -25,19 +26,38 @@ const NavBar = ({
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsAuthenticated(true);
-      const savedProfile = localStorage.getItem("profileImage");
-      if (savedProfile) setProfileImage(savedProfile);
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    setIsAuthenticated(true);
+
+    const decoded = (() => {
+      try {
+        const base64Payload = token.split(".")[1];
+        return JSON.parse(atob(base64Payload));
+      } catch {
+        return null;
+      }
+    })();
+
+    // Optionally, you can store user info in localStorage or use a user state if needed.
+    // If not needed, simply remove the setUser call.
+    // Example: localStorage.setItem("username", decoded?.userName || "");
+
+    if (decoded && decoded.userName) {
+      localStorage.setItem("username", decoded.userName);
     }
 
-    const loginParam = searchParams?.get("login");
-    if (loginParam === "true") {
-      setShowDropdown(true);
-      router.replace("/", { scroll: false });
-    }
-  }, [searchParams, router]);
+    const savedProfile = localStorage.getItem("profileImage");
+    if (savedProfile) setProfileImage(savedProfile);
+  }
+
+  const loginParam = searchParams?.get("login");
+  if (loginParam === "true") {
+    setShowDropdown(true);
+    router.replace("/", { scroll: false });
+  }
+}, [searchParams, router]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -160,7 +180,6 @@ const NavBar = ({
             >
               Get Started
             </button>
-
             <div
               className={`absolute right-0 mt-2 transition-transform md:translate-y-0 ${
                 showDropdown
@@ -177,31 +196,62 @@ const NavBar = ({
           </div>
         ) : (
           <div className="relative" ref={dropdownRef}>
-            <button
-              ref={buttonRef}
-              onClick={() => setShowDropdown(!showDropdown)}
-              className="flex items-center gap-2 focus:outline-none"
-            >
-              <Image
-                src={profileImage || "/default-avatar.png"}
-                alt="Profile"
-                width={38}
-                height={38}
-                className="rounded-full border border-gray-300 hover:scale-105 transition-transform"
-              />
-            </button>
+ <button
+  ref={buttonRef}
+  onClick={() => setShowDropdown(!showDropdown)}
+  className="flex items-center gap-2 focus:outline-none"
+>
+  <div
+    className={`
+      w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg uppercase
+      border-2 border-red-800 dark:border-white
+      transition-all duration-300
+      ${profileImage ? "" : "bg-red-800 text-white dark:bg-white dark:text-black"}
+    `}
+  >
+    {profileImage && profileImage.startsWith("http") ? (
+      <Image
+        src={profileImage}
+        width={40}
+        height={40}
+        alt="User avatar"
+        className="rounded-full object-cover"
+      />
+    ) : (
+      (() => {
+        const savedName = localStorage.getItem("username") || "User";
+
+        const parts = savedName.trim().split(" ").filter(Boolean);
+
+        let initials = "";
+
+        if (parts.length >= 2) {
+          initials = parts[0][0] + parts[parts.length - 1][0];
+        } else {
+          const word = parts[0];
+          initials = word[0] + (word[word.length - 1] || "").toUpperCase();
+        }
+
+        return initials.toUpperCase();
+      })()
+    )}
+  </div>
+</button>
 
             {showDropdown && (
-              <div className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in">
-                <button
-                  onClick={() => {
-                    router.push("/admin/dashboard?tab=manageprofile");
-                    setShowDropdown(false);
-                  }}
-                  className="block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-                >
-                  Manage Account
-                </button>
+              <div
+                className="absolute right-0 mt-3 w-48 bg-white dark:bg-gray-800 shadow-xl rounded-lg py-2 border border-gray-100 z-50 animate-fade-in"
+              >
+                <Link
+              href="/dashboard?tab=manageprofile"
+              onClick={() => {
+                setShowDropdown(false);
+                onCloseMenu?.();
+              }}
+              className="block w-full text-left px-4 py-2 text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+            >
+              Manage Account
+            </Link>
                 <button
                   onClick={handleLogout}
                   className="block w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700 transition"
