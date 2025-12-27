@@ -11,36 +11,51 @@ const TierCard = ({
     popular?: boolean;
   };
 }) => (
-  <div className="flex flex-col p-8 rounded-3xl bg-brandRed border border-[#254632] hover:border-brandRed/50 transition-all overflow-hidden group relative">
+  <div
+    className={` relative flex flex-col rounded-[22px] p-8 bg-white/30 backdrop-blur-2xl border border-white/40 shadow-[0_20px_40px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1.5 ${
+      tier.popular &&
+      "bg-white/40 border-white/50 shadow-[0_30px_60px_rgba(0,0,0,0.18)]"
+    }`}
+  >
+    {/* POPULAR badge */}
     {tier.popular && (
-      <div className="absolute top-0 right-0 bg-white text-background-dark text-xs font-bold px-3 py-1 rounded-bl-xl">
+      <span className="absolute -top-3 right-6 rounded-full bg-[#F2B6B6] px-3 py-1 text-xs font-semibold text-[#6E1F1F]">
         POPULAR
-      </div>
+      </span>
     )}
 
+    {/* Header */}
     <div className="mb-4">
-      <h3 className="text-xl font-bold text-white">{tier.name}</h3>
+      <h3 className="text-xl font-bold text-[#5A1A1A]">{tier.name}</h3>
+
       {tier.ideal && (
-        <p className="text-text-secondary text-sm mt-2 min-h-[40px]">
-          {tier.ideal}
-        </p>
+        <p className="text-sm text-[#7A3A3A] mt-2 min-h-[40px]">{tier.ideal}</p>
       )}
     </div>
 
+    {/* Price */}
     <div className="mb-6">
-      <span className="text-sm font-bold text-white">{tier.price}</span>
+      <span className="text-2xl font-bold text-[#5A1A1A]">{tier.price}</span>
     </div>
 
-    <ul className="flex-1 space-y-2 mb-8 max-h-64 overflow-y-auto no-scrollbar">
+    {/* Features */}
+    <ul className="flex-1 space-y-3 mb-8 text-sm text-[#6B2A2A]">
       {tier.features.map((feat) => (
-        <li key={feat} className="flex gap-3 text-sm text-white">
-          <CheckCircle className="size-[14px] shrink-0" />
+        <li key={feat} className="flex gap-3">
+          <CheckCircle className="size-[14px] shrink-0 text-[#B93838]" />
           {feat}
         </li>
       ))}
     </ul>
 
-    <button className="w-full h-12 rounded-full bg-border-dark text-white font-bold hover:bg-primary transition-colors">
+    {/* Button */}
+    <button
+      className={
+        tier.popular
+          ? "w-full rounded-full bg-[#B93838] py-3 text-sm font-semibold text-white shadow-lg shadow-[#B93838]/30 hover:bg-[#C94747] transition"
+          : "w-full rounded-full bg-white/20 py-3 text-sm font-medium text-[#5A1A1A] hover:bg-white/30 transition"
+      }
+    >
       Start Project
     </button>
   </div>
